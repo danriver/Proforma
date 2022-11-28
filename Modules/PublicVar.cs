@@ -19,18 +19,18 @@ namespace Proforma.Modules
         public static string gstrFormatFechaHasta = "dd/MM/yyyy 23:59:59";
 
         //Produccion
-        public static string gstrServername = "192.168.1.4";
-        public static string gstrServerdomain = "";
-        public static string gstrServeruser = "Administrador";
-        public static string gstrServerpassword = "2016Eagle2016";
-        public static string gstrServerArchivos = "\\\\192.168.1.4\\Imagenes\\";
+        //public static string gstrServername = "192.168.1.4";
+        //public static string gstrServerdomain = "";
+        //public static string gstrServeruser = "Administrador";
+        //public static string gstrServerpassword = "2016Eagle2016";
+        //public static string gstrServerArchivos = "\\\\192.168.1.4\\Imagenes\\";
 
         //Desarrollo
-        //public static string gstrServername = "localhost";
-        //public static string gstrServerdomain = "domainTest";
-        //public static string gstrServeruser = "userTest";
-        //public static string gstrServerpassword = "passTest";
-        //public static string gstrServerArchivos = "\\\\localhost\\Imagenes\\";
+        public static string gstrServername = "localhost";
+        public static string gstrServerdomain = "domainTest";
+        public static string gstrServeruser = "userTest";
+        public static string gstrServerpassword = "passTest";
+        public static string gstrServerArchivos = "\\\\localhost\\Imagenes\\";
 
         //Mensajes del sistema
         public const string gstrTitleInfo = "Información";
