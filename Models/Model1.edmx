@@ -1,0 +1,1817 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BD_ERPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblBitacoras">
+          <Key>
+            <PropertyRef Name="decIdBitacora" />
+          </Key>
+          <Property Name="decIdBitacora" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="decIdUsuario" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="datFechaOperacion" Type="datetime" />
+          <Property Name="strOperacion" Type="nvarchar(max)" />
+          <Property Name="strTipoRegistro" Type="nvarchar(max)" />
+          <Property Name="decNumRegistro" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblCambioMoneda">
+          <Key>
+            <PropertyRef Name="datFecha" />
+          </Key>
+          <Property Name="datFecha" Type="datetime" Nullable="false" />
+          <Property Name="decTipoCambio" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblClientes">
+          <Key>
+            <PropertyRef Name="decIdCliente" />
+          </Key>
+          <Property Name="decIdCliente" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strNombre" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="strDireccion" Type="varchar" MaxLength="300" />
+          <Property Name="strTelefono" Type="varchar" MaxLength="80" />
+          <Property Name="decIdVendedor" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="bitExonerado" Type="bit" />
+          <Property Name="intIdPrecio" Type="int" />
+          <Property Name="bitActivo" Type="bit" />
+          <Property Name="strRUC" Type="varchar" MaxLength="50" />
+          <Property Name="strSiglas" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="tblClientesContacto">
+          <Key>
+            <PropertyRef Name="decIdContacto" />
+          </Key>
+          <Property Name="decIdContacto" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="decIdCliente" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="strNombreContacto" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="strTelefono" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="strExtension" Type="nvarchar" MaxLength="10" />
+          <Property Name="strCelular" Type="nvarchar" MaxLength="80" />
+          <Property Name="strCorreo" Type="nvarchar" MaxLength="120" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblConfiguracion">
+          <Key>
+            <PropertyRef Name="decIdConfiguracion" />
+          </Key>
+          <Property Name="decIdConfiguracion" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="intMoneda" Type="int" />
+          <Property Name="strNombreEmpresa" Type="varchar" MaxLength="200" />
+          <Property Name="strDireccionEmpresa" Type="varchar" MaxLength="500" />
+          <Property Name="strTelefono" Type="varchar" MaxLength="100" />
+          <Property Name="strRUCEmpresa" Type="varchar" MaxLength="50" />
+          <Property Name="strPieEmpresa" Type="varchar" MaxLength="400" />
+          <Property Name="strEsloganEmpresa" Type="varchar" MaxLength="400" />
+          <Property Name="strDireccionLogo" Type="varchar" MaxLength="350" />
+          <Property Name="strChequeNombreDe" Type="varchar" MaxLength="70" />
+          <Property Name="decPorcentajeIVA" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="strRutaFoto" Type="varchar" MaxLength="350" />
+          <Property Name="bitImprimirFacturaUS" Type="bit" />
+          <Property Name="decItemsXFactura" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="decRetencionIR" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="decRetencionAlcaldia" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="decDigitosVenta" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="intIdPrecio" Type="int" />
+          <Property Name="strHost" Type="nvarchar(max)" />
+          <Property Name="intPort" Type="int" />
+        </EntityType>
+        <EntityType Name="tblCotizaciones">
+          <Key>
+            <PropertyRef Name="decIdCotizacion" />
+          </Key>
+          <Property Name="decIdCotizacion" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strNumCotizacion" Type="nvarchar" MaxLength="30" />
+          <Property Name="decIdCliente" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="decIdContacto" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="decIdVendedor" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="decIdUsuario" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="datFechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="decSubtotal" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="decIva" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="decDescuento" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="strObservaciones" Type="varchar" MaxLength="500" />
+          <Property Name="intEstadoCotizacion" Type="int" />
+          <Property Name="bitFactura" Type="bit" />
+          <Property Name="datFechaVencimiento" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblDetalleCotizaciones">
+          <Key>
+            <PropertyRef Name="decIdDetalle" />
+          </Key>
+          <Property Name="decIdDetalle" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="decIdCotizacion" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="decIdProducto" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="decCantidad" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="decCosto" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="decMargen" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="decPrecio" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="decDescuento" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="decIdProveedor" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="bitExonerado" Type="bit" />
+          <Property Name="decIdUsuario" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="FechaMovimiento" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblErrores">
+          <Key>
+            <PropertyRef Name="decIdError" />
+          </Key>
+          <Property Name="decIdError" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strError" Type="nvarchar(max)" />
+          <Property Name="decIdFormulario" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="strStackTrace" Type="nvarchar(max)" />
+          <Property Name="decIdUsuario" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="datFecha" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblEstados">
+          <Key>
+            <PropertyRef Name="intIdEstado" />
+          </Key>
+          <Property Name="intIdEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strDescripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFormularios">
+          <Key>
+            <PropertyRef Name="decIdFormulario" />
+          </Key>
+          <Property Name="decIdFormulario" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strNombreFormulario" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="strDescripcion" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="bitFormularioRaiz" Type="bit" Nullable="false" />
+          <Property Name="decIdFormularioPadre" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMonedas">
+          <Key>
+            <PropertyRef Name="intIdMoneda" />
+          </Key>
+          <Property Name="intIdMoneda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strDescripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="strSimbolo" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPermisos">
+          <Key>
+            <PropertyRef Name="decIdPermiso" />
+          </Key>
+          <Property Name="decIdPermiso" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strNombreObjeto" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="strDescripcion" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="decIdFormularioContenedor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPrecios">
+          <Key>
+            <PropertyRef Name="intIdPrecio" />
+          </Key>
+          <Property Name="intIdPrecio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strDescripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProductos">
+          <Key>
+            <PropertyRef Name="decIdProducto" />
+          </Key>
+          <Property Name="decIdProducto" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strProducto" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="strReferencia" Type="varchar" MaxLength="200" />
+          <Property Name="decCosto" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="decPrecio1" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="decPrecio2" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="decPrecio3" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="intMoneda" Type="int" />
+          <Property Name="decExistencia" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="bitNoExistencia" Type="bit" />
+          <Property Name="bitActivo" Type="bit" Nullable="false" />
+          <Property Name="bitExonerado" Type="bit" />
+          <Property Name="decIdTipoProducto" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="intIdPrecio" Type="int" />
+        </EntityType>
+        <EntityType Name="tblProductosXProveedor">
+          <Key>
+            <PropertyRef Name="decIdProveedor" />
+            <PropertyRef Name="decIdProducto" />
+          </Key>
+          <Property Name="decIdContador" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="decIdProveedor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="decIdProducto" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProveedores">
+          <Key>
+            <PropertyRef Name="decIdProveedor" />
+          </Key>
+          <Property Name="decIdProveedor" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strNombre" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="strDireccion" Type="varchar" MaxLength="300" />
+          <Property Name="strTelefono" Type="varchar" MaxLength="80" />
+          <Property Name="bitExonerado" Type="bit" />
+          <Property Name="strRUC" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblRoles">
+          <Key>
+            <PropertyRef Name="decIdRol" />
+          </Key>
+          <Property Name="decIdRol" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strNombreRol" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="bitEnllavado" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblRolPermisos">
+          <Key>
+            <PropertyRef Name="decIdRol" />
+            <PropertyRef Name="decIdPermiso" />
+          </Key>
+          <Property Name="decIdRol" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="decIdPermiso" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="bitActivo" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblTipoProductos">
+          <Key>
+            <PropertyRef Name="decIdTipoProducto" />
+          </Key>
+          <Property Name="decIdTipoProducto" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strTipoProducto" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="decIncrementoPrecio1" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="decIncrementoPrecio2" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="decIncrementoPrecio3" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="tblUsuarios">
+          <Key>
+            <PropertyRef Name="decIdUsuario" />
+          </Key>
+          <Property Name="decIdUsuario" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strUsuario" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="strNombreUsuario" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="strContrasena" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="decIdRol" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="decIdVendedor" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="bitActivo" Type="bit" Nullable="false" />
+          <Property Name="bitEnllavado" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblVendedores">
+          <Key>
+            <PropertyRef Name="decIdVendedor" />
+          </Key>
+          <Property Name="decIdVendedor" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="strNombreVendedor" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="strTelefono" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="strCorreo" Type="nvarchar" MaxLength="120" Nullable="false" />
+          <Property Name="strContrasena" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK__tblClient__decId__46E78A0C">
+          <End Role="tblVendedores" Type="Self.tblVendedores" Multiplicity="0..1" />
+          <End Role="tblClientes" Type="Self.tblClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVendedores">
+              <PropertyRef Name="decIdVendedor" />
+            </Principal>
+            <Dependent Role="tblClientes">
+              <PropertyRef Name="decIdVendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblClient__decId__49C3F6B7">
+          <End Role="tblClientes" Type="Self.tblClientes" Multiplicity="1" />
+          <End Role="tblClientesContacto" Type="Self.tblClientesContacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClientes">
+              <PropertyRef Name="decIdCliente" />
+            </Principal>
+            <Dependent Role="tblClientesContacto">
+              <PropertyRef Name="decIdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCotiza__decId__693CA210">
+          <End Role="tblClientes" Type="Self.tblClientes" Multiplicity="0..1" />
+          <End Role="tblCotizaciones" Type="Self.tblCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClientes">
+              <PropertyRef Name="decIdCliente" />
+            </Principal>
+            <Dependent Role="tblCotizaciones">
+              <PropertyRef Name="decIdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCotiza__decId__6A30C649">
+          <End Role="tblClientesContacto" Type="Self.tblClientesContacto" Multiplicity="0..1" />
+          <End Role="tblCotizaciones" Type="Self.tblCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClientesContacto">
+              <PropertyRef Name="decIdContacto" />
+            </Principal>
+            <Dependent Role="tblCotizaciones">
+              <PropertyRef Name="decIdContacto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCotiza__decId__6B24EA82">
+          <End Role="tblVendedores" Type="Self.tblVendedores" Multiplicity="0..1" />
+          <End Role="tblCotizaciones" Type="Self.tblCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVendedores">
+              <PropertyRef Name="decIdVendedor" />
+            </Principal>
+            <Dependent Role="tblCotizaciones">
+              <PropertyRef Name="decIdVendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCotiza__decId__6C190EBB">
+          <End Role="tblUsuarios" Type="Self.tblUsuarios" Multiplicity="0..1" />
+          <End Role="tblCotizaciones" Type="Self.tblCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="decIdUsuario" />
+            </Principal>
+            <Dependent Role="tblCotizaciones">
+              <PropertyRef Name="decIdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblDetall__decId__6EF57B66">
+          <End Role="tblCotizaciones" Type="Self.tblCotizaciones" Multiplicity="1" />
+          <End Role="tblDetalleCotizaciones" Type="Self.tblDetalleCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCotizaciones">
+              <PropertyRef Name="decIdCotizacion" />
+            </Principal>
+            <Dependent Role="tblDetalleCotizaciones">
+              <PropertyRef Name="decIdCotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblDetall__decId__6FE99F9F">
+          <End Role="tblProductos" Type="Self.tblProductos" Multiplicity="1" />
+          <End Role="tblDetalleCotizaciones" Type="Self.tblDetalleCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProductos">
+              <PropertyRef Name="decIdProducto" />
+            </Principal>
+            <Dependent Role="tblDetalleCotizaciones">
+              <PropertyRef Name="decIdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblDetall__decId__70DDC3D8">
+          <End Role="tblUsuarios" Type="Self.tblUsuarios" Multiplicity="0..1" />
+          <End Role="tblDetalleCotizaciones" Type="Self.tblDetalleCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="decIdUsuario" />
+            </Principal>
+            <Dependent Role="tblDetalleCotizaciones">
+              <PropertyRef Name="decIdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPermis__decId__267ABA7A">
+          <End Role="tblFormularios" Type="Self.tblFormularios" Multiplicity="1" />
+          <End Role="tblPermisos" Type="Self.tblPermisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFormularios">
+              <PropertyRef Name="decIdFormulario" />
+            </Principal>
+            <Dependent Role="tblPermisos">
+              <PropertyRef Name="decIdFormularioContenedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProduc__decId__440B1D61">
+          <End Role="tblTipoProductos" Type="Self.tblTipoProductos" Multiplicity="0..1" />
+          <End Role="tblProductos" Type="Self.tblProductos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoProductos">
+              <PropertyRef Name="decIdTipoProducto" />
+            </Principal>
+            <Dependent Role="tblProductos">
+              <PropertyRef Name="decIdTipoProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProduc__decId__5CD6CB2B">
+          <End Role="tblProveedores" Type="Self.tblProveedores" Multiplicity="1" />
+          <End Role="tblProductosXProveedor" Type="Self.tblProductosXProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProveedores">
+              <PropertyRef Name="decIdProveedor" />
+            </Principal>
+            <Dependent Role="tblProductosXProveedor">
+              <PropertyRef Name="decIdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProduc__decId__5DCAEF64">
+          <End Role="tblProductos" Type="Self.tblProductos" Multiplicity="1" />
+          <End Role="tblProductosXProveedor" Type="Self.tblProductosXProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProductos">
+              <PropertyRef Name="decIdProducto" />
+            </Principal>
+            <Dependent Role="tblProductosXProveedor">
+              <PropertyRef Name="decIdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblRolPer__decId__2C3393D0">
+          <End Role="tblPermisos" Type="Self.tblPermisos" Multiplicity="1" />
+          <End Role="tblRolPermisos" Type="Self.tblRolPermisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPermisos">
+              <PropertyRef Name="decIdPermiso" />
+            </Principal>
+            <Dependent Role="tblRolPermisos">
+              <PropertyRef Name="decIdPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblRolPer__decId__32E0915F">
+          <End Role="tblRoles" Type="Self.tblRoles" Multiplicity="1" />
+          <End Role="tblRolPermisos" Type="Self.tblRolPermisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRoles">
+              <PropertyRef Name="decIdRol" />
+            </Principal>
+            <Dependent Role="tblRolPermisos">
+              <PropertyRef Name="decIdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblUsuari__decId__30F848ED">
+          <End Role="tblVendedores" Type="Self.tblVendedores" Multiplicity="0..1" />
+          <End Role="tblUsuarios" Type="Self.tblUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVendedores">
+              <PropertyRef Name="decIdVendedor" />
+            </Principal>
+            <Dependent Role="tblUsuarios">
+              <PropertyRef Name="decIdVendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblUsuari__decId__34C8D9D1">
+          <End Role="tblRoles" Type="Self.tblRoles" Multiplicity="0..1" />
+          <End Role="tblUsuarios" Type="Self.tblUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRoles">
+              <PropertyRef Name="decIdRol" />
+            </Principal>
+            <Dependent Role="tblUsuarios">
+              <PropertyRef Name="decIdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblBitacoras_tblUsuarios">
+          <End Role="tblUsuarios" Type="Self.tblUsuarios" Multiplicity="1" />
+          <End Role="tblBitacoras" Type="Self.tblBitacoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="decIdUsuario" />
+            </Principal>
+            <Dependent Role="tblBitacoras">
+              <PropertyRef Name="decIdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblClientes_tblPrecios">
+          <End Role="tblPrecios" Type="Self.tblPrecios" Multiplicity="0..1" />
+          <End Role="tblClientes" Type="Self.tblClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPrecios">
+              <PropertyRef Name="intIdPrecio" />
+            </Principal>
+            <Dependent Role="tblClientes">
+              <PropertyRef Name="intIdPrecio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblConfiguracion_tblMonedas">
+          <End Role="tblMonedas" Type="Self.tblMonedas" Multiplicity="0..1" />
+          <End Role="tblConfiguracion" Type="Self.tblConfiguracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMonedas">
+              <PropertyRef Name="intIdMoneda" />
+            </Principal>
+            <Dependent Role="tblConfiguracion">
+              <PropertyRef Name="intMoneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblConfiguracion_tblPrecios">
+          <End Role="tblPrecios" Type="Self.tblPrecios" Multiplicity="0..1" />
+          <End Role="tblConfiguracion" Type="Self.tblConfiguracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPrecios">
+              <PropertyRef Name="intIdPrecio" />
+            </Principal>
+            <Dependent Role="tblConfiguracion">
+              <PropertyRef Name="intIdPrecio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCotizaciones_tblEstados">
+          <End Role="tblEstados" Type="Self.tblEstados" Multiplicity="0..1" />
+          <End Role="tblCotizaciones" Type="Self.tblCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEstados">
+              <PropertyRef Name="intIdEstado" />
+            </Principal>
+            <Dependent Role="tblCotizaciones">
+              <PropertyRef Name="intEstadoCotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDetalleCotizaciones_tblProveedores">
+          <End Role="tblProveedores" Type="Self.tblProveedores" Multiplicity="0..1" />
+          <End Role="tblDetalleCotizaciones" Type="Self.tblDetalleCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProveedores">
+              <PropertyRef Name="decIdProveedor" />
+            </Principal>
+            <Dependent Role="tblDetalleCotizaciones">
+              <PropertyRef Name="decIdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblErrores_tblFormularios">
+          <End Role="tblFormularios" Type="Self.tblFormularios" Multiplicity="0..1" />
+          <End Role="tblErrores" Type="Self.tblErrores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFormularios">
+              <PropertyRef Name="decIdFormulario" />
+            </Principal>
+            <Dependent Role="tblErrores">
+              <PropertyRef Name="decIdFormulario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblErrores_tblUsuarios">
+          <End Role="tblUsuarios" Type="Self.tblUsuarios" Multiplicity="0..1" />
+          <End Role="tblErrores" Type="Self.tblErrores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="decIdUsuario" />
+            </Principal>
+            <Dependent Role="tblErrores">
+              <PropertyRef Name="decIdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductos_tblMonedas">
+          <End Role="tblMonedas" Type="Self.tblMonedas" Multiplicity="0..1" />
+          <End Role="tblProductos" Type="Self.tblProductos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMonedas">
+              <PropertyRef Name="intIdMoneda" />
+            </Principal>
+            <Dependent Role="tblProductos">
+              <PropertyRef Name="intMoneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductos_tblPrecios">
+          <End Role="tblPrecios" Type="Self.tblPrecios" Multiplicity="0..1" />
+          <End Role="tblProductos" Type="Self.tblProductos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPrecios">
+              <PropertyRef Name="intIdPrecio" />
+            </Principal>
+            <Dependent Role="tblProductos">
+              <PropertyRef Name="intIdPrecio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Sp_ProductosXProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="decIdProveedor" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="spRolPermisos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdRol" Type="decimal" Mode="In" />
+          <Parameter Name="IdFormulario" Type="decimal" Mode="In" />
+        </Function>
+        <EntityContainer Name="BD_ERPModelStoreContainer">
+          <EntitySet Name="tblBitacoras" EntityType="Self.tblBitacoras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCambioMoneda" EntityType="Self.tblCambioMoneda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblClientes" EntityType="Self.tblClientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblClientesContacto" EntityType="Self.tblClientesContacto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblConfiguracion" EntityType="Self.tblConfiguracion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCotizaciones" EntityType="Self.tblCotizaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDetalleCotizaciones" EntityType="Self.tblDetalleCotizaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblErrores" EntityType="Self.tblErrores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEstados" EntityType="Self.tblEstados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFormularios" EntityType="Self.tblFormularios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMonedas" EntityType="Self.tblMonedas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPermisos" EntityType="Self.tblPermisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPrecios" EntityType="Self.tblPrecios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductos" EntityType="Self.tblProductos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductosXProveedor" EntityType="Self.tblProductosXProveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProveedores" EntityType="Self.tblProveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRoles" EntityType="Self.tblRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRolPermisos" EntityType="Self.tblRolPermisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTipoProductos" EntityType="Self.tblTipoProductos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsuarios" EntityType="Self.tblUsuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVendedores" EntityType="Self.tblVendedores" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblClient__decId__46E78A0C" Association="Self.FK__tblClient__decId__46E78A0C">
+            <End Role="tblVendedores" EntitySet="tblVendedores" />
+            <End Role="tblClientes" EntitySet="tblClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblClient__decId__49C3F6B7" Association="Self.FK__tblClient__decId__49C3F6B7">
+            <End Role="tblClientes" EntitySet="tblClientes" />
+            <End Role="tblClientesContacto" EntitySet="tblClientesContacto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCotiza__decId__693CA210" Association="Self.FK__tblCotiza__decId__693CA210">
+            <End Role="tblClientes" EntitySet="tblClientes" />
+            <End Role="tblCotizaciones" EntitySet="tblCotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCotiza__decId__6A30C649" Association="Self.FK__tblCotiza__decId__6A30C649">
+            <End Role="tblClientesContacto" EntitySet="tblClientesContacto" />
+            <End Role="tblCotizaciones" EntitySet="tblCotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCotiza__decId__6B24EA82" Association="Self.FK__tblCotiza__decId__6B24EA82">
+            <End Role="tblVendedores" EntitySet="tblVendedores" />
+            <End Role="tblCotizaciones" EntitySet="tblCotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCotiza__decId__6C190EBB" Association="Self.FK__tblCotiza__decId__6C190EBB">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblCotizaciones" EntitySet="tblCotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblDetall__decId__6EF57B66" Association="Self.FK__tblDetall__decId__6EF57B66">
+            <End Role="tblCotizaciones" EntitySet="tblCotizaciones" />
+            <End Role="tblDetalleCotizaciones" EntitySet="tblDetalleCotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblDetall__decId__6FE99F9F" Association="Self.FK__tblDetall__decId__6FE99F9F">
+            <End Role="tblProductos" EntitySet="tblProductos" />
+            <End Role="tblDetalleCotizaciones" EntitySet="tblDetalleCotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblDetall__decId__70DDC3D8" Association="Self.FK__tblDetall__decId__70DDC3D8">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblDetalleCotizaciones" EntitySet="tblDetalleCotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPermis__decId__267ABA7A" Association="Self.FK__tblPermis__decId__267ABA7A">
+            <End Role="tblFormularios" EntitySet="tblFormularios" />
+            <End Role="tblPermisos" EntitySet="tblPermisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProduc__decId__440B1D61" Association="Self.FK__tblProduc__decId__440B1D61">
+            <End Role="tblTipoProductos" EntitySet="tblTipoProductos" />
+            <End Role="tblProductos" EntitySet="tblProductos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProduc__decId__5CD6CB2B" Association="Self.FK__tblProduc__decId__5CD6CB2B">
+            <End Role="tblProveedores" EntitySet="tblProveedores" />
+            <End Role="tblProductosXProveedor" EntitySet="tblProductosXProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProduc__decId__5DCAEF64" Association="Self.FK__tblProduc__decId__5DCAEF64">
+            <End Role="tblProductos" EntitySet="tblProductos" />
+            <End Role="tblProductosXProveedor" EntitySet="tblProductosXProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblRolPer__decId__2C3393D0" Association="Self.FK__tblRolPer__decId__2C3393D0">
+            <End Role="tblPermisos" EntitySet="tblPermisos" />
+            <End Role="tblRolPermisos" EntitySet="tblRolPermisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblRolPer__decId__32E0915F" Association="Self.FK__tblRolPer__decId__32E0915F">
+            <End Role="tblRoles" EntitySet="tblRoles" />
+            <End Role="tblRolPermisos" EntitySet="tblRolPermisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblUsuari__decId__30F848ED" Association="Self.FK__tblUsuari__decId__30F848ED">
+            <End Role="tblVendedores" EntitySet="tblVendedores" />
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblUsuari__decId__34C8D9D1" Association="Self.FK__tblUsuari__decId__34C8D9D1">
+            <End Role="tblRoles" EntitySet="tblRoles" />
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblBitacoras_tblUsuarios" Association="Self.FK_tblBitacoras_tblUsuarios">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblBitacoras" EntitySet="tblBitacoras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblClientes_tblPrecios" Association="Self.FK_tblClientes_tblPrecios">
+            <End Role="tblPrecios" EntitySet="tblPrecios" />
+            <End Role="tblClientes" EntitySet="tblClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblConfiguracion_tblMonedas" Association="Self.FK_tblConfiguracion_tblMonedas">
+            <End Role="tblMonedas" EntitySet="tblMonedas" />
+            <End Role="tblConfiguracion" EntitySet="tblConfiguracion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblConfiguracion_tblPrecios" Association="Self.FK_tblConfiguracion_tblPrecios">
+            <End Role="tblPrecios" EntitySet="tblPrecios" />
+            <End Role="tblConfiguracion" EntitySet="tblConfiguracion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCotizaciones_tblEstados" Association="Self.FK_tblCotizaciones_tblEstados">
+            <End Role="tblEstados" EntitySet="tblEstados" />
+            <End Role="tblCotizaciones" EntitySet="tblCotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDetalleCotizaciones_tblProveedores" Association="Self.FK_tblDetalleCotizaciones_tblProveedores">
+            <End Role="tblProveedores" EntitySet="tblProveedores" />
+            <End Role="tblDetalleCotizaciones" EntitySet="tblDetalleCotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblErrores_tblFormularios" Association="Self.FK_tblErrores_tblFormularios">
+            <End Role="tblFormularios" EntitySet="tblFormularios" />
+            <End Role="tblErrores" EntitySet="tblErrores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblErrores_tblUsuarios" Association="Self.FK_tblErrores_tblUsuarios">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblErrores" EntitySet="tblErrores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductos_tblMonedas" Association="Self.FK_tblProductos_tblMonedas">
+            <End Role="tblMonedas" EntitySet="tblMonedas" />
+            <End Role="tblProductos" EntitySet="tblProductos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductos_tblPrecios" Association="Self.FK_tblProductos_tblPrecios">
+            <End Role="tblPrecios" EntitySet="tblPrecios" />
+            <End Role="tblProductos" EntitySet="tblProductos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BD_ERPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblCambioMoneda">
+          <Key>
+            <PropertyRef Name="datFecha" />
+          </Key>
+          <Property Name="datFecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="decTipoCambio" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCotizaciones">
+          <Key>
+            <PropertyRef Name="decIdCotizacion" />
+          </Key>
+          <Property Name="decIdCotizacion" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="decIdCliente" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="decIdContacto" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="decIdVendedor" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="decIdUsuario" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="datFechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="decSubtotal" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="decIva" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="decDescuento" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="strObservaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="intEstadoCotizacion" Type="Int32" />
+          <Property Name="bitFactura" Type="Boolean" />
+          <Property Name="datFechaVencimiento" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblUsuarios" Relationship="BD_ERPModel.FK__tblCotiza__decId__6C190EBB" FromRole="tblCotizaciones" ToRole="tblUsuarios" />
+          <NavigationProperty Name="tblClientesContacto" Relationship="BD_ERPModel.FK__tblCotiza__decId__6A30C649" FromRole="tblCotizaciones" ToRole="tblClientesContacto" />
+          <Property Name="strNumCotizacion" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblClientes" Relationship="BD_ERPModel.FK__tblCotiza__decId__693CA210" FromRole="tblCotizaciones" ToRole="tblClientes" />
+          <NavigationProperty Name="tblEstados" Relationship="BD_ERPModel.FK_tblCotizaciones_tblEstados" FromRole="tblCotizaciones" ToRole="tblEstados" />
+          <NavigationProperty Name="tblVendedores" Relationship="BD_ERPModel.FK__tblCotiza__decId__6B24EA82" FromRole="tblCotizaciones" ToRole="tblVendedores" />
+          <NavigationProperty Name="tblDetalleCotizaciones" Relationship="BD_ERPModel.FK__tblDetall__decId__6EF57B66" FromRole="tblCotizaciones" ToRole="tblDetalleCotizaciones" />
+        </EntityType>
+        <EntityType Name="tblFormularios">
+          <Key>
+            <PropertyRef Name="decIdFormulario" />
+          </Key>
+          <Property Name="decIdFormulario" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strNombreFormulario" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="strDescripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bitFormularioRaiz" Type="Boolean" Nullable="false" />
+          <Property Name="decIdFormularioPadre" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="tblPermisos" Relationship="Self.FK__tblPermis__decId__267ABA7A" FromRole="tblFormularios" ToRole="tblPermisos" />
+          <NavigationProperty Name="tblErrores" Relationship="BD_ERPModel.FK_tblErrores_tblFormularios" FromRole="tblFormularios" ToRole="tblErrores" />
+        </EntityType>
+        <EntityType Name="tblPermisos">
+          <Key>
+            <PropertyRef Name="decIdPermiso" />
+          </Key>
+          <Property Name="decIdPermiso" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strNombreObjeto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="strDescripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="decIdFormularioContenedor" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="tblFormularios" Relationship="Self.FK__tblPermis__decId__267ABA7A" FromRole="tblPermisos" ToRole="tblFormularios" />
+          <NavigationProperty Name="tblRolPermisos" Relationship="Self.FK__tblRolPer__decId__2C3393D0" FromRole="tblPermisos" ToRole="tblRolPermisos" />
+        </EntityType>
+        <EntityType Name="tblRolPermisos">
+          <Key>
+            <PropertyRef Name="decIdRol" />
+            <PropertyRef Name="decIdPermiso" />
+          </Key>
+          <Property Name="decIdRol" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="decIdPermiso" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="bitActivo" Type="Boolean" />
+          <NavigationProperty Name="tblPermisos" Relationship="Self.FK__tblRolPer__decId__2C3393D0" FromRole="tblRolPermisos" ToRole="tblPermisos" />
+          <NavigationProperty Name="tblRoles" Relationship="BD_ERPModel.FK__tblRolPer__decId__32E0915F" FromRole="tblRolPermisos" ToRole="tblRoles" />
+        </EntityType>
+        <Association Name="FK__tblPermis__decId__267ABA7A">
+          <End Role="tblFormularios" Type="Self.tblFormularios" Multiplicity="1" />
+          <End Role="tblPermisos" Type="Self.tblPermisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFormularios">
+              <PropertyRef Name="decIdFormulario" />
+            </Principal>
+            <Dependent Role="tblPermisos">
+              <PropertyRef Name="decIdFormularioContenedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblRolPer__decId__2C3393D0">
+          <End Role="tblPermisos" Type="Self.tblPermisos" Multiplicity="1" />
+          <End Role="tblRolPermisos" Type="Self.tblRolPermisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPermisos">
+              <PropertyRef Name="decIdPermiso" />
+            </Principal>
+            <Dependent Role="tblRolPermisos">
+              <PropertyRef Name="decIdPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_ERPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblCambioMoneda" EntityType="Self.tblCambioMoneda" />
+          <EntitySet Name="tblCotizaciones" EntityType="Self.tblCotizaciones" />
+          <EntitySet Name="tblFormularios" EntityType="Self.tblFormularios" />
+          <EntitySet Name="tblPermisos" EntityType="Self.tblPermisos" />
+          <EntitySet Name="tblRolPermisos" EntityType="Self.tblRolPermisos" />
+          <AssociationSet Name="FK__tblPermis__decId__267ABA7A" Association="Self.FK__tblPermis__decId__267ABA7A">
+            <End Role="tblFormularios" EntitySet="tblFormularios" />
+            <End Role="tblPermisos" EntitySet="tblPermisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblRolPer__decId__2C3393D0" Association="Self.FK__tblRolPer__decId__2C3393D0">
+            <End Role="tblPermisos" EntitySet="tblPermisos" />
+            <End Role="tblRolPermisos" EntitySet="tblRolPermisos" />
+          </AssociationSet>
+          <EntitySet Name="tblProductosXProveedor" EntityType="BD_ERPModel.tblProductosXProveedor" />
+          <EntitySet Name="tblRoles" EntityType="BD_ERPModel.tblRoles" />
+          <EntitySet Name="tblUsuarios" EntityType="BD_ERPModel.tblUsuarios" />
+          <AssociationSet Name="FK__tblCotiza__decId__6C190EBB" Association="BD_ERPModel.FK__tblCotiza__decId__6C190EBB">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblCotizaciones" EntitySet="tblCotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblRolPer__decId__32E0915F" Association="BD_ERPModel.FK__tblRolPer__decId__32E0915F">
+            <End Role="tblRoles" EntitySet="tblRoles" />
+            <End Role="tblRolPermisos" EntitySet="tblRolPermisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblUsuari__decId__34C8D9D1" Association="BD_ERPModel.FK__tblUsuari__decId__34C8D9D1">
+            <End Role="tblRoles" EntitySet="tblRoles" />
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+          </AssociationSet>
+          <EntitySet Name="tblBitacoras" EntityType="BD_ERPModel.tblBitacoras" />
+          <EntitySet Name="tblErrores" EntityType="BD_ERPModel.tblErrores" />
+          <AssociationSet Name="FK_tblBitacoras_tblUsuarios" Association="BD_ERPModel.FK_tblBitacoras_tblUsuarios">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblBitacoras" EntitySet="tblBitacoras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblErrores_tblFormularios" Association="BD_ERPModel.FK_tblErrores_tblFormularios">
+            <End Role="tblFormularios" EntitySet="tblFormularios" />
+            <End Role="tblErrores" EntitySet="tblErrores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblErrores_tblUsuarios" Association="BD_ERPModel.FK_tblErrores_tblUsuarios">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblErrores" EntitySet="tblErrores" />
+          </AssociationSet>
+          <EntitySet Name="tblMonedas" EntityType="BD_ERPModel.tblMonedas" />
+          <EntitySet Name="tblPrecios" EntityType="BD_ERPModel.tblPrecios" />
+          <EntitySet Name="tblTipoProductos" EntityType="BD_ERPModel.tblTipoProductos" />
+          <EntitySet Name="tblProductos" EntityType="BD_ERPModel.tblProductos" />
+          <AssociationSet Name="FK_tblProductos_tblMonedas" Association="BD_ERPModel.FK_tblProductos_tblMonedas">
+            <End Role="tblMonedas" EntitySet="tblMonedas" />
+            <End Role="tblProductos" EntitySet="tblProductos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProductos_tblPrecios" Association="BD_ERPModel.FK_tblProductos_tblPrecios">
+            <End Role="tblPrecios" EntitySet="tblPrecios" />
+            <End Role="tblProductos" EntitySet="tblProductos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProduc__decId__440B1D61" Association="BD_ERPModel.FK__tblProduc__decId__440B1D61">
+            <End Role="tblTipoProductos" EntitySet="tblTipoProductos" />
+            <End Role="tblProductos" EntitySet="tblProductos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProduc__decId__5DCAEF64" Association="BD_ERPModel.FK__tblProduc__decId__5DCAEF64">
+            <End Role="tblProductos" EntitySet="tblProductos" />
+            <End Role="tblProductosXProveedor" EntitySet="tblProductosXProveedor" />
+          </AssociationSet>
+          <EntitySet Name="tblProveedores" EntityType="BD_ERPModel.tblProveedores" />
+          <AssociationSet Name="FK__tblProduc__decId__5CD6CB2B" Association="BD_ERPModel.FK__tblProduc__decId__5CD6CB2B">
+            <End Role="tblProveedores" EntitySet="tblProveedores" />
+            <End Role="tblProductosXProveedor" EntitySet="tblProductosXProveedor" />
+          </AssociationSet>
+          <EntitySet Name="tblClientesContacto" EntityType="BD_ERPModel.tblClientesContacto" />
+          <AssociationSet Name="FK__tblCotiza__decId__6A30C649" Association="BD_ERPModel.FK__tblCotiza__decId__6A30C649">
+            <End Role="tblClientesContacto" EntitySet="tblClientesContacto" />
+            <End Role="tblCotizaciones" EntitySet="tblCotizaciones" />
+          </AssociationSet>
+          <EntitySet Name="tblClientes" EntityType="BD_ERPModel.tblClientes" />
+          <AssociationSet Name="FK__tblClient__decId__49C3F6B7" Association="BD_ERPModel.FK__tblClient__decId__49C3F6B7">
+            <End Role="tblClientes" EntitySet="tblClientes" />
+            <End Role="tblClientesContacto" EntitySet="tblClientesContacto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCotiza__decId__693CA210" Association="BD_ERPModel.FK__tblCotiza__decId__693CA210">
+            <End Role="tblClientes" EntitySet="tblClientes" />
+            <End Role="tblCotizaciones" EntitySet="tblCotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblClientes_tblPrecios" Association="BD_ERPModel.FK_tblClientes_tblPrecios">
+            <End Role="tblPrecios" EntitySet="tblPrecios" />
+            <End Role="tblClientes" EntitySet="tblClientes" />
+          </AssociationSet>
+          <EntitySet Name="tblEstados" EntityType="BD_ERPModel.tblEstados" />
+          <AssociationSet Name="FK_tblCotizaciones_tblEstados" Association="BD_ERPModel.FK_tblCotizaciones_tblEstados">
+            <End Role="tblEstados" EntitySet="tblEstados" />
+            <End Role="tblCotizaciones" EntitySet="tblCotizaciones" />
+          </AssociationSet>
+          <EntitySet Name="tblDetalleCotizaciones" EntityType="BD_ERPModel.tblDetalleCotizaciones" />
+          <EntitySet Name="tblVendedores" EntityType="BD_ERPModel.tblVendedores" />
+          <AssociationSet Name="FK__tblClient__decId__46E78A0C" Association="BD_ERPModel.FK__tblClient__decId__46E78A0C">
+            <End Role="tblVendedores" EntitySet="tblVendedores" />
+            <End Role="tblClientes" EntitySet="tblClientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblCotiza__decId__6B24EA82" Association="BD_ERPModel.FK__tblCotiza__decId__6B24EA82">
+            <End Role="tblVendedores" EntitySet="tblVendedores" />
+            <End Role="tblCotizaciones" EntitySet="tblCotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblDetall__decId__6EF57B66" Association="BD_ERPModel.FK__tblDetall__decId__6EF57B66">
+            <End Role="tblCotizaciones" EntitySet="tblCotizaciones" />
+            <End Role="tblDetalleCotizaciones" EntitySet="tblDetalleCotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblDetall__decId__6FE99F9F" Association="BD_ERPModel.FK__tblDetall__decId__6FE99F9F">
+            <End Role="tblProductos" EntitySet="tblProductos" />
+            <End Role="tblDetalleCotizaciones" EntitySet="tblDetalleCotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblDetall__decId__70DDC3D8" Association="BD_ERPModel.FK__tblDetall__decId__70DDC3D8">
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+            <End Role="tblDetalleCotizaciones" EntitySet="tblDetalleCotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDetalleCotizaciones_tblProveedores" Association="BD_ERPModel.FK_tblDetalleCotizaciones_tblProveedores">
+            <End Role="tblProveedores" EntitySet="tblProveedores" />
+            <End Role="tblDetalleCotizaciones" EntitySet="tblDetalleCotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblUsuari__decId__30F848ED" Association="BD_ERPModel.FK__tblUsuari__decId__30F848ED">
+            <End Role="tblVendedores" EntitySet="tblVendedores" />
+            <End Role="tblUsuarios" EntitySet="tblUsuarios" />
+          </AssociationSet>
+          <EntitySet Name="tblConfiguracion" EntityType="BD_ERPModel.tblConfiguracion" />
+          <AssociationSet Name="FK_tblConfiguracion_tblMonedas" Association="BD_ERPModel.FK_tblConfiguracion_tblMonedas">
+            <End Role="tblMonedas" EntitySet="tblMonedas" />
+            <End Role="tblConfiguracion" EntitySet="tblConfiguracion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblConfiguracion_tblPrecios" Association="BD_ERPModel.FK_tblConfiguracion_tblPrecios">
+            <End Role="tblPrecios" EntitySet="tblPrecios" />
+            <End Role="tblConfiguracion" EntitySet="tblConfiguracion" />
+          </AssociationSet>
+          <FunctionImport Name="Sp_ProductosXProveedor" ReturnType="Collection(BD_ERPModel.Sp_ProductosXProveedor_Result)">
+            <Parameter Name="decIdProveedor" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="spRolPermisos" ReturnType="Collection(BD_ERPModel.spRolPermisos_Result)">
+            <Parameter Name="IdRol" Mode="In" Type="Decimal" />
+            <Parameter Name="IdFormulario" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          </EntityContainer>
+        <EntityType Name="tblProductosXProveedor">
+          <Key>
+            <PropertyRef Name="decIdProveedor" />
+            <PropertyRef Name="decIdProducto" />
+          </Key>
+          <Property Name="decIdContador" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="decIdProveedor" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="decIdProducto" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="tblProductos" Relationship="BD_ERPModel.FK__tblProduc__decId__5DCAEF64" FromRole="tblProductosXProveedor" ToRole="tblProductos" />
+          <NavigationProperty Name="tblProveedores" Relationship="BD_ERPModel.FK__tblProduc__decId__5CD6CB2B" FromRole="tblProductosXProveedor" ToRole="tblProveedores" />
+        </EntityType>
+        <EntityType Name="tblRoles">
+          <Key>
+            <PropertyRef Name="decIdRol" />
+          </Key>
+          <Property Name="decIdRol" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strNombreRol" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="bitEnllavado" Type="Boolean" />
+          <NavigationProperty Name="tblRolPermisos" Relationship="BD_ERPModel.FK__tblRolPer__decId__32E0915F" FromRole="tblRoles" ToRole="tblRolPermisos" />
+          <NavigationProperty Name="tblUsuarios" Relationship="BD_ERPModel.FK__tblUsuari__decId__34C8D9D1" FromRole="tblRoles" ToRole="tblUsuarios" />
+        </EntityType>
+        <EntityType Name="tblUsuarios">
+          <Key>
+            <PropertyRef Name="decIdUsuario" />
+          </Key>
+          <Property Name="decIdUsuario" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strUsuario" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="strNombreUsuario" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="strContrasena" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="decIdRol" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="decIdVendedor" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="bitActivo" Type="Boolean" Nullable="false" />
+          <Property Name="bitEnllavado" Type="Boolean" />
+          <NavigationProperty Name="tblCotizaciones" Relationship="BD_ERPModel.FK__tblCotiza__decId__6C190EBB" FromRole="tblUsuarios" ToRole="tblCotizaciones" />
+          <NavigationProperty Name="tblRoles" Relationship="BD_ERPModel.FK__tblUsuari__decId__34C8D9D1" FromRole="tblUsuarios" ToRole="tblRoles" />
+          <NavigationProperty Name="tblBitacoras" Relationship="BD_ERPModel.FK_tblBitacoras_tblUsuarios" FromRole="tblUsuarios" ToRole="tblBitacoras" />
+          <NavigationProperty Name="tblErrores" Relationship="BD_ERPModel.FK_tblErrores_tblUsuarios" FromRole="tblUsuarios" ToRole="tblErrores" />
+          <NavigationProperty Name="tblDetalleCotizaciones" Relationship="BD_ERPModel.FK__tblDetall__decId__70DDC3D8" FromRole="tblUsuarios" ToRole="tblDetalleCotizaciones" />
+          <NavigationProperty Name="tblVendedores" Relationship="BD_ERPModel.FK__tblUsuari__decId__30F848ED" FromRole="tblUsuarios" ToRole="tblVendedores" />
+        </EntityType>
+        <Association Name="FK__tblCotiza__decId__6C190EBB">
+          <End Type="BD_ERPModel.tblUsuarios" Role="tblUsuarios" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblCotizaciones" Role="tblCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="decIdUsuario" />
+            </Principal>
+            <Dependent Role="tblCotizaciones">
+              <PropertyRef Name="decIdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblRolPer__decId__32E0915F">
+          <End Type="BD_ERPModel.tblRoles" Role="tblRoles" Multiplicity="1" />
+          <End Type="BD_ERPModel.tblRolPermisos" Role="tblRolPermisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRoles">
+              <PropertyRef Name="decIdRol" />
+            </Principal>
+            <Dependent Role="tblRolPermisos">
+              <PropertyRef Name="decIdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblUsuari__decId__34C8D9D1">
+          <End Type="BD_ERPModel.tblRoles" Role="tblRoles" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblUsuarios" Role="tblUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRoles">
+              <PropertyRef Name="decIdRol" />
+            </Principal>
+            <Dependent Role="tblUsuarios">
+              <PropertyRef Name="decIdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblBitacoras">
+          <Key>
+            <PropertyRef Name="decIdBitacora" />
+          </Key>
+          <Property Name="decIdBitacora" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="decIdUsuario" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="datFechaOperacion" Type="DateTime" Precision="3" />
+          <Property Name="strOperacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="strTipoRegistro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="decNumRegistro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblUsuarios" Relationship="BD_ERPModel.FK_tblBitacoras_tblUsuarios" FromRole="tblBitacoras" ToRole="tblUsuarios" />
+        </EntityType>
+        <EntityType Name="tblErrores">
+          <Key>
+            <PropertyRef Name="decIdError" />
+          </Key>
+          <Property Name="decIdError" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strError" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="decIdFormulario" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="strStackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="decIdUsuario" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="datFecha" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblFormularios" Relationship="BD_ERPModel.FK_tblErrores_tblFormularios" FromRole="tblErrores" ToRole="tblFormularios" />
+          <NavigationProperty Name="tblUsuarios" Relationship="BD_ERPModel.FK_tblErrores_tblUsuarios" FromRole="tblErrores" ToRole="tblUsuarios" />
+        </EntityType>
+        <Association Name="FK_tblBitacoras_tblUsuarios">
+          <End Type="BD_ERPModel.tblUsuarios" Role="tblUsuarios" Multiplicity="1" />
+          <End Type="BD_ERPModel.tblBitacoras" Role="tblBitacoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="decIdUsuario" />
+            </Principal>
+            <Dependent Role="tblBitacoras">
+              <PropertyRef Name="decIdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblErrores_tblFormularios">
+          <End Type="BD_ERPModel.tblFormularios" Role="tblFormularios" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblErrores" Role="tblErrores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFormularios">
+              <PropertyRef Name="decIdFormulario" />
+            </Principal>
+            <Dependent Role="tblErrores">
+              <PropertyRef Name="decIdFormulario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblErrores_tblUsuarios">
+          <End Type="BD_ERPModel.tblUsuarios" Role="tblUsuarios" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblErrores" Role="tblErrores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="decIdUsuario" />
+            </Principal>
+            <Dependent Role="tblErrores">
+              <PropertyRef Name="decIdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblMonedas">
+          <Key>
+            <PropertyRef Name="intIdMoneda" />
+          </Key>
+          <Property Name="intIdMoneda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strDescripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="strSimbolo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblProductos" Relationship="BD_ERPModel.FK_tblProductos_tblMonedas" FromRole="tblMonedas" ToRole="tblProductos" />
+          <NavigationProperty Name="tblConfiguracion" Relationship="BD_ERPModel.FK_tblConfiguracion_tblMonedas" FromRole="tblMonedas" ToRole="tblConfiguracion" />
+        </EntityType>
+        <EntityType Name="tblPrecios">
+          <Key>
+            <PropertyRef Name="intIdPrecio" />
+          </Key>
+          <Property Name="intIdPrecio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strDescripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblProductos" Relationship="BD_ERPModel.FK_tblProductos_tblPrecios" FromRole="tblPrecios" ToRole="tblProductos" />
+          <NavigationProperty Name="tblClientes" Relationship="BD_ERPModel.FK_tblClientes_tblPrecios" FromRole="tblPrecios" ToRole="tblClientes" />
+          <NavigationProperty Name="tblConfiguracion" Relationship="BD_ERPModel.FK_tblConfiguracion_tblPrecios" FromRole="tblPrecios" ToRole="tblConfiguracion" />
+        </EntityType>
+        <EntityType Name="tblTipoProductos">
+          <Key>
+            <PropertyRef Name="decIdTipoProducto" />
+          </Key>
+          <Property Name="decIdTipoProducto" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strTipoProducto" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="decIncrementoPrecio1" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="decIncrementoPrecio2" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="decIncrementoPrecio3" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="tblProductos" Relationship="BD_ERPModel.FK__tblProduc__decId__440B1D61" FromRole="tblTipoProductos" ToRole="tblProductos" />
+        </EntityType>
+        <EntityType Name="tblProductos">
+          <Key>
+            <PropertyRef Name="decIdProducto" />
+          </Key>
+          <Property Name="decIdProducto" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strProducto" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="strReferencia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="decCosto" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="decPrecio1" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="decPrecio2" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="decPrecio3" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="intMoneda" Type="Int32" />
+          <Property Name="decExistencia" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="bitNoExistencia" Type="Boolean" />
+          <Property Name="bitActivo" Type="Boolean" Nullable="false" />
+          <Property Name="bitExonerado" Type="Boolean" />
+          <Property Name="decIdTipoProducto" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="intIdPrecio" Type="Int32" />
+          <NavigationProperty Name="tblMonedas" Relationship="BD_ERPModel.FK_tblProductos_tblMonedas" FromRole="tblProductos" ToRole="tblMonedas" />
+          <NavigationProperty Name="tblPrecios" Relationship="BD_ERPModel.FK_tblProductos_tblPrecios" FromRole="tblProductos" ToRole="tblPrecios" />
+          <NavigationProperty Name="tblTipoProductos" Relationship="BD_ERPModel.FK__tblProduc__decId__440B1D61" FromRole="tblProductos" ToRole="tblTipoProductos" />
+          <NavigationProperty Name="tblProductosXProveedor" Relationship="BD_ERPModel.FK__tblProduc__decId__5DCAEF64" FromRole="tblProductos" ToRole="tblProductosXProveedor" />
+          <NavigationProperty Name="tblDetalleCotizaciones" Relationship="BD_ERPModel.FK__tblDetall__decId__6FE99F9F" FromRole="tblProductos" ToRole="tblDetalleCotizaciones" />
+        </EntityType>
+        <Association Name="FK_tblProductos_tblMonedas">
+          <End Type="BD_ERPModel.tblMonedas" Role="tblMonedas" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblProductos" Role="tblProductos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMonedas">
+              <PropertyRef Name="intIdMoneda" />
+            </Principal>
+            <Dependent Role="tblProductos">
+              <PropertyRef Name="intMoneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProductos_tblPrecios">
+          <End Type="BD_ERPModel.tblPrecios" Role="tblPrecios" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblProductos" Role="tblProductos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPrecios">
+              <PropertyRef Name="intIdPrecio" />
+            </Principal>
+            <Dependent Role="tblProductos">
+              <PropertyRef Name="intIdPrecio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProduc__decId__440B1D61">
+          <End Type="BD_ERPModel.tblTipoProductos" Role="tblTipoProductos" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblProductos" Role="tblProductos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTipoProductos">
+              <PropertyRef Name="decIdTipoProducto" />
+            </Principal>
+            <Dependent Role="tblProductos">
+              <PropertyRef Name="decIdTipoProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProduc__decId__5DCAEF64">
+          <End Type="BD_ERPModel.tblProductos" Role="tblProductos" Multiplicity="1" />
+          <End Type="BD_ERPModel.tblProductosXProveedor" Role="tblProductosXProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProductos">
+              <PropertyRef Name="decIdProducto" />
+            </Principal>
+            <Dependent Role="tblProductosXProveedor">
+              <PropertyRef Name="decIdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblProveedores">
+          <Key>
+            <PropertyRef Name="decIdProveedor" />
+          </Key>
+          <Property Name="decIdProveedor" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strNombre" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="strDireccion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="strTelefono" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="bitExonerado" Type="Boolean" />
+          <Property Name="strRUC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblProductosXProveedor" Relationship="BD_ERPModel.FK__tblProduc__decId__5CD6CB2B" FromRole="tblProveedores" ToRole="tblProductosXProveedor" />
+          <NavigationProperty Name="tblDetalleCotizaciones" Relationship="BD_ERPModel.FK_tblDetalleCotizaciones_tblProveedores" FromRole="tblProveedores" ToRole="tblDetalleCotizaciones" />
+        </EntityType>
+        <Association Name="FK__tblProduc__decId__5CD6CB2B">
+          <End Type="BD_ERPModel.tblProveedores" Role="tblProveedores" Multiplicity="1" />
+          <End Type="BD_ERPModel.tblProductosXProveedor" Role="tblProductosXProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProveedores">
+              <PropertyRef Name="decIdProveedor" />
+            </Principal>
+            <Dependent Role="tblProductosXProveedor">
+              <PropertyRef Name="decIdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblClientesContacto">
+          <Key>
+            <PropertyRef Name="decIdContacto" />
+          </Key>
+          <Property Name="decIdContacto" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="decIdCliente" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="strNombreContacto" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="strTelefono" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="strExtension" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="strCelular" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="strCorreo" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblCotizaciones" Relationship="BD_ERPModel.FK__tblCotiza__decId__6A30C649" FromRole="tblClientesContacto" ToRole="tblCotizaciones" />
+          <NavigationProperty Name="tblClientes" Relationship="BD_ERPModel.FK__tblClient__decId__49C3F6B7" FromRole="tblClientesContacto" ToRole="tblClientes" />
+        </EntityType>
+        <Association Name="FK__tblCotiza__decId__6A30C649">
+          <End Type="BD_ERPModel.tblClientesContacto" Role="tblClientesContacto" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblCotizaciones" Role="tblCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClientesContacto">
+              <PropertyRef Name="decIdContacto" />
+            </Principal>
+            <Dependent Role="tblCotizaciones">
+              <PropertyRef Name="decIdContacto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblClientes">
+          <Key>
+            <PropertyRef Name="decIdCliente" />
+          </Key>
+          <Property Name="decIdCliente" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strNombre" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="strDireccion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="strTelefono" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="decIdVendedor" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="bitExonerado" Type="Boolean" />
+          <Property Name="intIdPrecio" Type="Int32" />
+          <Property Name="bitActivo" Type="Boolean" />
+          <Property Name="strRUC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="strSiglas" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblClientesContacto" Relationship="BD_ERPModel.FK__tblClient__decId__49C3F6B7" FromRole="tblClientes" ToRole="tblClientesContacto" />
+          <NavigationProperty Name="tblCotizaciones" Relationship="BD_ERPModel.FK__tblCotiza__decId__693CA210" FromRole="tblClientes" ToRole="tblCotizaciones" />
+          <NavigationProperty Name="tblPrecios" Relationship="BD_ERPModel.FK_tblClientes_tblPrecios" FromRole="tblClientes" ToRole="tblPrecios" />
+          <NavigationProperty Name="tblVendedores" Relationship="BD_ERPModel.FK__tblClient__decId__46E78A0C" FromRole="tblClientes" ToRole="tblVendedores" />
+        </EntityType>
+        <Association Name="FK__tblClient__decId__49C3F6B7">
+          <End Type="BD_ERPModel.tblClientes" Role="tblClientes" Multiplicity="1" />
+          <End Type="BD_ERPModel.tblClientesContacto" Role="tblClientesContacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClientes">
+              <PropertyRef Name="decIdCliente" />
+            </Principal>
+            <Dependent Role="tblClientesContacto">
+              <PropertyRef Name="decIdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCotiza__decId__693CA210">
+          <End Type="BD_ERPModel.tblClientes" Role="tblClientes" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblCotizaciones" Role="tblCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClientes">
+              <PropertyRef Name="decIdCliente" />
+            </Principal>
+            <Dependent Role="tblCotizaciones">
+              <PropertyRef Name="decIdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblClientes_tblPrecios">
+          <End Type="BD_ERPModel.tblPrecios" Role="tblPrecios" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblClientes" Role="tblClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPrecios">
+              <PropertyRef Name="intIdPrecio" />
+            </Principal>
+            <Dependent Role="tblClientes">
+              <PropertyRef Name="intIdPrecio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblEstados">
+          <Key>
+            <PropertyRef Name="intIdEstado" />
+          </Key>
+          <Property Name="intIdEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strDescripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblCotizaciones" Relationship="BD_ERPModel.FK_tblCotizaciones_tblEstados" FromRole="tblEstados" ToRole="tblCotizaciones" />
+        </EntityType>
+        <Association Name="FK_tblCotizaciones_tblEstados">
+          <End Type="BD_ERPModel.tblEstados" Role="tblEstados" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblCotizaciones" Role="tblCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEstados">
+              <PropertyRef Name="intIdEstado" />
+            </Principal>
+            <Dependent Role="tblCotizaciones">
+              <PropertyRef Name="intEstadoCotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblDetalleCotizaciones">
+          <Key>
+            <PropertyRef Name="decIdDetalle" />
+          </Key>
+          <Property Name="decIdDetalle" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="decIdCotizacion" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="decIdProducto" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="decCantidad" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="decCosto" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="decMargen" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="decPrecio" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="decDescuento" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="decIdProveedor" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="bitExonerado" Type="Boolean" />
+          <Property Name="decIdUsuario" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="FechaMovimiento" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblCotizaciones" Relationship="BD_ERPModel.FK__tblDetall__decId__6EF57B66" FromRole="tblDetalleCotizaciones" ToRole="tblCotizaciones" />
+          <NavigationProperty Name="tblProductos" Relationship="BD_ERPModel.FK__tblDetall__decId__6FE99F9F" FromRole="tblDetalleCotizaciones" ToRole="tblProductos" />
+          <NavigationProperty Name="tblUsuarios" Relationship="BD_ERPModel.FK__tblDetall__decId__70DDC3D8" FromRole="tblDetalleCotizaciones" ToRole="tblUsuarios" />
+          <NavigationProperty Name="tblProveedores" Relationship="BD_ERPModel.FK_tblDetalleCotizaciones_tblProveedores" FromRole="tblDetalleCotizaciones" ToRole="tblProveedores" />
+        </EntityType>
+        <EntityType Name="tblVendedores">
+          <Key>
+            <PropertyRef Name="decIdVendedor" />
+          </Key>
+          <Property Name="decIdVendedor" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="strNombreVendedor" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="strTelefono" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="strCorreo" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="strContrasena" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblClientes" Relationship="BD_ERPModel.FK__tblClient__decId__46E78A0C" FromRole="tblVendedores" ToRole="tblClientes" />
+          <NavigationProperty Name="tblCotizaciones" Relationship="BD_ERPModel.FK__tblCotiza__decId__6B24EA82" FromRole="tblVendedores" ToRole="tblCotizaciones" />
+          <NavigationProperty Name="tblUsuarios" Relationship="BD_ERPModel.FK__tblUsuari__decId__30F848ED" FromRole="tblVendedores" ToRole="tblUsuarios" />
+        </EntityType>
+        <Association Name="FK__tblClient__decId__46E78A0C">
+          <End Type="BD_ERPModel.tblVendedores" Role="tblVendedores" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblClientes" Role="tblClientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVendedores">
+              <PropertyRef Name="decIdVendedor" />
+            </Principal>
+            <Dependent Role="tblClientes">
+              <PropertyRef Name="decIdVendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblCotiza__decId__6B24EA82">
+          <End Type="BD_ERPModel.tblVendedores" Role="tblVendedores" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblCotizaciones" Role="tblCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVendedores">
+              <PropertyRef Name="decIdVendedor" />
+            </Principal>
+            <Dependent Role="tblCotizaciones">
+              <PropertyRef Name="decIdVendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblDetall__decId__6EF57B66">
+          <End Type="BD_ERPModel.tblCotizaciones" Role="tblCotizaciones" Multiplicity="1" />
+          <End Type="BD_ERPModel.tblDetalleCotizaciones" Role="tblDetalleCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCotizaciones">
+              <PropertyRef Name="decIdCotizacion" />
+            </Principal>
+            <Dependent Role="tblDetalleCotizaciones">
+              <PropertyRef Name="decIdCotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblDetall__decId__6FE99F9F">
+          <End Type="BD_ERPModel.tblProductos" Role="tblProductos" Multiplicity="1" />
+          <End Type="BD_ERPModel.tblDetalleCotizaciones" Role="tblDetalleCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProductos">
+              <PropertyRef Name="decIdProducto" />
+            </Principal>
+            <Dependent Role="tblDetalleCotizaciones">
+              <PropertyRef Name="decIdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblDetall__decId__70DDC3D8">
+          <End Type="BD_ERPModel.tblUsuarios" Role="tblUsuarios" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblDetalleCotizaciones" Role="tblDetalleCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsuarios">
+              <PropertyRef Name="decIdUsuario" />
+            </Principal>
+            <Dependent Role="tblDetalleCotizaciones">
+              <PropertyRef Name="decIdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDetalleCotizaciones_tblProveedores">
+          <End Type="BD_ERPModel.tblProveedores" Role="tblProveedores" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblDetalleCotizaciones" Role="tblDetalleCotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProveedores">
+              <PropertyRef Name="decIdProveedor" />
+            </Principal>
+            <Dependent Role="tblDetalleCotizaciones">
+              <PropertyRef Name="decIdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblUsuari__decId__30F848ED">
+          <End Type="BD_ERPModel.tblVendedores" Role="tblVendedores" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblUsuarios" Role="tblUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVendedores">
+              <PropertyRef Name="decIdVendedor" />
+            </Principal>
+            <Dependent Role="tblUsuarios">
+              <PropertyRef Name="decIdVendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblConfiguracion">
+          <Key>
+            <PropertyRef Name="decIdConfiguracion" />
+          </Key>
+          <Property Name="decIdConfiguracion" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="intMoneda" Type="Int32" />
+          <Property Name="strNombreEmpresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="strDireccionEmpresa" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="strTelefono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="strRUCEmpresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="strPieEmpresa" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="strEsloganEmpresa" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="strDireccionLogo" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="strChequeNombreDe" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="decPorcentajeIVA" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="strRutaFoto" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="bitImprimirFacturaUS" Type="Boolean" />
+          <Property Name="decItemsXFactura" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="decRetencionIR" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="decRetencionAlcaldia" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="decDigitosVenta" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="intIdPrecio" Type="Int32" />
+          <Property Name="strHost" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="intPort" Type="Int32" />
+          <NavigationProperty Name="tblMonedas" Relationship="BD_ERPModel.FK_tblConfiguracion_tblMonedas" FromRole="tblConfiguracion" ToRole="tblMonedas" />
+          <NavigationProperty Name="tblPrecios" Relationship="BD_ERPModel.FK_tblConfiguracion_tblPrecios" FromRole="tblConfiguracion" ToRole="tblPrecios" />
+        </EntityType>
+        <Association Name="FK_tblConfiguracion_tblMonedas">
+          <End Type="BD_ERPModel.tblMonedas" Role="tblMonedas" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblConfiguracion" Role="tblConfiguracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMonedas">
+              <PropertyRef Name="intIdMoneda" />
+            </Principal>
+            <Dependent Role="tblConfiguracion">
+              <PropertyRef Name="intMoneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblConfiguracion_tblPrecios">
+          <End Type="BD_ERPModel.tblPrecios" Role="tblPrecios" Multiplicity="0..1" />
+          <End Type="BD_ERPModel.tblConfiguracion" Role="tblConfiguracion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPrecios">
+              <PropertyRef Name="intIdPrecio" />
+            </Principal>
+            <Dependent Role="tblConfiguracion">
+              <PropertyRef Name="intIdPrecio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Sp_ProductosXProveedor_Result">
+          <Property Type="Decimal" Name="Producto" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Boolean" Name="Agregado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spRolPermisos_Result">
+          <Property Type="Decimal" Name="decIdPermiso" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="strNombreObjeto" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="strDescripcionObjeto" Nullable="false" MaxLength="200" />
+          <Property Type="Boolean" Name="bitActivo" Nullable="false" />
+          <Property Type="Decimal" Name="decIdFormulario" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="strNombreFormulario" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="strDescripcionFormulario" Nullable="true" MaxLength="200" />
+          <Property Type="Decimal" Name="decIdFormularioPadre" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="decIdPermisoPrincipal" Nullable="false" Precision="18" Scale="0" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BD_ERPModelStoreContainer" CdmEntityContainer="BD_ERPEntities">
+          <EntitySetMapping Name="tblCambioMoneda">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblCambioMoneda">
+              <MappingFragment StoreEntitySet="tblCambioMoneda">
+                <ScalarProperty Name="datFecha" ColumnName="datFecha" />
+                <ScalarProperty Name="decTipoCambio" ColumnName="decTipoCambio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCotizaciones">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblCotizaciones">
+              <MappingFragment StoreEntitySet="tblCotizaciones">
+                <ScalarProperty Name="strNumCotizacion" ColumnName="strNumCotizacion" />
+                <ScalarProperty Name="decIdCotizacion" ColumnName="decIdCotizacion" />
+                <ScalarProperty Name="decIdCliente" ColumnName="decIdCliente" />
+                <ScalarProperty Name="decIdContacto" ColumnName="decIdContacto" />
+                <ScalarProperty Name="decIdVendedor" ColumnName="decIdVendedor" />
+                <ScalarProperty Name="decIdUsuario" ColumnName="decIdUsuario" />
+                <ScalarProperty Name="datFechaCreacion" ColumnName="datFechaCreacion" />
+                <ScalarProperty Name="decSubtotal" ColumnName="decSubtotal" />
+                <ScalarProperty Name="decIva" ColumnName="decIva" />
+                <ScalarProperty Name="decDescuento" ColumnName="decDescuento" />
+                <ScalarProperty Name="strObservaciones" ColumnName="strObservaciones" />
+                <ScalarProperty Name="intEstadoCotizacion" ColumnName="intEstadoCotizacion" />
+                <ScalarProperty Name="bitFactura" ColumnName="bitFactura" />
+                <ScalarProperty Name="datFechaVencimiento" ColumnName="datFechaVencimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFormularios">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblFormularios">
+              <MappingFragment StoreEntitySet="tblFormularios">
+                <ScalarProperty Name="decIdFormulario" ColumnName="decIdFormulario" />
+                <ScalarProperty Name="strNombreFormulario" ColumnName="strNombreFormulario" />
+                <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
+                <ScalarProperty Name="bitFormularioRaiz" ColumnName="bitFormularioRaiz" />
+                <ScalarProperty Name="decIdFormularioPadre" ColumnName="decIdFormularioPadre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPermisos">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblPermisos">
+              <MappingFragment StoreEntitySet="tblPermisos">
+                <ScalarProperty Name="decIdPermiso" ColumnName="decIdPermiso" />
+                <ScalarProperty Name="strNombreObjeto" ColumnName="strNombreObjeto" />
+                <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
+                <ScalarProperty Name="decIdFormularioContenedor" ColumnName="decIdFormularioContenedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRolPermisos">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblRolPermisos">
+              <MappingFragment StoreEntitySet="tblRolPermisos">
+                <ScalarProperty Name="decIdRol" ColumnName="decIdRol" />
+                <ScalarProperty Name="decIdPermiso" ColumnName="decIdPermiso" />
+                <ScalarProperty Name="bitActivo" ColumnName="bitActivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductosXProveedor">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblProductosXProveedor">
+              <MappingFragment StoreEntitySet="tblProductosXProveedor">
+                <ScalarProperty Name="decIdProducto" ColumnName="decIdProducto" />
+                <ScalarProperty Name="decIdProveedor" ColumnName="decIdProveedor" />
+                <ScalarProperty Name="decIdContador" ColumnName="decIdContador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRoles">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblRoles">
+              <MappingFragment StoreEntitySet="tblRoles">
+                <ScalarProperty Name="bitEnllavado" ColumnName="bitEnllavado" />
+                <ScalarProperty Name="strNombreRol" ColumnName="strNombreRol" />
+                <ScalarProperty Name="decIdRol" ColumnName="decIdRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsuarios">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblUsuarios">
+              <MappingFragment StoreEntitySet="tblUsuarios">
+                <ScalarProperty Name="bitEnllavado" ColumnName="bitEnllavado" />
+                <ScalarProperty Name="bitActivo" ColumnName="bitActivo" />
+                <ScalarProperty Name="decIdVendedor" ColumnName="decIdVendedor" />
+                <ScalarProperty Name="decIdRol" ColumnName="decIdRol" />
+                <ScalarProperty Name="strContrasena" ColumnName="strContrasena" />
+                <ScalarProperty Name="strNombreUsuario" ColumnName="strNombreUsuario" />
+                <ScalarProperty Name="strUsuario" ColumnName="strUsuario" />
+                <ScalarProperty Name="decIdUsuario" ColumnName="decIdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBitacoras">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblBitacoras">
+              <MappingFragment StoreEntitySet="tblBitacoras">
+                <ScalarProperty Name="decNumRegistro" ColumnName="decNumRegistro" />
+                <ScalarProperty Name="strTipoRegistro" ColumnName="strTipoRegistro" />
+                <ScalarProperty Name="strOperacion" ColumnName="strOperacion" />
+                <ScalarProperty Name="datFechaOperacion" ColumnName="datFechaOperacion" />
+                <ScalarProperty Name="decIdUsuario" ColumnName="decIdUsuario" />
+                <ScalarProperty Name="decIdBitacora" ColumnName="decIdBitacora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblErrores">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblErrores">
+              <MappingFragment StoreEntitySet="tblErrores">
+                <ScalarProperty Name="datFecha" ColumnName="datFecha" />
+                <ScalarProperty Name="decIdUsuario" ColumnName="decIdUsuario" />
+                <ScalarProperty Name="strStackTrace" ColumnName="strStackTrace" />
+                <ScalarProperty Name="decIdFormulario" ColumnName="decIdFormulario" />
+                <ScalarProperty Name="strError" ColumnName="strError" />
+                <ScalarProperty Name="decIdError" ColumnName="decIdError" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMonedas">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblMonedas">
+              <MappingFragment StoreEntitySet="tblMonedas">
+                <ScalarProperty Name="strSimbolo" ColumnName="strSimbolo" />
+                <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
+                <ScalarProperty Name="intIdMoneda" ColumnName="intIdMoneda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPrecios">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblPrecios">
+              <MappingFragment StoreEntitySet="tblPrecios">
+                <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
+                <ScalarProperty Name="intIdPrecio" ColumnName="intIdPrecio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTipoProductos">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblTipoProductos">
+              <MappingFragment StoreEntitySet="tblTipoProductos">
+                <ScalarProperty Name="decIncrementoPrecio3" ColumnName="decIncrementoPrecio3" />
+                <ScalarProperty Name="decIncrementoPrecio2" ColumnName="decIncrementoPrecio2" />
+                <ScalarProperty Name="decIncrementoPrecio1" ColumnName="decIncrementoPrecio1" />
+                <ScalarProperty Name="strTipoProducto" ColumnName="strTipoProducto" />
+                <ScalarProperty Name="decIdTipoProducto" ColumnName="decIdTipoProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductos">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblProductos">
+              <MappingFragment StoreEntitySet="tblProductos">
+                <ScalarProperty Name="intIdPrecio" ColumnName="intIdPrecio" />
+                <ScalarProperty Name="decIdTipoProducto" ColumnName="decIdTipoProducto" />
+                <ScalarProperty Name="bitExonerado" ColumnName="bitExonerado" />
+                <ScalarProperty Name="bitActivo" ColumnName="bitActivo" />
+                <ScalarProperty Name="bitNoExistencia" ColumnName="bitNoExistencia" />
+                <ScalarProperty Name="decExistencia" ColumnName="decExistencia" />
+                <ScalarProperty Name="intMoneda" ColumnName="intMoneda" />
+                <ScalarProperty Name="decPrecio3" ColumnName="decPrecio3" />
+                <ScalarProperty Name="decPrecio2" ColumnName="decPrecio2" />
+                <ScalarProperty Name="decPrecio1" ColumnName="decPrecio1" />
+                <ScalarProperty Name="decCosto" ColumnName="decCosto" />
+                <ScalarProperty Name="strReferencia" ColumnName="strReferencia" />
+                <ScalarProperty Name="strProducto" ColumnName="strProducto" />
+                <ScalarProperty Name="decIdProducto" ColumnName="decIdProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProveedores">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblProveedores">
+              <MappingFragment StoreEntitySet="tblProveedores">
+                <ScalarProperty Name="strRUC" ColumnName="strRUC" />
+                <ScalarProperty Name="bitExonerado" ColumnName="bitExonerado" />
+                <ScalarProperty Name="strTelefono" ColumnName="strTelefono" />
+                <ScalarProperty Name="strDireccion" ColumnName="strDireccion" />
+                <ScalarProperty Name="strNombre" ColumnName="strNombre" />
+                <ScalarProperty Name="decIdProveedor" ColumnName="decIdProveedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblClientesContacto">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblClientesContacto">
+              <MappingFragment StoreEntitySet="tblClientesContacto">
+                <ScalarProperty Name="strCorreo" ColumnName="strCorreo" />
+                <ScalarProperty Name="strCelular" ColumnName="strCelular" />
+                <ScalarProperty Name="strExtension" ColumnName="strExtension" />
+                <ScalarProperty Name="strTelefono" ColumnName="strTelefono" />
+                <ScalarProperty Name="strNombreContacto" ColumnName="strNombreContacto" />
+                <ScalarProperty Name="decIdCliente" ColumnName="decIdCliente" />
+                <ScalarProperty Name="decIdContacto" ColumnName="decIdContacto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblClientes">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblClientes">
+              <MappingFragment StoreEntitySet="tblClientes">
+                <ScalarProperty Name="strSiglas" ColumnName="strSiglas" />
+                <ScalarProperty Name="strRUC" ColumnName="strRUC" />
+                <ScalarProperty Name="bitActivo" ColumnName="bitActivo" />
+                <ScalarProperty Name="intIdPrecio" ColumnName="intIdPrecio" />
+                <ScalarProperty Name="bitExonerado" ColumnName="bitExonerado" />
+                <ScalarProperty Name="decIdVendedor" ColumnName="decIdVendedor" />
+                <ScalarProperty Name="strTelefono" ColumnName="strTelefono" />
+                <ScalarProperty Name="strDireccion" ColumnName="strDireccion" />
+                <ScalarProperty Name="strNombre" ColumnName="strNombre" />
+                <ScalarProperty Name="decIdCliente" ColumnName="decIdCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEstados">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblEstados">
+              <MappingFragment StoreEntitySet="tblEstados">
+                <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
+                <ScalarProperty Name="intIdEstado" ColumnName="intIdEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDetalleCotizaciones">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblDetalleCotizaciones">
+              <MappingFragment StoreEntitySet="tblDetalleCotizaciones">
+                <ScalarProperty Name="FechaMovimiento" ColumnName="FechaMovimiento" />
+                <ScalarProperty Name="decIdUsuario" ColumnName="decIdUsuario" />
+                <ScalarProperty Name="bitExonerado" ColumnName="bitExonerado" />
+                <ScalarProperty Name="decIdProveedor" ColumnName="decIdProveedor" />
+                <ScalarProperty Name="decDescuento" ColumnName="decDescuento" />
+                <ScalarProperty Name="decPrecio" ColumnName="decPrecio" />
+                <ScalarProperty Name="decMargen" ColumnName="decMargen" />
+                <ScalarProperty Name="decCosto" ColumnName="decCosto" />
+                <ScalarProperty Name="decCantidad" ColumnName="decCantidad" />
+                <ScalarProperty Name="decIdProducto" ColumnName="decIdProducto" />
+                <ScalarProperty Name="decIdCotizacion" ColumnName="decIdCotizacion" />
+                <ScalarProperty Name="decIdDetalle" ColumnName="decIdDetalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVendedores">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblVendedores">
+              <MappingFragment StoreEntitySet="tblVendedores">
+                <ScalarProperty Name="strContrasena" ColumnName="strContrasena" />
+                <ScalarProperty Name="strCorreo" ColumnName="strCorreo" />
+                <ScalarProperty Name="strTelefono" ColumnName="strTelefono" />
+                <ScalarProperty Name="strNombreVendedor" ColumnName="strNombreVendedor" />
+                <ScalarProperty Name="decIdVendedor" ColumnName="decIdVendedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblConfiguracion">
+            <EntityTypeMapping TypeName="BD_ERPModel.tblConfiguracion">
+              <MappingFragment StoreEntitySet="tblConfiguracion">
+                <ScalarProperty Name="intPort" ColumnName="intPort" />
+                <ScalarProperty Name="strHost" ColumnName="strHost" />
+                <ScalarProperty Name="intIdPrecio" ColumnName="intIdPrecio" />
+                <ScalarProperty Name="decDigitosVenta" ColumnName="decDigitosVenta" />
+                <ScalarProperty Name="decRetencionAlcaldia" ColumnName="decRetencionAlcaldia" />
+                <ScalarProperty Name="decRetencionIR" ColumnName="decRetencionIR" />
+                <ScalarProperty Name="decItemsXFactura" ColumnName="decItemsXFactura" />
+                <ScalarProperty Name="bitImprimirFacturaUS" ColumnName="bitImprimirFacturaUS" />
+                <ScalarProperty Name="strRutaFoto" ColumnName="strRutaFoto" />
+                <ScalarProperty Name="decPorcentajeIVA" ColumnName="decPorcentajeIVA" />
+                <ScalarProperty Name="strChequeNombreDe" ColumnName="strChequeNombreDe" />
+                <ScalarProperty Name="strDireccionLogo" ColumnName="strDireccionLogo" />
+                <ScalarProperty Name="strEsloganEmpresa" ColumnName="strEsloganEmpresa" />
+                <ScalarProperty Name="strPieEmpresa" ColumnName="strPieEmpresa" />
+                <ScalarProperty Name="strRUCEmpresa" ColumnName="strRUCEmpresa" />
+                <ScalarProperty Name="strTelefono" ColumnName="strTelefono" />
+                <ScalarProperty Name="strDireccionEmpresa" ColumnName="strDireccionEmpresa" />
+                <ScalarProperty Name="strNombreEmpresa" ColumnName="strNombreEmpresa" />
+                <ScalarProperty Name="intMoneda" ColumnName="intMoneda" />
+                <ScalarProperty Name="decIdConfiguracion" ColumnName="decIdConfiguracion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Sp_ProductosXProveedor" FunctionName="BD_ERPModel.Store.Sp_ProductosXProveedor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BD_ERPModel.Sp_ProductosXProveedor_Result">
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Agregado" ColumnName="Agregado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spRolPermisos" FunctionName="BD_ERPModel.Store.spRolPermisos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BD_ERPModel.spRolPermisos_Result">
+                <ScalarProperty Name="decIdPermiso" ColumnName="decIdPermiso" />
+                <ScalarProperty Name="strNombreObjeto" ColumnName="strNombreObjeto" />
+                <ScalarProperty Name="strDescripcionObjeto" ColumnName="strDescripcionObjeto" />
+                <ScalarProperty Name="bitActivo" ColumnName="bitActivo" />
+                <ScalarProperty Name="decIdFormulario" ColumnName="decIdFormulario" />
+                <ScalarProperty Name="strNombreFormulario" ColumnName="strNombreFormulario" />
+                <ScalarProperty Name="strDescripcionFormulario" ColumnName="strDescripcionFormulario" />
+                <ScalarProperty Name="decIdFormularioPadre" ColumnName="decIdFormularioPadre" />
+                <ScalarProperty Name="decIdPermisoPrincipal" ColumnName="decIdPermisoPrincipal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
