@@ -20,7 +20,11 @@ namespace Proforma.Models
         public string strDireccionEmpresa { get; set; }
         public string strTelefono { get; set; }
         public string strRUCEmpresa { get; set; }
+        public string strEncabezado { get; set; }
+        public Nullable<bool> bitEncabezado { get; set; }
+        public string strInfAdicional { get; set; }
         public string strPieEmpresa { get; set; }
+        public Nullable<bool> bitPieEmpresa { get; set; }
         public string strEsloganEmpresa { get; set; }
         public string strDireccionLogo { get; set; }
         public string strChequeNombreDe { get; set; }

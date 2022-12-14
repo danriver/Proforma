@@ -26,11 +26,11 @@ namespace Proforma.Modules
         //public static string gstrServerArchivos = "\\\\192.168.1.4\\Imagenes\\";
 
         //Desarrollo
-        public static string gstrServername = "localhost";
-        public static string gstrServerdomain = "domainTest";
-        public static string gstrServeruser = "userTest";
-        public static string gstrServerpassword = "passTest";
-        public static string gstrServerArchivos = "\\\\localhost\\Imagenes\\";
+        public static string gstrServername = "172.16.20.153";
+        public static string gstrServerdomain = "";
+        public static string gstrServeruser = "rcastillo";
+        public static string gstrServerpassword = "R0b3rt$18102%";
+        public static string gstrServerArchivos = "\\\\172.16.20.153\\Imagenes\\";
 
         //Mensajes del sistema
         public const string gstrTitleInfo = "Información";
@@ -67,7 +67,7 @@ namespace Proforma.Modules
         public const string gstrCotizacionSinDetalleMsg = "Está a punto de guardar una cotización sin detalle. Haga clic en Aceptar, de lo contrario haga clic en Cancelar.";
         public const string gstrAprobacionMsg = "Se aprobará la cotización. Haga clic en Aceptar, de lo contrario haga clic en Cancelar.";
         public const string gstrAnulacionMsg = "Se anulará la cotización. Haga clic en Aceptar, de lo contrario haga clic en Cancelar.";
-        public const string gstrPersonalizarCorreoMsg = "Abrir Menú de Personalización de correo a enviar. Haga clic en Aceptar, de lo contrario haga clic en Cancelar.";
+        public const string gstrPersonalizarCorreoMsg = "Abrir Menú de Personalización de correo a enviar. Haga clic en Sí, de lo contrario haga clic en No.";
     }
 
     public static class TipoOperacion

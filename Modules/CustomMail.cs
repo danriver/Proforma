@@ -8,6 +8,7 @@ using System.Net.Mail;
 using System.Net.Security;
 using Proforma.Models;
 using System.Security.Cryptography.X509Certificates;
+using System.Windows.Forms;
 
 namespace Proforma.Modules
 {
@@ -29,7 +30,7 @@ namespace Proforma.Modules
         /// <param name="asunto">Asunto</param>
         /// <param name="mensaje">Cuerpo del mensaje</param>
         /// <param name="rutaArchivo">Ruta del archivo</param>
-        public void EnviarCorreo(decimal idVendedor, decimal idContacto, string asunto = "", string mensaje = "", string rutaArchivo = "")
+        public void EnviarCorreo(Form frmParent, decimal idVendedor, decimal idContacto, string asunto = "", string mensaje = "", string rutaArchivo = "")
         {
             MailMessage mailMessage = new MailMessage();
             SmtpClient smtpClient = new SmtpClient();
@@ -73,10 +74,19 @@ namespace Proforma.Modules
                 smtpClient.EnableSsl = true;
                 smtpClient.Host = hostAccount;
                 smtpClient.Port = portAccount;
-                smtpClient.Send(mailMessage);
-
-                attachment.Dispose();
-                mailMessage.Attachments.Clear();
+                try
+                {
+                    smtpClient.Send(mailMessage);
+                }
+                catch (Exception ex)
+                {
+                    CustomMessageBox.Show(ex, frmParent);
+                }
+                finally
+                {
+                    attachment.Dispose();
+                    mailMessage.Attachments.Clear();
+                }             
             }
         }
 

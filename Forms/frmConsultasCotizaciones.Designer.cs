@@ -30,7 +30,9 @@ namespace Proforma.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultasCotizaciones));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtDescuento = new DevExpress.XtraEditors.TextEdit();
             this.chkSAC = new DevExpress.XtraEditors.CheckEdit();
             this.btnEnviar = new DevExpress.XtraEditors.SimpleButton();
             this.btnImprimir = new DevExpress.XtraEditors.SimpleButton();
@@ -122,11 +124,13 @@ namespace Proforma.Forms
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescuento.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSAC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalEquiv.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotal.Properties)).BeginInit();
@@ -164,6 +168,7 @@ namespace Proforma.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
@@ -171,6 +176,7 @@ namespace Proforma.Forms
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.txtDescuento);
             this.layoutControl1.Controls.Add(this.chkSAC);
             this.layoutControl1.Controls.Add(this.btnEnviar);
             this.layoutControl1.Controls.Add(this.btnImprimir);
@@ -194,6 +200,17 @@ namespace Proforma.Forms
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // txtDescuento
+            // 
+            this.txtDescuento.Location = new System.Drawing.Point(966, 268);
+            this.txtDescuento.Name = "txtDescuento";
+            this.txtDescuento.Properties.AppearanceReadOnly.Options.UseTextOptions = true;
+            this.txtDescuento.Properties.AppearanceReadOnly.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtDescuento.Properties.ReadOnly = true;
+            this.txtDescuento.Size = new System.Drawing.Size(134, 20);
+            this.txtDescuento.StyleController = this.layoutControl1;
+            this.txtDescuento.TabIndex = 15;
+            // 
             // chkSAC
             // 
             this.chkSAC.Location = new System.Drawing.Point(881, 141);
@@ -208,7 +225,7 @@ namespace Proforma.Forms
             // 
             this.btnEnviar.ImageOptions.ImageUri.Uri = "outlook%20inspired/glyph_mail;Size16x16";
             this.btnEnviar.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnEnviar.Location = new System.Drawing.Point(1029, 340);
+            this.btnEnviar.Location = new System.Drawing.Point(1029, 364);
             this.btnEnviar.Name = "btnEnviar";
             this.btnEnviar.Size = new System.Drawing.Size(71, 22);
             this.btnEnviar.StyleController = this.layoutControl1;
@@ -220,7 +237,7 @@ namespace Proforma.Forms
             // 
             this.btnImprimir.ImageOptions.ImageUri.Uri = "Print;Size16x16";
             this.btnImprimir.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnImprimir.Location = new System.Drawing.Point(955, 340);
+            this.btnImprimir.Location = new System.Drawing.Point(955, 364);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(70, 22);
             this.btnImprimir.StyleController = this.layoutControl1;
@@ -232,7 +249,7 @@ namespace Proforma.Forms
             // 
             this.btnEditar.ImageOptions.ImageUri.Uri = "Edit;Size16x16";
             this.btnEditar.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnEditar.Location = new System.Drawing.Point(881, 340);
+            this.btnEditar.Location = new System.Drawing.Point(881, 364);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(70, 22);
             this.btnEditar.StyleController = this.layoutControl1;
@@ -242,7 +259,7 @@ namespace Proforma.Forms
             // 
             // txtTotalEquiv
             // 
-            this.txtTotalEquiv.Location = new System.Drawing.Point(966, 316);
+            this.txtTotalEquiv.Location = new System.Drawing.Point(966, 340);
             this.txtTotalEquiv.Name = "txtTotalEquiv";
             this.txtTotalEquiv.Properties.AppearanceReadOnly.Options.UseTextOptions = true;
             this.txtTotalEquiv.Properties.AppearanceReadOnly.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -253,7 +270,7 @@ namespace Proforma.Forms
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(966, 292);
+            this.txtTotal.Location = new System.Drawing.Point(966, 316);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Properties.AppearanceReadOnly.Options.UseTextOptions = true;
             this.txtTotal.Properties.AppearanceReadOnly.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -264,7 +281,7 @@ namespace Proforma.Forms
             // 
             // txtIVA
             // 
-            this.txtIVA.Location = new System.Drawing.Point(966, 268);
+            this.txtIVA.Location = new System.Drawing.Point(966, 292);
             this.txtIVA.Name = "txtIVA";
             this.txtIVA.Properties.AppearanceReadOnly.Options.UseTextOptions = true;
             this.txtIVA.Properties.AppearanceReadOnly.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -664,6 +681,8 @@ namespace Proforma.Forms
             this.vwCotizacionEnc.OptionsView.ColumnAutoWidth = false;
             this.vwCotizacionEnc.OptionsView.ShowAutoFilterRow = true;
             this.vwCotizacionEnc.OptionsView.ShowGroupPanel = false;
+            this.vwCotizacionEnc.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.coldatFechaCreacion, DevExpress.Data.ColumnSortOrder.Descending)});
             this.vwCotizacionEnc.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.vwCotizacionEnc_RowClick);
             this.vwCotizacionEnc.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.vwCotizacionEnc_FocusedRowChanged);
             // 
@@ -676,9 +695,9 @@ namespace Proforma.Forms
             this.coldecTotal.Name = "coldecTotal";
             this.coldecTotal.ShowUnboundExpressionMenu = true;
             this.coldecTotal.UnboundDataType = typeof(decimal);
-            this.coldecTotal.UnboundExpression = "[decSubtotal] + [decIva]";
+            this.coldecTotal.UnboundExpression = "[decSubtotal] - [decDescuento] + [decIva]";
             this.coldecTotal.Visible = true;
-            this.coldecTotal.VisibleIndex = 7;
+            this.coldecTotal.VisibleIndex = 8;
             // 
             // coldecIdCotizacion
             // 
@@ -731,12 +750,17 @@ namespace Proforma.Forms
             this.coldecIva.FieldName = "decIva";
             this.coldecIva.Name = "coldecIva";
             this.coldecIva.Visible = true;
-            this.coldecIva.VisibleIndex = 6;
+            this.coldecIva.VisibleIndex = 7;
             // 
             // coldecDescuento
             // 
+            this.coldecDescuento.Caption = "Descuento";
+            this.coldecDescuento.DisplayFormat.FormatString = "#,##0.00";
+            this.coldecDescuento.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.coldecDescuento.FieldName = "decDescuento";
             this.coldecDescuento.Name = "coldecDescuento";
+            this.coldecDescuento.Visible = true;
+            this.coldecDescuento.VisibleIndex = 6;
             // 
             // colstrObservaciones
             // 
@@ -744,7 +768,7 @@ namespace Proforma.Forms
             this.colstrObservaciones.FieldName = "strObservaciones";
             this.colstrObservaciones.Name = "colstrObservaciones";
             this.colstrObservaciones.Visible = true;
-            this.colstrObservaciones.VisibleIndex = 10;
+            this.colstrObservaciones.VisibleIndex = 11;
             // 
             // colintEstadoCotizacion
             // 
@@ -757,7 +781,7 @@ namespace Proforma.Forms
             this.colbitFactura.FieldName = "bitFactura";
             this.colbitFactura.Name = "colbitFactura";
             this.colbitFactura.Visible = true;
-            this.colbitFactura.VisibleIndex = 9;
+            this.colbitFactura.VisibleIndex = 10;
             // 
             // coldatFechaVencimiento
             // 
@@ -799,7 +823,7 @@ namespace Proforma.Forms
             this.coltblEstados.FieldName = "tblEstados.strDescripcion";
             this.coltblEstados.Name = "coltblEstados";
             this.coltblEstados.Visible = true;
-            this.coltblEstados.VisibleIndex = 8;
+            this.coltblEstados.VisibleIndex = 9;
             // 
             // coltblVendedores
             // 
@@ -917,7 +941,8 @@ namespace Proforma.Forms
             this.layoutControlItem16,
             this.layoutControlItem17,
             this.layoutControlItem10,
-            this.emptySpaceItem3});
+            this.emptySpaceItem3,
+            this.layoutControlItem12});
             this.layoutControlGroup2.Location = new System.Drawing.Point(857, 199);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(247, 230);
@@ -935,7 +960,7 @@ namespace Proforma.Forms
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.txtIVA;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(223, 24);
             this.layoutControlItem8.Text = "IVA";
@@ -944,7 +969,7 @@ namespace Proforma.Forms
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.txtTotal;
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem9.Name = "layoutControlItem9";
             this.layoutControlItem9.Size = new System.Drawing.Size(223, 24);
             this.layoutControlItem9.Text = "TOTAL";
@@ -953,7 +978,7 @@ namespace Proforma.Forms
             // layoutControlItem15
             // 
             this.layoutControlItem15.Control = this.btnEditar;
-            this.layoutControlItem15.Location = new System.Drawing.Point(0, 96);
+            this.layoutControlItem15.Location = new System.Drawing.Point(0, 120);
             this.layoutControlItem15.Name = "layoutControlItem15";
             this.layoutControlItem15.Size = new System.Drawing.Size(74, 26);
             this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
@@ -962,7 +987,7 @@ namespace Proforma.Forms
             // layoutControlItem16
             // 
             this.layoutControlItem16.Control = this.btnImprimir;
-            this.layoutControlItem16.Location = new System.Drawing.Point(74, 96);
+            this.layoutControlItem16.Location = new System.Drawing.Point(74, 120);
             this.layoutControlItem16.Name = "layoutControlItem16";
             this.layoutControlItem16.Size = new System.Drawing.Size(74, 26);
             this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
@@ -971,7 +996,7 @@ namespace Proforma.Forms
             // layoutControlItem17
             // 
             this.layoutControlItem17.Control = this.btnEnviar;
-            this.layoutControlItem17.Location = new System.Drawing.Point(148, 96);
+            this.layoutControlItem17.Location = new System.Drawing.Point(148, 120);
             this.layoutControlItem17.Name = "layoutControlItem17";
             this.layoutControlItem17.Size = new System.Drawing.Size(75, 26);
             this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
@@ -980,7 +1005,7 @@ namespace Proforma.Forms
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.txtTotalEquiv;
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 72);
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 96);
             this.layoutControlItem10.Name = "layoutControlItem10";
             this.layoutControlItem10.Size = new System.Drawing.Size(223, 24);
             this.layoutControlItem10.Text = "TOTAL";
@@ -989,10 +1014,19 @@ namespace Proforma.Forms
             // emptySpaceItem3
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 122);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 146);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(223, 63);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(223, 39);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem12
+            // 
+            this.layoutControlItem12.Control = this.txtDescuento;
+            this.layoutControlItem12.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem12.Name = "layoutControlItem12";
+            this.layoutControlItem12.Size = new System.Drawing.Size(223, 24);
+            this.layoutControlItem12.Text = "DESCUENTO";
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(73, 13);
             // 
             // layoutControlItem6
             // 
@@ -1035,11 +1069,13 @@ namespace Proforma.Forms
             this.ClientSize = new System.Drawing.Size(1124, 449);
             this.Controls.Add(this.layoutControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmConsultasCotizaciones.IconOptions.Image")));
             this.Name = "frmConsultasCotizaciones";
             this.Text = "Listado de Cotizaciones";
             this.Load += new System.EventHandler(this.frmConsultasCotizaciones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescuento.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSAC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalEquiv.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotal.Properties)).EndInit();
@@ -1077,6 +1113,7 @@ namespace Proforma.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
@@ -1181,5 +1218,7 @@ namespace Proforma.Forms
         private DevExpress.XtraGrid.Columns.GridColumn coldecTotal;
         private DevExpress.XtraGrid.Columns.GridColumn coldecSubtotal2;
         private DevExpress.XtraGrid.Columns.GridColumn coltblProductos1;
+        private DevExpress.XtraEditors.TextEdit txtDescuento;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
     }
 }

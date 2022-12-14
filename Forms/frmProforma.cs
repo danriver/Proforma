@@ -18,6 +18,7 @@ namespace Proforma.Forms
     {
         #region Variables
         public string Operacion, TipoRegistro = "Cotización", NumRegistro;
+        public bool bCargar=false, bConsultas=false;
         #endregion
         public frmProforma()
         {
@@ -161,8 +162,16 @@ namespace Proforma.Forms
                         this.cmbVendedor.EditValue = Convert.ToDecimal(cot.decIdVendedor);
                         this.chkFactura.Checked = Convert.ToBoolean(cot.bitFactura);
                         this.cmbEstados.EditValue = Convert.ToInt32(cot.intEstadoCotizacion);
-                        this.mmoObservaciones.Text = Convert.ToString(cot.strObservaciones);
+                        this.mmoInfAdicional.Text = Convert.ToString(cot.strInfAdicional);
+                        this.mmoObservaciones.Text = Convert.ToString(cot.strObservaciones);                        
                         CargarGrid(numCotizacion);
+                        CargarProductos();
+                        bCargar = true;
+                        this.txtSubtotal.Text = Convert.ToString(cot.decSubtotal);
+                        this.txtDescuento.Text = Convert.ToString(cot.decDescuento);
+                        this.txtIVA.Text = Convert.ToString(cot.decIva);
+                        this.spDescuento.EditValue = Convert.ToString(Convert.ToDecimal(cot.decDescuento) / Convert.ToDecimal(cot.decSubtotal) * 100);
+                        bCargar = true;
                         ActualizarTotales();
                     }
                 }
@@ -193,8 +202,10 @@ namespace Proforma.Forms
                 this.cmbEstados.EditValue = null;
                 this.cmbProductos.EditValue = null;
                 this.grdDetalleCotizacion.DataSource = null;
+                this.mmoInfAdicional.Text = "";
                 this.mmoObservaciones.Text = "";
                 this.txtSubtotal.Text = "";
+                this.txtDescuento.Text = "";
                 this.txtIVA.Text = "";
                 this.txtTotal.Text = "";
             }
@@ -368,7 +379,10 @@ namespace Proforma.Forms
             decimal? idContacto = Convert.ToDecimal(this.cmbContactos.EditValue);
             decimal? idVendedor = Convert.ToDecimal(this.cmbVendedor.EditValue);
             decimal? subtotal;
+            decimal? porcDescuento;
+            decimal? descuento;
             decimal? iva;
+            string infAdicional = Convert.ToString(this.mmoInfAdicional.Text.Trim());
             string observaciones = Convert.ToString(this.mmoObservaciones.Text.Trim());
             using (BD_ERPEntities contexto = new BD_ERPEntities())
             {
@@ -382,18 +396,30 @@ namespace Proforma.Forms
                     cot = contexto.tblCotizaciones.FirstOrDefault(x => x.decIdCotizacion == idCotizacion);
                     var detalle = contexto.tblDetalleCotizaciones.Where(x => x.decIdCotizacion == idCotizacion);
                     tblConfiguracion con = contexto.tblConfiguracion.FirstOrDefault(x => x.decIdConfiguracion == 1);
+                    porcDescuento = Convert.ToDecimal(this.spDescuento.EditValue);                    
                     if (detalle.Any())
                     {
                         subtotal = (decimal)detalle.Sum(x => x.decPrecio * x.decCantidad);
-                        iva = subtotal * (Convert.ToDecimal(con.decPorcentajeIVA) / 100);
+                        if (porcDescuento > 0)
+                        {
+                            descuento = subtotal * (porcDescuento/100);
+                        }
+                        else
+                        {
+                            descuento = 0;
+                        }
+                        iva = (subtotal-descuento) * (Convert.ToDecimal(con.decPorcentajeIVA) / 100);
                     }
                     else
                     {
                         subtotal = 0;
+                        descuento = 0;
                         iva = 0;
-                    }
+                    }                    
                     cot.decSubtotal = subtotal;
+                    cot.decDescuento = descuento;
                     cot.decIva = iva;
+                    cot.strInfAdicional = infAdicional;
                     cot.strObservaciones = observaciones;
                     Operacion = TipoOperacion.Modificacion;
                 }
@@ -410,6 +436,7 @@ namespace Proforma.Forms
                         datFechaCreacion = DateTime.Now.GetDateDB(),
                         intEstadoCotizacion = 1,
                         bitFactura = false,
+                        strInfAdicional = infAdicional,
                         strObservaciones = observaciones,
                     };
                     contexto.tblCotizaciones.Add(cot);
@@ -490,7 +517,8 @@ namespace Proforma.Forms
         private void ActualizarTotales()
         {
             decimal idCotizacion = Convert.ToDecimal(this.txtIdCotizacion.EditValue);
-            decimal subtotal, iva, total, equiv;
+            decimal subtotal, descuento, iva, total, equiv;
+            decimal porcDescuento;
             DateTime fecha;
             string simbprinc = "", simbsecun = "";
             using (BD_ERPEntities contexto = new BD_ERPEntities())
@@ -498,9 +526,9 @@ namespace Proforma.Forms
                 var detalle = contexto.tblDetalleCotizaciones.Where(x => x.decIdCotizacion == idCotizacion);
                 var monedas = contexto.tblMonedas.ToList();
                 tblConfiguracion con = contexto.tblConfiguracion.FirstOrDefault(x => x.decIdConfiguracion == 1);
+                tblCotizaciones cot = contexto.tblCotizaciones.FirstOrDefault(x => x.decIdCotizacion == idCotizacion);
                 if (idCotizacion > 0)
-                {
-                    tblCotizaciones cot = contexto.tblCotizaciones.FirstOrDefault(x => x.decIdCotizacion == idCotizacion);
+                {                    
                     fecha = cot.datFechaCreacion.Date;
                 }
                 else
@@ -508,11 +536,31 @@ namespace Proforma.Forms
                     fecha = Convert.ToDateTime(DateTime.Now.GetDateDB()).Date;
                 }
                 tblCambioMoneda mn = contexto.tblCambioMoneda.FirstOrDefault(x => x.datFecha == fecha);
+                porcDescuento = Convert.ToDecimal(this.spDescuento.EditValue);
                 if (detalle.Any())
                 {
-                    subtotal = (decimal)detalle.Sum(x => x.decPrecio * x.decCantidad);
-                    iva = subtotal * (Convert.ToDecimal(con.decPorcentajeIVA) / 100);
-                    total = subtotal + iva;
+                    if (bCargar)
+                    {
+                        subtotal  = Convert.ToDecimal(cot.decSubtotal);
+                        descuento = Convert.ToDecimal(cot.decDescuento);
+                        iva = Convert.ToDecimal(cot.decIva);
+                        total = subtotal - descuento + iva;
+                        bCargar = false;
+                    }
+                    else
+                    {
+                        subtotal = (decimal)detalle.Sum(x => x.decPrecio * x.decCantidad);
+                        if (porcDescuento > 0)
+                        {
+                            descuento = subtotal * (porcDescuento / 100);
+                        }
+                        else
+                        {
+                            descuento = 0;
+                        }
+                        iva = (subtotal - descuento) * (Convert.ToDecimal(con.decPorcentajeIVA) / 100);
+                        total = subtotal - descuento + iva;
+                    }                    
                     if (Convert.ToInt32(con.intMoneda) == 1)
                     {
                         equiv = total / mn.decTipoCambio;
@@ -529,12 +577,14 @@ namespace Proforma.Forms
                 else
                 {
                     subtotal = 0;
+                    descuento = 0;
                     iva = 0;
                     total = 0;
                     equiv = 0;
                 }
             }
             this.txtSubtotal.Text = String.Format("{1} {0:n2}", subtotal, simbprinc);
+            this.txtDescuento.Text = String.Format("{1} {0:n2}", descuento, simbprinc);
             this.txtIVA.Text = String.Format("{1} {0:n2}", iva, simbprinc);
             this.txtTotal.Text = String.Format("{1} {0:n2}", total, simbprinc);
             this.txtTotalEquiv.Text = String.Format("{1} {0:n2}", equiv, simbsecun);
@@ -551,6 +601,8 @@ namespace Proforma.Forms
                     this.layoutControlGroup2.Enabled = false;
                     this.layoutControlGroup3.Enabled = false;
                     this.mmoObservaciones.ReadOnly = true;
+                    this.mmoInfAdicional.ReadOnly = true;
+                    this.spDescuento.ReadOnly = true;
                     this.vwDetalleCotizacion.OptionsBehavior.ReadOnly = true;
                 }
                 else if (intOpcion == 2)
@@ -559,6 +611,8 @@ namespace Proforma.Forms
                     this.layoutControlGroup2.Enabled = true;
                     this.layoutControlGroup3.Enabled = true;
                     this.mmoObservaciones.ReadOnly = false;
+                    this.mmoInfAdicional.ReadOnly = false;
+                    this.spDescuento.ReadOnly = false;
                     this.vwDetalleCotizacion.OptionsBehavior.ReadOnly = false;
                 }
                 else if (intOpcion == 3)
@@ -567,6 +621,8 @@ namespace Proforma.Forms
                     this.layoutControlGroup2.Enabled = false;
                     this.layoutControlGroup3.Enabled = true;
                     this.mmoObservaciones.ReadOnly = false;
+                    this.mmoInfAdicional.ReadOnly = false;
+                    this.spDescuento.ReadOnly = false;
                     this.vwDetalleCotizacion.OptionsBehavior.ReadOnly = false;
                 }
 
@@ -609,7 +665,7 @@ namespace Proforma.Forms
             }
         }
 
-        private void Enviar()
+        private void Enviar(bool bEditar)
         {
             try
             {
@@ -625,7 +681,17 @@ namespace Proforma.Forms
                 string ruta = Convert.ToString(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + report.DisplayName + ".pdf");
                 report.ExportToPdf(ruta);
                 CustomMail mail = new CustomMail();
-                mail.EnviarCorreo((decimal)cot.decIdVendedor, (decimal)cot.decIdContacto, rutaArchivo:ruta);
+                frmPersonalizarCorreo correo = new frmPersonalizarCorreo();
+                if (bEditar)
+                {
+                    correo.Show(this, TipoRegistro, NumRegistro, (decimal)cot.decIdVendedor, (decimal)cot.decIdContacto, Convert.ToString(report.DisplayName), "Estimado cliente. Se adjunta cotización correspondiente a solicitud realizada.", ruta);
+                }
+                else
+                {
+                    mail.EnviarCorreo(this, (decimal)cot.decIdVendedor, (decimal)cot.decIdContacto, Convert.ToString(report.DisplayName), "Estimado cliente. Se adjunta cotización correspondiente a solicitud realizada.", ruta);
+                    Operacion = TipoOperacion.CorreoCotizacion;
+                    AgregarBitacora(Operacion, TipoRegistro, NumRegistro);
+                }                
             }
             catch (Exception ex)
             {
@@ -651,6 +717,7 @@ namespace Proforma.Forms
                 {
                     HabilitarInhabilitarGroupControl(1);
                 }
+                bConsultas = true;
                 this.MdiParent = frmParent;
                 this.Show();
             }
@@ -675,7 +742,10 @@ namespace Proforma.Forms
                 this.cmbClientes.Properties.DataSource = contexto.tblClientes.ToList();
                 this.cmbMoneda.Properties.DataSource = contexto.tblMonedas.ToList();
                 this.cmbEstados.Properties.DataSource = contexto.tblEstados.ToList();
-                HabilitarInhabilitarGroupControl(1);
+                if (bConsultas==false)
+                {
+                    HabilitarInhabilitarGroupControl(1);
+                }
             }
             catch (Exception ex)
             {
@@ -872,6 +942,7 @@ namespace Proforma.Forms
 
                 user = contexto.tblUsuarios.FirstOrDefault(x => x.decIdUsuario == gdecIdUser);
                 this.cmbVendedor.EditValue = Convert.ToDecimal(user.decIdVendedor);
+                this.mmoInfAdicional.Text = Convert.ToString(con.strInfAdicional);
                 this.txtFecha.Text = String.Format("{0:d} {0:t}", DateTime.Now.GetDateDB());
                 HabilitarInhabilitarGroupControl(2);
                 this.cmbContactos.EditValue = null;
@@ -1114,14 +1185,15 @@ namespace Proforma.Forms
 
                         if (cot.intEstadoCotizacion == 2)
                         {
-                            if (XtraMessageBox.Show(PublicVar.gstrPersonalizarCorreoMsg, PublicVar.gstrTitleWarning,
-                                                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                            var resp = XtraMessageBox.Show(PublicVar.gstrPersonalizarCorreoMsg, PublicVar.gstrTitleWarning,
+                                                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                            if (resp == DialogResult.Yes)
                             {
-                                //Editar();
+                                Enviar(true);
                             }
-                            else
+                            else if (resp == DialogResult.No)
                             {
-                                Enviar();
+                                Enviar(false);
                             }
                         }
                     }
@@ -1209,6 +1281,34 @@ namespace Proforma.Forms
             }
         }
 
+        private void spDescuento_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                decimal porcDesc = Convert.ToDecimal(this.spDescuento.EditValue.IsNull(0));
+                if (bCargar)
+                {
+                    bCargar = false;
+                }
+                else
+                {
+                    if (porcDesc > 0 && porcDesc < 100)
+                    {
+                        GuardarEnc();
+                    }
+                }                
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show(ex, this);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
         private void chkMostrarSAC_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -1255,7 +1355,7 @@ namespace Proforma.Forms
             {
                 Cursor = Cursors.Default;
             }
-        }
+        }        
 
         private void vwDetalleCotizacion_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {

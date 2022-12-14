@@ -36,6 +36,5 @@ namespace Proforma.Reports
             }
             this.picLogo.ImageUrl = con.strDireccionLogo.ToString();
         }
-
     }
 }
