@@ -356,6 +356,12 @@
     <Compile Include="Reports\xrpCotizacion.Designer.cs">
       <DependentUpon>xrpCotizacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\xrpCotizacionesConsolidado.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\xrpCotizacionesConsolidado.Designer.cs">
+      <DependentUpon>xrpCotizacionesConsolidado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\xrpCotizacionesDetalle.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -435,6 +441,9 @@
     </Compile>
     <EmbeddedResource Include="Reports\xrpCotizacion.resx">
       <DependentUpon>xrpCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\xrpCotizacionesConsolidado.resx">
+      <DependentUpon>xrpCotizacionesConsolidado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\xrpCotizacionesDetalle.resx">
       <DependentUpon>xrpCotizacionesDetalle.cs</DependentUpon>

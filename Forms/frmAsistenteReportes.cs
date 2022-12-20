@@ -35,9 +35,11 @@ namespace Proforma.Forms
 
             datFechaIni.ErrorText = "";
             datFechaFin.ErrorText = "";
+            cboMonedaCotizacion.ErrorText = "";
 
             DateTime? fechaIni = Convert.ToDateTime(datFechaIni.EditValue.IsNull(null));
             DateTime? fechaFin = Convert.ToDateTime(datFechaFin.EditValue.IsNull(null));
+            int idMoneda = Convert.ToInt32(cboMonedaCotizacion.EditValue.IsNull(0));
 
             if (fechaIni == null)
             {
@@ -57,6 +59,12 @@ namespace Proforma.Forms
                 result = false;
             }
 
+            if (idMoneda == 0)
+            {
+                cboMonedaCotizacion.ErrorText = PublicVar.gstrCampoRequeridoMsg;
+                result = false;
+            }
+
             return result;
         }
 
@@ -70,7 +78,11 @@ namespace Proforma.Forms
                 datFechaIni.EditValue = DateTime.Today;
                 datFechaFin.EditValue = DateTime.Today;
                 var clientes = BDContext.tblClientes.ToList();
+                var moneda = BDContext.tblMonedas.ToList();
+                var configuracion = BDContext.tblConfiguracion.FirstOrDefault();
                 cboClienteCotizacion.Properties.DataSource = clientes;
+                cboMonedaCotizacion.Properties.DataSource = moneda;
+                cboMonedaCotizacion.EditValue = configuracion.intMoneda;
             }
             catch (Exception ex)
             {
@@ -99,7 +111,9 @@ namespace Proforma.Forms
 
                 frmReport viewer = new frmReport();
                 xrpCotizacionesDetalle reportDetalle = new xrpCotizacionesDetalle();
-                decimal idCliente = Convert.ToDecimal(cboClienteCotizacion.EditValue.IsNull(0));                
+                xrpCotizacionesConsolidado reportConsolidado = new xrpCotizacionesConsolidado();
+                decimal idCliente = Convert.ToDecimal(cboClienteCotizacion.EditValue.IsNull(0));
+                int idMoneda = Convert.ToInt32(cboMonedaCotizacion.EditValue);
                 string tipoRegistro = "Reporte " + tabPageCotizaciones.Text;
                 string tipoReporte = "";
                 string nombreCliente = "";
@@ -120,18 +134,20 @@ namespace Proforma.Forms
                 if (radioGroupFiltroCotizacion.SelectedIndex == 0)
                 {
                     tipoReporte = "Detalle";
-                    reportDetalle.SetFilter(_fechaIni, _fechaFin, idCliente);
+                    reportDetalle.SetFilter(_fechaIni, _fechaFin, idCliente, idMoneda);
                     viewer.documentViewer1.DocumentSource = reportDetalle;
                 }
                 else
                 {
                     tipoReporte = "Consolidado";
+                    reportConsolidado.SetFilter(_fechaIni, _fechaFin, idCliente, idMoneda);
+                    viewer.documentViewer1.DocumentSource = reportConsolidado;
                 }                               
                 
                 viewer.Text = PublicVar.gstrPrintPreviewTitle;
                 viewer.Show(this.Owner, tipoRegistro, "Fecha Inicio: " + string.Format("{0:" + PublicVar.gstrFormatFecha + "}", _fechaIni) +
                                                       " Fecha Final: " + string.Format("{0:" + PublicVar.gstrFormatFecha + "}", _fechaFin) +
-                                                      " Cliente: " + nombreCliente + " - " + tipoReporte);
+                                                      " Cliente: " + nombreCliente + " Moneda: " + cboMonedaCotizacion.Text + " - " + tipoReporte);
 
             }
             catch (Exception ex)
