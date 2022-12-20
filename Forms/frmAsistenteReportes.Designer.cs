@@ -41,7 +41,9 @@ namespace Proforma.Forms
             this.layoutControlCotizaciones = new DevExpress.XtraLayout.LayoutControl();
             this.radioGroupFiltroCotizacion = new DevExpress.XtraEditors.RadioGroup();
             this.cboClienteCotizacion = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.tblClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colstrNombre = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -54,7 +56,6 @@ namespace Proforma.Forms
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.tblClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlReportes)).BeginInit();
             this.layoutControlReportes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
@@ -69,6 +70,7 @@ namespace Proforma.Forms
             this.layoutControlCotizaciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupFiltroCotizacion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboClienteCotizacion.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblClientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
@@ -82,7 +84,6 @@ namespace Proforma.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblClientesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControlReportes
@@ -202,18 +203,35 @@ namespace Proforma.Forms
             this.cboClienteCotizacion.Name = "cboClienteCotizacion";
             this.cboClienteCotizacion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboClienteCotizacion.Properties.DataSource = this.tblClientesBindingSource;
+            this.cboClienteCotizacion.Properties.DisplayMember = "strDireccion";
             this.cboClienteCotizacion.Properties.NullText = "";
             this.cboClienteCotizacion.Properties.PopupView = this.searchLookUpEdit1View;
+            this.cboClienteCotizacion.Properties.ValueMember = "decIdCliente";
             this.cboClienteCotizacion.Size = new System.Drawing.Size(307, 20);
             this.cboClienteCotizacion.StyleController = this.layoutControlCotizaciones;
             this.cboClienteCotizacion.TabIndex = 4;
             // 
+            // tblClientesBindingSource
+            // 
+            this.tblClientesBindingSource.DataSource = typeof(Proforma.Models.tblClientes);
+            // 
             // searchLookUpEdit1View
             // 
+            this.searchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colstrNombre});
             this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
             this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // colstrNombre
+            // 
+            this.colstrNombre.Caption = "Cliente";
+            this.colstrNombre.FieldName = "strNombre";
+            this.colstrNombre.Name = "colstrNombre";
+            this.colstrNombre.Visible = true;
+            this.colstrNombre.VisibleIndex = 0;
             // 
             // layoutControlGroup1
             // 
@@ -333,10 +351,6 @@ namespace Proforma.Forms
             this.emptySpaceItem3.Size = new System.Drawing.Size(130, 26);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // tblClientesBindingSource
-            // 
-            this.tblClientesBindingSource.DataSource = typeof(Proforma.Models.tblClientes);
-            // 
             // frmAsistenteReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,6 +375,7 @@ namespace Proforma.Forms
             this.layoutControlCotizaciones.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupFiltroCotizacion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboClienteCotizacion.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblClientesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
@@ -374,7 +389,6 @@ namespace Proforma.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblClientesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -405,5 +419,6 @@ namespace Proforma.Forms
         private DevExpress.XtraEditors.DateEdit datFechaIni;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private System.Windows.Forms.BindingSource tblClientesBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn colstrNombre;
     }
 }
