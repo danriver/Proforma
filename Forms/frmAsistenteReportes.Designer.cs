@@ -204,7 +204,7 @@ namespace Proforma.Forms
             this.cboClienteCotizacion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboClienteCotizacion.Properties.DataSource = this.tblClientesBindingSource;
-            this.cboClienteCotizacion.Properties.DisplayMember = "strDireccion";
+            this.cboClienteCotizacion.Properties.DisplayMember = "strNombre";
             this.cboClienteCotizacion.Properties.NullText = "";
             this.cboClienteCotizacion.Properties.PopupView = this.searchLookUpEdit1View;
             this.cboClienteCotizacion.Properties.ValueMember = "decIdCliente";
