@@ -150,6 +150,11 @@ namespace Proforma.Forms
                 case "mnuBitacora":
                     AbrirFormulario(new frmBitacora(), this);
                     break;
+
+                case "mnuReportes":
+                    AbrirFormulario(new frmAsistenteReportes());
+                    break;
+                    
             }
             Cursor = Cursors.Default;
         }
@@ -228,8 +233,9 @@ namespace Proforma.Forms
             try
             {
                 PublicVar.gintContadorInactivo += 5;
-                if (PublicVar.gintContadorInactivo >= 60)
+                if (PublicVar.gintContadorInactivo >= 5)
                 {
+                    timerInactivo.Stop();
                     XtraMessageBox.Show(PublicVar.gstrInactiveTimeMsg, PublicVar.gstrTitleInfo, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     Application.Restart();
                 }

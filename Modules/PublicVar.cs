@@ -17,6 +17,7 @@ namespace Proforma.Modules
         public static int gintContadorInactivo = 0;
         public static string gstrFormatFechaDesde = "dd/MM/yyyy 00:00:00";
         public static string gstrFormatFechaHasta = "dd/MM/yyyy 23:59:59";
+        public static string gstrFormatFecha = "dd/MM/yyyy";
 
         //Produccion
         //public static string gstrServername = "192.168.1.4";
@@ -68,6 +69,9 @@ namespace Proforma.Modules
         public const string gstrAprobacionMsg = "Se aprobará la cotización. Haga clic en Aceptar, de lo contrario haga clic en Cancelar.";
         public const string gstrAnulacionMsg = "Se anulará la cotización. Haga clic en Aceptar, de lo contrario haga clic en Cancelar.";
         public const string gstrPersonalizarCorreoMsg = "Abrir Menú de Personalización de correo a enviar. Haga clic en Aceptar, de lo contrario haga clic en Cancelar.";
+
+        //Reportes
+        public const string gstrPrintPreviewTitle = "Vista previa del documento";
     }
 
     public static class TipoOperacion

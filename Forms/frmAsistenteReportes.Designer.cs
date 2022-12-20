@@ -1,7 +1,7 @@
 ﻿
 namespace Proforma.Forms
 {
-    partial class frmReportes
+    partial class frmAsistenteReportes
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,8 @@ namespace Proforma.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportes));
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAsistenteReportes));
             this.layoutControlReportes = new DevExpress.XtraLayout.LayoutControl();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.btnImprimir = new DevExpress.XtraEditors.SimpleButton();
@@ -53,6 +54,7 @@ namespace Proforma.Forms
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.tblClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlReportes)).BeginInit();
             this.layoutControlReportes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
@@ -80,6 +82,7 @@ namespace Proforma.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblClientesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControlReportes
@@ -94,7 +97,7 @@ namespace Proforma.Forms
             this.layoutControlReportes.Name = "layoutControlReportes";
             this.layoutControlReportes.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(665, 121, 650, 400);
             this.layoutControlReportes.Root = this.Root;
-            this.layoutControlReportes.Size = new System.Drawing.Size(568, 228);
+            this.layoutControlReportes.Size = new System.Drawing.Size(568, 238);
             this.layoutControlReportes.TabIndex = 0;
             this.layoutControlReportes.Text = "layoutControl1";
             // 
@@ -105,7 +108,7 @@ namespace Proforma.Forms
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-            this.pictureEdit1.Size = new System.Drawing.Size(133, 204);
+            this.pictureEdit1.Size = new System.Drawing.Size(155, 204);
             this.pictureEdit1.StyleController = this.layoutControlReportes;
             this.pictureEdit1.TabIndex = 12;
             // 
@@ -113,44 +116,48 @@ namespace Proforma.Forms
             // 
             this.btnImprimir.ImageOptions.ImageUri.Uri = "Print;Size16x16";
             this.btnImprimir.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnImprimir.Location = new System.Drawing.Point(286, 194);
+            this.btnImprimir.Location = new System.Drawing.Point(301, 204);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(133, 22);
+            this.btnImprimir.Size = new System.Drawing.Size(125, 22);
             this.btnImprimir.StyleController = this.layoutControlReportes;
             this.btnImprimir.TabIndex = 1;
+            this.btnImprimir.ToolTip = "Visualizar Reporte";
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // datFechaFin
             // 
             this.datFechaFin.EditValue = null;
-            this.datFechaFin.Location = new System.Drawing.Point(432, 45);
+            this.datFechaFin.EnterMoveNextControl = true;
+            this.datFechaFin.Location = new System.Drawing.Point(443, 45);
             this.datFechaFin.Name = "datFechaFin";
             this.datFechaFin.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.datFechaFin.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.datFechaFin.Size = new System.Drawing.Size(112, 20);
+            this.datFechaFin.Size = new System.Drawing.Size(101, 20);
             this.datFechaFin.StyleController = this.layoutControlReportes;
             this.datFechaFin.TabIndex = 11;
             // 
             // datFechaIni
             // 
             this.datFechaIni.EditValue = null;
-            this.datFechaIni.Location = new System.Drawing.Point(239, 45);
+            this.datFechaIni.EnterMoveNextControl = true;
+            this.datFechaIni.Location = new System.Drawing.Point(261, 45);
             this.datFechaIni.Name = "datFechaIni";
             this.datFechaIni.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.datFechaIni.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.datFechaIni.Size = new System.Drawing.Size(111, 20);
+            this.datFechaIni.Size = new System.Drawing.Size(100, 20);
             this.datFechaIni.StyleController = this.layoutControlReportes;
             this.datFechaIni.TabIndex = 1;
             // 
             // xtraTabControlReportes
             // 
-            this.xtraTabControlReportes.Location = new System.Drawing.Point(149, 81);
+            this.xtraTabControlReportes.Location = new System.Drawing.Point(171, 81);
             this.xtraTabControlReportes.Name = "xtraTabControlReportes";
             this.xtraTabControlReportes.SelectedTabPage = this.tabPageCotizaciones;
-            this.xtraTabControlReportes.Size = new System.Drawing.Size(407, 109);
+            this.xtraTabControlReportes.Size = new System.Drawing.Size(385, 119);
             this.xtraTabControlReportes.TabIndex = 10;
             this.xtraTabControlReportes.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabPageCotizaciones});
@@ -159,7 +166,7 @@ namespace Proforma.Forms
             // 
             this.tabPageCotizaciones.Controls.Add(this.layoutControlCotizaciones);
             this.tabPageCotizaciones.Name = "tabPageCotizaciones";
-            this.tabPageCotizaciones.Size = new System.Drawing.Size(405, 84);
+            this.tabPageCotizaciones.Size = new System.Drawing.Size(383, 94);
             this.tabPageCotizaciones.Text = "Cotizaciones";
             // 
             // layoutControlCotizaciones
@@ -170,13 +177,13 @@ namespace Proforma.Forms
             this.layoutControlCotizaciones.Location = new System.Drawing.Point(0, 0);
             this.layoutControlCotizaciones.Name = "layoutControlCotizaciones";
             this.layoutControlCotizaciones.Root = this.layoutControlGroup1;
-            this.layoutControlCotizaciones.Size = new System.Drawing.Size(405, 84);
+            this.layoutControlCotizaciones.Size = new System.Drawing.Size(383, 94);
             this.layoutControlCotizaciones.TabIndex = 0;
             this.layoutControlCotizaciones.Text = "layoutControl1";
             // 
             // radioGroupFiltroCotizacion
             // 
-            this.radioGroupFiltroCotizacion.EditValue = 1;
+            this.radioGroupFiltroCotizacion.EditValue = 0;
             this.radioGroupFiltroCotizacion.Location = new System.Drawing.Point(12, 36);
             this.radioGroupFiltroCotizacion.Name = "radioGroupFiltroCotizacion";
             this.radioGroupFiltroCotizacion.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -185,7 +192,7 @@ namespace Proforma.Forms
             this.radioGroupFiltroCotizacion.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "Detalle"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "Consolidado")});
-            this.radioGroupFiltroCotizacion.Size = new System.Drawing.Size(381, 36);
+            this.radioGroupFiltroCotizacion.Size = new System.Drawing.Size(359, 46);
             this.radioGroupFiltroCotizacion.StyleController = this.layoutControlCotizaciones;
             this.radioGroupFiltroCotizacion.TabIndex = 5;
             // 
@@ -197,7 +204,7 @@ namespace Proforma.Forms
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboClienteCotizacion.Properties.NullText = "";
             this.cboClienteCotizacion.Properties.PopupView = this.searchLookUpEdit1View;
-            this.cboClienteCotizacion.Size = new System.Drawing.Size(329, 20);
+            this.cboClienteCotizacion.Size = new System.Drawing.Size(307, 20);
             this.cboClienteCotizacion.StyleController = this.layoutControlCotizaciones;
             this.cboClienteCotizacion.TabIndex = 4;
             // 
@@ -216,7 +223,7 @@ namespace Proforma.Forms
             this.layoutControlItem4,
             this.layoutControlItem7});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(405, 84);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(383, 94);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem4
@@ -224,7 +231,7 @@ namespace Proforma.Forms
             this.layoutControlItem4.Control = this.cboClienteCotizacion;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(385, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(363, 24);
             this.layoutControlItem4.Text = "Cliente :";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(40, 13);
             // 
@@ -233,7 +240,7 @@ namespace Proforma.Forms
             this.layoutControlItem7.Control = this.radioGroupFiltroCotizacion;
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(385, 40);
+            this.layoutControlItem7.Size = new System.Drawing.Size(363, 50);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
@@ -249,15 +256,15 @@ namespace Proforma.Forms
             this.emptySpaceItem2,
             this.emptySpaceItem3});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(568, 228);
+            this.Root.Size = new System.Drawing.Size(568, 238);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.xtraTabControlReportes;
-            this.layoutControlItem1.Location = new System.Drawing.Point(137, 69);
+            this.layoutControlItem1.Location = new System.Drawing.Point(159, 69);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(411, 113);
+            this.layoutControlItem1.Size = new System.Drawing.Size(389, 123);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -266,17 +273,17 @@ namespace Proforma.Forms
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem3,
             this.layoutControlItem2});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(137, 0);
+            this.layoutControlGroup2.Location = new System.Drawing.Point(159, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(411, 69);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(389, 69);
             this.layoutControlGroup2.Text = "Filtro General";
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.datFechaFin;
-            this.layoutControlItem3.Location = new System.Drawing.Point(193, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(182, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(194, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(183, 24);
             this.layoutControlItem3.Text = "Fecha Final :";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(66, 13);
             // 
@@ -285,16 +292,16 @@ namespace Proforma.Forms
             this.layoutControlItem2.Control = this.datFechaIni;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(193, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(182, 24);
             this.layoutControlItem2.Text = "Fecha Inicial :";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(66, 13);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.btnImprimir;
-            this.layoutControlItem5.Location = new System.Drawing.Point(274, 182);
+            this.layoutControlItem5.Location = new System.Drawing.Point(289, 192);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(137, 26);
+            this.layoutControlItem5.Size = new System.Drawing.Size(129, 26);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
@@ -302,36 +309,44 @@ namespace Proforma.Forms
             // 
             this.layoutControlItem6.Control = this.pictureEdit1;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem6.MaxSize = new System.Drawing.Size(159, 208);
+            this.layoutControlItem6.MinSize = new System.Drawing.Size(159, 208);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(137, 208);
+            this.layoutControlItem6.Size = new System.Drawing.Size(159, 218);
+            this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(137, 182);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(159, 192);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(137, 26);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(130, 26);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem3
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(411, 182);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(418, 192);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(137, 26);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(130, 26);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // frmReportes
+            // tblClientesBindingSource
+            // 
+            this.tblClientesBindingSource.DataSource = typeof(Proforma.Models.tblClientes);
+            // 
+            // frmAsistenteReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(568, 228);
+            this.ClientSize = new System.Drawing.Size(568, 238);
             this.Controls.Add(this.layoutControlReportes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmReportes.IconOptions.Image")));
-            this.Name = "frmReportes";
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmAsistenteReportes.IconOptions.Image")));
+            this.Name = "frmAsistenteReportes";
             this.Text = "Asistente para imprimir reportes";
+            this.Load += new System.EventHandler(this.frmReportes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlReportes)).EndInit();
             this.layoutControlReportes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
@@ -359,6 +374,7 @@ namespace Proforma.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblClientesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -388,5 +404,6 @@ namespace Proforma.Forms
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraEditors.DateEdit datFechaIni;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private System.Windows.Forms.BindingSource tblClientesBindingSource;
     }
 }
