@@ -263,7 +263,7 @@ namespace Proforma.Forms
             try
             {
                 PublicVar.gintContadorInactivo += 5;
-                if (PublicVar.gintContadorInactivo >= 5)
+                if (PublicVar.gintContadorInactivo >= 60)
                 {
                     timerInactivo.Stop();
                     XtraMessageBox.Show(PublicVar.gstrInactiveTimeMsg, PublicVar.gstrTitleInfo, MessageBoxButtons.OK, MessageBoxIcon.Warning);
