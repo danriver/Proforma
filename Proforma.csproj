@@ -196,6 +196,12 @@
     <Compile Include="Forms\frmRoles.Designer.cs">
       <DependentUpon>frmRoles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmTasaCambio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTasaCambio.Designer.cs">
+      <DependentUpon>frmTasaCambio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmTipoProductos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -292,6 +298,7 @@
     <Compile Include="Models\tblVendedores.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modules\CustomFormat.cs" />
     <Compile Include="Modules\CustomMail.cs" />
     <Compile Include="Modules\DataExtentions.cs" />
     <Compile Include="Forms\frmLogin.cs">
@@ -382,6 +389,9 @@
     <EmbeddedResource Include="Forms\frmServer.resx">
       <DependentUpon>frmServer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTasaCambio.resx">
+      <DependentUpon>frmTasaCambio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTipoProductos.resx">
       <DependentUpon>frmTipoProductos.cs</DependentUpon>
     </EmbeddedResource>
@@ -416,6 +426,7 @@
     <None Include="Proforma_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\Proforma.Models.tblBitacoras.datasource" />
+    <None Include="Properties\DataSources\Proforma.Models.tblCambioMoneda.datasource" />
     <None Include="Properties\DataSources\Proforma.Models.tblClientes.datasource" />
     <None Include="Properties\DataSources\Proforma.Models.tblClientesContacto.datasource" />
     <None Include="Properties\DataSources\Proforma.Models.tblConfiguracion.datasource" />

@@ -128,6 +128,8 @@ namespace Proforma.Forms
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.btnBuscar = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescuento.Properties)).BeginInit();
@@ -172,10 +174,12 @@ namespace Proforma.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.btnBuscar);
             this.layoutControl1.Controls.Add(this.txtDescuento);
             this.layoutControl1.Controls.Add(this.chkSAC);
             this.layoutControl1.Controls.Add(this.btnEnviar);
@@ -216,7 +220,7 @@ namespace Proforma.Forms
             this.chkSAC.Location = new System.Drawing.Point(881, 141);
             this.chkSAC.Name = "chkSAC";
             this.chkSAC.Properties.Caption = "Código SAC";
-            this.chkSAC.Size = new System.Drawing.Size(219, 20);
+            this.chkSAC.Size = new System.Drawing.Size(157, 20);
             this.chkSAC.StyleController = this.layoutControl1;
             this.chkSAC.TabIndex = 14;
             this.chkSAC.CheckedChanged += new System.EventHandler(this.chkSAC_CheckedChanged);
@@ -695,7 +699,8 @@ namespace Proforma.Forms
             this.coldecTotal.Name = "coldecTotal";
             this.coldecTotal.ShowUnboundExpressionMenu = true;
             this.coldecTotal.UnboundDataType = typeof(decimal);
-            this.coldecTotal.UnboundExpression = "[decSubtotal] - [decDescuento] + [decIva]";
+            this.coldecTotal.UnboundExpression = "Iif([decSubtotal] = null, 0, [decSubtotal]) - Iif([decDescuento] = null, 0, [decD" +
+    "escuento]) + Iif([decIva] = null, 0, [decIva])";
             this.coldecTotal.Visible = true;
             this.coldecTotal.VisibleIndex = 8;
             // 
@@ -861,7 +866,8 @@ namespace Proforma.Forms
             this.layoutControlItem4,
             this.layoutControlItem5,
             this.emptySpaceItem4,
-            this.layoutControlItem11});
+            this.layoutControlItem11,
+            this.layoutControlItem13});
             this.layoutControlGroup1.Location = new System.Drawing.Point(857, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(247, 199);
@@ -906,9 +912,9 @@ namespace Proforma.Forms
             // emptySpaceItem4
             // 
             this.emptySpaceItem4.AllowHotTrack = false;
-            this.emptySpaceItem4.Location = new System.Drawing.Point(0, 120);
+            this.emptySpaceItem4.Location = new System.Drawing.Point(0, 122);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(223, 34);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(223, 32);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem11
@@ -916,7 +922,7 @@ namespace Proforma.Forms
             this.layoutControlItem11.Control = this.chkSAC;
             this.layoutControlItem11.Location = new System.Drawing.Point(0, 96);
             this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(223, 24);
+            this.layoutControlItem11.Size = new System.Drawing.Size(161, 26);
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextVisible = false;
             // 
@@ -1063,6 +1069,27 @@ namespace Proforma.Forms
             this.emptySpaceItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.ImageOptions.ImageUri.Uri = "Find;Size16x16";
+            this.btnBuscar.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnBuscar.Location = new System.Drawing.Point(1042, 141);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(58, 22);
+            this.btnBuscar.StyleController = this.layoutControl1;
+            this.btnBuscar.TabIndex = 16;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // layoutControlItem13
+            // 
+            this.layoutControlItem13.Control = this.btnBuscar;
+            this.layoutControlItem13.Location = new System.Drawing.Point(161, 96);
+            this.layoutControlItem13.Name = "layoutControlItem13";
+            this.layoutControlItem13.Size = new System.Drawing.Size(62, 26);
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem13.TextVisible = false;
+            // 
             // frmConsultasCotizaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1117,6 +1144,7 @@ namespace Proforma.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1220,5 +1248,7 @@ namespace Proforma.Forms
         private DevExpress.XtraGrid.Columns.GridColumn coltblProductos1;
         private DevExpress.XtraEditors.TextEdit txtDescuento;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
+        private DevExpress.XtraEditors.SimpleButton btnBuscar;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
     }
 }

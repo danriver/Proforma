@@ -436,6 +436,9 @@ namespace Proforma.Forms
                         datFechaCreacion = DateTime.Now.GetDateDB(),
                         intEstadoCotizacion = 1,
                         bitFactura = false,
+                        decSubtotal = 0,
+                        decDescuento = 0,
+                        decIva = 0,
                         strInfAdicional = infAdicional,
                         strObservaciones = observaciones,
                     };
@@ -560,19 +563,7 @@ namespace Proforma.Forms
                         }
                         iva = (subtotal - descuento) * (Convert.ToDecimal(con.decPorcentajeIVA) / 100);
                         total = subtotal - descuento + iva;
-                    }                    
-                    if (Convert.ToInt32(con.intMoneda) == 1)
-                    {
-                        equiv = total / mn.decTipoCambio;
-                        simbprinc = Convert.ToString(monedas.FirstOrDefault(x => x.intIdMoneda == con.intMoneda).strSimbolo);
-                        simbsecun = Convert.ToString(monedas.FirstOrDefault(x => x.intIdMoneda != con.intMoneda).strSimbolo);
-                    }
-                    else
-                    {
-                        equiv = total * mn.decTipoCambio;
-                        simbprinc = Convert.ToString(monedas.FirstOrDefault(x => x.intIdMoneda == con.intMoneda).strSimbolo);
-                        simbsecun = Convert.ToString(monedas.FirstOrDefault(x => x.intIdMoneda != con.intMoneda).strSimbolo);
-                    }
+                    }                
                 }
                 else
                 {
@@ -580,7 +571,18 @@ namespace Proforma.Forms
                     descuento = 0;
                     iva = 0;
                     total = 0;
-                    equiv = 0;
+                }
+                if (Convert.ToInt32(con.intMoneda) == 1)
+                {
+                    equiv = total / mn.decTipoCambio;
+                    simbprinc = Convert.ToString(monedas.FirstOrDefault(x => x.intIdMoneda == con.intMoneda).strSimbolo);
+                    simbsecun = Convert.ToString(monedas.FirstOrDefault(x => x.intIdMoneda != con.intMoneda).strSimbolo);
+                }
+                else
+                {
+                    equiv = total * mn.decTipoCambio;
+                    simbprinc = Convert.ToString(monedas.FirstOrDefault(x => x.intIdMoneda == con.intMoneda).strSimbolo);
+                    simbsecun = Convert.ToString(monedas.FirstOrDefault(x => x.intIdMoneda != con.intMoneda).strSimbolo);
                 }
             }
             this.txtSubtotal.Text = String.Format("{1} {0:n2}", subtotal, simbprinc);

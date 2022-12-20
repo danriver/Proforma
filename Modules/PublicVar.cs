@@ -54,6 +54,10 @@ namespace Proforma.Modules
         public const string gstrUserPassIncorrectMsg = "El Usuario y/o Contraseña son incorrectos. Verifique sus datos de autenticación e intente nuevamente.";
         public const string gstrUserInactiveMsg = "El Usuario no está activo. Contacte con el Administrador.";
 
+        //Tasa de Cambio del día
+        public const string gstrTasaNoExistMsg = "La tasa de hoy no ha sido grabada, por favor introdúzcala al Sistema.";
+        public const string gstrTasaEnRegistrosMsg = "Ya existen registros con la tasa cambiaria del día de hoy, por lo tanto no se puede modificar.";
+
         //Catalogo de usuarios
         public const string gstrUpdateAdministratorMsg = "Solo existe un usuario administrador, no puede realizar la acción";
 

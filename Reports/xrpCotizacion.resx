@@ -117,6 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="xrLabel31.ExpressionBindings" xml:space="preserve">
+    <value>Iif([tblProductos].[tblMonedas].[tblConfiguracion].[bitImprimirFacturaUS] == false And [tblProductos].[tblMonedas].[tblConfiguracion].[intMoneda] == 1, [decCantidad]*[decPrecio]
+, Iif([tblProductos].[tblMonedas].[tblConfiguracion].[bitImprimirFacturaUS] == true And [tblProductos].[tblMonedas].[tblConfiguracion].[intMoneda] == 1, [decCantidad]*[decPrecio]
+ / Iif(GetDate([tblCotizaciones].[datFechaCreacion]) == GetDate([tblProductos].[tblMonedas].[tblConfiguracion].[tblCambioMoneda].[datFecha]), [tblProductos].[tblMonedas].[tblConfiguracion].[tblCambioMoneda].[decTipoCambio], 0), 0))</value>
+  </data>
+  <data name="xrLabel25.ExpressionBindings" xml:space="preserve">
+    <value>Iif([tblProductos].[tblMonedas].[tblConfiguracion].[bitImprimirFacturaUS] == false And [tblProductos].[tblMonedas].[tblConfiguracion].[intMoneda] == 1, [decPrecio], Iif([tblProductos].[tblMonedas].[tblConfiguracion].[bitImprimirFacturaUS] == true And [tblProductos].[tblMonedas].[tblConfiguracion].[intMoneda] == 1, [decPrecio] / Iif(GetDate([tblCotizaciones].[datFechaCreacion]) == GetDate([tblProductos].[tblMonedas].[tblConfiguracion].[tblCambioMoneda].[datFecha]), [tblProductos].[tblMonedas].[tblConfiguracion].[tblCambioMoneda].[decTipoCambio], 0), 0))</value>
+  </data>
+  <data name="xrLabel32.ExpressionBindings" xml:space="preserve">
+    <value>Iif([tblProductos].[tblMonedas].[tblConfiguracion].[bitImprimirFacturaUS] == false And [tblProductos].[tblMonedas].[tblConfiguracion].[intMoneda] == 1, [decCantidad]*[decPrecio]
+, Iif([tblProductos].[tblMonedas].[tblConfiguracion].[bitImprimirFacturaUS] == true And [tblProductos].[tblMonedas].[tblConfiguracion].[intMoneda] == 1, [decCantidad]*[decPrecio]
+ / Iif(GetDate([tblCotizaciones].[datFechaCreacion]) == GetDate([tblProductos].[tblMonedas].[tblConfiguracion].[tblCambioMoneda].[datFecha]), [tblProductos].[tblMonedas].[tblConfiguracion].[tblCambioMoneda].[decTipoCambio], 0), 0))
+</value>
+  </data>
+  <data name="xrLabel29.ExpressionBindings" xml:space="preserve">
+    <value>Iif([tblProductos].[tblMonedas].[tblConfiguracion].[bitImprimirFacturaUS] == false And [tblProductos].[tblMonedas].[tblConfiguracion].[intMoneda] == 1, [decPrecio], Iif([tblProductos].[tblMonedas].[tblConfiguracion].[bitImprimirFacturaUS] == true And [tblProductos].[tblMonedas].[tblConfiguracion].[intMoneda] == 1, [decPrecio] / Iif(GetDate([tblCotizaciones].[datFechaCreacion]) == GetDate([tblProductos].[tblMonedas].[tblConfiguracion].[tblCambioMoneda].[datFecha]), [tblProductos].[tblMonedas].[tblConfiguracion].[tblCambioMoneda].[decTipoCambio], 0), 0))</value>
+  </data>
   <metadata name="BSDetalleCotizacion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

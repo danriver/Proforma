@@ -16,5 +16,8 @@ namespace Proforma.Models
     {
         public System.DateTime datFecha { get; set; }
         public decimal decTipoCambio { get; set; }
+        public Nullable<decimal> decIdConfiguracion { get; set; }
+    
+        public virtual tblConfiguracion tblConfiguracion { get; set; }
     }
 }

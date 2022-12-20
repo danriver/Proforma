@@ -4,8 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2b5ae18a9ff8428294fece06e74a9813" Name="Diagram1" ZoomLevel="77">
-        <EntityTypeShape EntityType="BD_ERPModel.tblCambioMoneda" Width="1.5" PointX="11.75" PointY="3" IsExpanded="true" />
+      <Diagram DiagramId="2b5ae18a9ff8428294fece06e74a9813" Name="Diagram1" ZoomLevel="23">
         <EntityTypeShape EntityType="BD_ERPModel.tblFormularios" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_ERPModel.tblPermisos" Width="1.5" PointX="5.25" PointY="18.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_ERPModel.tblRolPermisos" Width="1.5" PointX="10.5" PointY="10.75" IsExpanded="true" />
@@ -39,12 +38,9 @@
         <EntityTypeShape EntityType="BD_ERPModel.tblVendedores" Width="1.5" PointX="0.75" PointY="7.875" />
         <AssociationConnector Association="BD_ERPModel.FK__tblClient__decId__46E78A0C" />
         <AssociationConnector Association="BD_ERPModel.FK__tblUsuari__decId__30F848ED" />
-        <EntityTypeShape EntityType="BD_ERPModel.tblConfiguracion" Width="1.5" PointX="10.5" PointY="14.875" />
         <EntityTypeShape EntityType="BD_ERPModel.tblCotizaciones" Width="1.5" PointX="15" PointY="6.625" />
         <AssociationConnector Association="BD_ERPModel.FK__tblCotiza__decId__693CA210" />
         <AssociationConnector Association="BD_ERPModel.FK__tblCotiza__decId__6A30C649" />
-        <AssociationConnector Association="BD_ERPModel.FK_tblConfiguracion_tblMonedas" />
-        <AssociationConnector Association="BD_ERPModel.FK_tblConfiguracion_tblPrecios" />
         <AssociationConnector Association="BD_ERPModel.FK__tblCotiza__decId__6B24EA82" />
         <AssociationConnector Association="BD_ERPModel.FK__tblCotiza__decId__6C190EBB" />
         <AssociationConnector Association="BD_ERPModel.FK_tblCotizaciones_tblEstados" />
@@ -53,6 +49,11 @@
         <AssociationConnector Association="BD_ERPModel.FK__tblDetall__decId__6FE99F9F" />
         <AssociationConnector Association="BD_ERPModel.FK__tblDetall__decId__70DDC3D8" />
         <AssociationConnector Association="BD_ERPModel.FK_tblDetalleCotizaciones_tblProveedores" />
+        <EntityTypeShape EntityType="BD_ERPModel.tblCambioMoneda" Width="1.5" PointX="12.75" PointY="19" />
+        <EntityTypeShape EntityType="BD_ERPModel.tblConfiguracion" Width="1.5" PointX="10.5" PointY="14.875" />
+        <AssociationConnector Association="BD_ERPModel.FK_tblCambioMoneda_tblConfiguracion" />
+        <AssociationConnector Association="BD_ERPModel.FK_tblConfiguracion_tblMonedas" />
+        <AssociationConnector Association="BD_ERPModel.FK_tblConfiguracion_tblPrecios" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
