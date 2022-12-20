@@ -28,9 +28,9 @@ namespace Proforma.Modules
 
         //Desarrollo
         public static string gstrServername = "localhost";
-        public static string gstrServerdomain = "test";
-        public static string gstrServeruser = "test";
-        public static string gstrServerpassword = "test";
+        public static string gstrServerdomain = "";
+        public static string gstrServeruser = "rcastillo";
+        public static string gstrServerpassword = "R0b3rt$18102%";
         public static string gstrServerArchivos = "\\\\localhost\\Imagenes\\";
 
         //Mensajes del sistema
