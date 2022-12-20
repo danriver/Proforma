@@ -13,6 +13,7 @@ using DevExpress.LookAndFeel;
 using System.Reflection;
 using System.Deployment.Application;
 using DevExpress.XtraBars.Alerter;
+using Proforma.Models;
 
 namespace Proforma.Forms
 {
@@ -91,6 +92,30 @@ namespace Proforma.Forms
             }
         }
 
+        private void VerificarTasa()
+        {
+            BD_ERPEntities contexto = new BD_ERPEntities();
+            DateTime fecha;
+            decimal tasa = 0;            
+
+            fecha = Convert.ToDateTime(DateTime.Now.GetDateDB()).Date;
+            tblCambioMoneda mn = contexto.tblCambioMoneda.FirstOrDefault(x => x.datFecha == fecha);
+            if (mn != null)
+            {
+                tasa = Convert.ToDecimal(mn.decTipoCambio.IsNull(0));
+            }            
+            
+            if (tasa <= 0)
+            {
+                var resp = XtraMessageBox.Show(PublicVar.gstrTasaNoExistMsg, PublicVar.gstrTitleInfo,
+                                        MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (resp == DialogResult.OK)
+                {
+                    AbrirFormulario(new frmTasaCambio());
+                }
+            }
+        }
+
         #endregion
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -155,6 +180,10 @@ namespace Proforma.Forms
                     AbrirFormulario(new frmAsistenteReportes());
                     break;
                     
+
+                case "mnuTasaCambio":
+                    AbrirFormulario(new frmTasaCambio());
+                    break;
             }
             Cursor = Cursors.Default;
         }
@@ -208,6 +237,7 @@ namespace Proforma.Forms
             try
             {
                 ActualizarSistema(false);
+                VerificarTasa();
             }
             catch (Exception ex)
             {

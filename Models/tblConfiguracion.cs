@@ -14,13 +14,23 @@ namespace Proforma.Models
     
     public partial class tblConfiguracion
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblConfiguracion()
+        {
+            this.tblCambioMoneda = new HashSet<tblCambioMoneda>();
+        }
+    
         public decimal decIdConfiguracion { get; set; }
         public Nullable<int> intMoneda { get; set; }
         public string strNombreEmpresa { get; set; }
         public string strDireccionEmpresa { get; set; }
         public string strTelefono { get; set; }
         public string strRUCEmpresa { get; set; }
+        public string strEncabezado { get; set; }
+        public Nullable<bool> bitEncabezado { get; set; }
+        public string strInfAdicional { get; set; }
         public string strPieEmpresa { get; set; }
+        public Nullable<bool> bitPieEmpresa { get; set; }
         public string strEsloganEmpresa { get; set; }
         public string strDireccionLogo { get; set; }
         public string strChequeNombreDe { get; set; }
@@ -35,6 +45,8 @@ namespace Proforma.Models
         public string strHost { get; set; }
         public Nullable<int> intPort { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblCambioMoneda> tblCambioMoneda { get; set; }
         public virtual tblMonedas tblMonedas { get; set; }
         public virtual tblPrecios tblPrecios { get; set; }
     }

@@ -21,6 +21,7 @@ namespace Proforma.Models
         }
     
         public decimal decIdCotizacion { get; set; }
+        public string strNumCotizacion { get; set; }
         public Nullable<decimal> decIdCliente { get; set; }
         public Nullable<decimal> decIdContacto { get; set; }
         public Nullable<decimal> decIdVendedor { get; set; }
@@ -30,16 +31,16 @@ namespace Proforma.Models
         public Nullable<decimal> decIva { get; set; }
         public Nullable<decimal> decDescuento { get; set; }
         public string strObservaciones { get; set; }
+        public string strInfAdicional { get; set; }
         public Nullable<int> intEstadoCotizacion { get; set; }
         public Nullable<bool> bitFactura { get; set; }
         public Nullable<System.DateTime> datFechaVencimiento { get; set; }
-        public string strNumCotizacion { get; set; }
     
-        public virtual tblUsuarios tblUsuarios { get; set; }
-        public virtual tblClientesContacto tblClientesContacto { get; set; }
         public virtual tblClientes tblClientes { get; set; }
-        public virtual tblEstados tblEstados { get; set; }
+        public virtual tblClientesContacto tblClientesContacto { get; set; }
         public virtual tblVendedores tblVendedores { get; set; }
+        public virtual tblUsuarios tblUsuarios { get; set; }
+        public virtual tblEstados tblEstados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDetalleCotizaciones> tblDetalleCotizaciones { get; set; }
     }

@@ -17,9 +17,9 @@ namespace Proforma.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblUsuarios()
         {
-            this.tblCotizaciones = new HashSet<tblCotizaciones>();
             this.tblBitacoras = new HashSet<tblBitacoras>();
             this.tblErrores = new HashSet<tblErrores>();
+            this.tblCotizaciones = new HashSet<tblCotizaciones>();
             this.tblDetalleCotizaciones = new HashSet<tblDetalleCotizaciones>();
         }
     
@@ -32,15 +32,15 @@ namespace Proforma.Models
         public bool bitActivo { get; set; }
         public Nullable<bool> bitEnllavado { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblCotizaciones> tblCotizaciones { get; set; }
         public virtual tblRoles tblRoles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblBitacoras> tblBitacoras { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblErrores> tblErrores { get; set; }
+        public virtual tblVendedores tblVendedores { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblCotizaciones> tblCotizaciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDetalleCotizaciones> tblDetalleCotizaciones { get; set; }
-        public virtual tblVendedores tblVendedores { get; set; }
     }
 }

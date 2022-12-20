@@ -28,8 +28,8 @@ namespace Proforma.Models
         public string strCelular { get; set; }
         public string strCorreo { get; set; }
     
+        public virtual tblClientes tblClientes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCotizaciones> tblCotizaciones { get; set; }
-        public virtual tblClientes tblClientes { get; set; }
     }
 }

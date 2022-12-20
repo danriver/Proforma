@@ -18,8 +18,8 @@ namespace Proforma.Models
         public tblVendedores()
         {
             this.tblClientes = new HashSet<tblClientes>();
-            this.tblCotizaciones = new HashSet<tblCotizaciones>();
             this.tblUsuarios = new HashSet<tblUsuarios>();
+            this.tblCotizaciones = new HashSet<tblCotizaciones>();
         }
     
         public decimal decIdVendedor { get; set; }
@@ -31,8 +31,8 @@ namespace Proforma.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblClientes> tblClientes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblCotizaciones> tblCotizaciones { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblUsuarios> tblUsuarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblCotizaciones> tblCotizaciones { get; set; }
     }
 }
