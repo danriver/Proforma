@@ -6,9 +6,9 @@ using System.Drawing;
 
 namespace Proforma.Reports
 {
-    public partial class xrpCotizacionesDetalle : DevExpress.XtraReports.UI.XtraReport
+    public partial class xrpCotizacionesConsolidado : DevExpress.XtraReports.UI.XtraReport
     {
-        public xrpCotizacionesDetalle()
+        public xrpCotizacionesConsolidado()
         {
             InitializeComponent();
         }
@@ -17,6 +17,5 @@ namespace Proforma.Reports
         {
 
         }
-
     }
 }
