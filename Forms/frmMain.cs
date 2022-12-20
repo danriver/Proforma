@@ -86,9 +86,17 @@ namespace Proforma.Forms
                             appDeployment.UpdateProgressChanged += ADUpdate_UpdateProgressChanged;
                             appDeployment.UpdateCompleted += ADUpdate_UpdateCompleted;
                             appDeployment.UpdateAsync();
-                        }               
+                        }
                     }
                 }
+                else
+                {
+                    VerificarTasa();
+                }
+            }
+            else
+            {
+                VerificarTasa();
             }
         }
 
@@ -96,15 +104,15 @@ namespace Proforma.Forms
         {
             BD_ERPEntities contexto = new BD_ERPEntities();
             DateTime fecha;
-            decimal tasa = 0;            
+            decimal tasa = 0;
 
             fecha = Convert.ToDateTime(DateTime.Now.GetDateDB()).Date;
             tblCambioMoneda mn = contexto.tblCambioMoneda.FirstOrDefault(x => x.datFecha == fecha);
             if (mn != null)
             {
                 tasa = Convert.ToDecimal(mn.decTipoCambio.IsNull(0));
-            }            
-            
+            }
+
             if (tasa <= 0)
             {
                 var resp = XtraMessageBox.Show(PublicVar.gstrTasaNoExistMsg, PublicVar.gstrTitleInfo,
@@ -179,7 +187,6 @@ namespace Proforma.Forms
                 case "mnuReportes":
                     AbrirFormulario(new frmAsistenteReportes());
                     break;
-                    
 
                 case "mnuTasaCambio":
                     AbrirFormulario(new frmTasaCambio());
@@ -237,7 +244,7 @@ namespace Proforma.Forms
             try
             {
                 ActualizarSistema(false);
-                VerificarTasa();
+
             }
             catch (Exception ex)
             {
