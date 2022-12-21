@@ -117,4 +117,112 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="xrLabel23.ExpressionBindings" xml:space="preserve">
+    <value>IsNull([decCantidad], 0) * Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, IsNull([decPrecio], 0)
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, IsNull([decPrecio], 0) * IsNull(?Cambio, 0), 0))
+</value>
+  </data>
+  <data name="xrLabel37.ExpressionBindings" xml:space="preserve">
+    <value>IsNull([decCantidad], 0) * Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, IsNull([decPrecio], 0)
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, IsNull([decPrecio], 0) / IsNull(?Cambio, 0), 0))</value>
+  </data>
+  <data name="xrLabel14.ExpressionBindings" xml:space="preserve">
+    <value>Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal]
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * IsNull(?Cambio, 0), 0))</value>
+  </data>
+  <data name="xrLabel12.ExpressionBindings" xml:space="preserve">
+    <value>Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * IsNull(?Cambio, 0), 0))
+</value>
+  </data>
+  <data name="xrLabel19.ExpressionBindings" xml:space="preserve">
+    <value>Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / IsNull(?Cambio, 0), 0))
+
+</value>
+  </data>
+  <data name="xrLabel21.ExpressionBindings" xml:space="preserve">
+    <value>Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / IsNull(?Cambio, 0), 0))
+</value>
+  </data>
+  <data name="xrLabel39.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * IsNull(?Cambio, 0), 0))
+)</value>
+  </data>
+  <data name="xrLabel42.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal]
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * IsNull(?Cambio, 0), 0)))</value>
+  </data>
+  <data name="xrLabel64.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / IsNull(?Cambio, 0), 0))
+)</value>
+  </data>
+  <data name="xrLabel66.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / IsNull(?Cambio, 0), 0))
+
+)</value>
+  </data>
+  <data name="xrLabel46.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal]
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * IsNull(?Cambio, 0), 0)))
+ - sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * IsNull(?Cambio, 0), 0))
+)
+ + sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva]
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva] * IsNull(?Cambio, 0), 0)))
+ )</value>
+  </data>
+  <data name="xrLabel49.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal]
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * IsNull(?Cambio, 0), 0)))</value>
+  </data>
+  <data name="xrLabel51.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * IsNull(?Cambio, 0), 0))
+)</value>
+  </data>
+  <data name="xrLabel75.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / IsNull(?Cambio, 0), 0))
+
+)</value>
+  </data>
+  <data name="xrLabel77.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / IsNull(?Cambio, 0), 0))
+)</value>
+  </data>
+  <metadata name="bindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <data name="xrLabel56.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * IsNull(?Cambio, 0), 0))
+)</value>
+  </data>
+  <data name="xrLabel58.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal]
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * IsNull(?Cambio, 0), 0)))</value>
+  </data>
+  <data name="xrLabel80.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / IsNull(?Cambio, 0), 0))
+)</value>
+  </data>
+  <data name="xrLabel82.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / IsNull(?Cambio, 0), 0))
+
+)</value>
+  </data>
+  <metadata name="cotizacionesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="objectDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
+  </metadata>
 </root>
