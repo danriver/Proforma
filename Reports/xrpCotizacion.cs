@@ -28,7 +28,6 @@ namespace Proforma.Reports
             tblConfiguracion con = contexto.tblConfiguracion.FirstOrDefault(x => x.decIdConfiguracion == 1);
             tblCotizaciones cot = contexto.tblCotizaciones.FirstOrDefault(x => x.decIdCotizacion == idCotizacion);
             tblClientesContacto cc = contexto.tblClientesContacto.FirstOrDefault(x => x.decIdContacto == cot.decIdContacto);
-            BSDetalleCotizacion.DataSource = contexto.tblDetalleCotizaciones.Where(x => x.decIdCotizacion == idCotizacion).ToList();
             //Mostrar u Ocultar código SAC de los productos
             if (bSAC == true)
             {
@@ -155,6 +154,10 @@ namespace Proforma.Reports
             {
                 this.Watermark.Text = "ANULADA";
             }
+            this.Parameters["Moneda"].Value = Convert.ToInt32(con.intMoneda);
+            this.Parameters["Imprimir"].Value = Convert.ToBoolean(con.bitImprimirFacturaUS);
+            this.Parameters["Tasa"].Value = Convert.ToDecimal(mn.decTipoCambio);
+            BSDetalleCotizacion.DataSource = contexto.tblDetalleCotizaciones.Where(x => x.decIdCotizacion == idCotizacion).ToList();
         }
     }
 }
