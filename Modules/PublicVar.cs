@@ -17,6 +17,7 @@ namespace Proforma.Modules
         public static int gintContadorInactivo = 0;
         public static string gstrFormatFechaDesde = "dd/MM/yyyy 00:00:00";
         public static string gstrFormatFechaHasta = "dd/MM/yyyy 23:59:59";
+        public static string gstrFormatFecha = "dd/MM/yyyy";
 
         //Produccion
         //public static string gstrServername = "192.168.1.4";
@@ -27,9 +28,9 @@ namespace Proforma.Modules
 
         //Desarrollo
         public static string gstrServername = "localhost";
-        public static string gstrServerdomain = "domainTest";
-        public static string gstrServeruser = "userTest";
-        public static string gstrServerpassword = "passTest";
+        public static string gstrServerdomain = "";
+        public static string gstrServeruser = "rcastillo";
+        public static string gstrServerpassword = "R0b3rt$18102%";
         public static string gstrServerArchivos = "\\\\localhost\\Imagenes\\";
 
         //Mensajes del sistema
@@ -54,6 +55,10 @@ namespace Proforma.Modules
         public const string gstrUserPassIncorrectMsg = "El Usuario y/o Contraseña son incorrectos. Verifique sus datos de autenticación e intente nuevamente.";
         public const string gstrUserInactiveMsg = "El Usuario no está activo. Contacte con el Administrador.";
 
+        //Tasa de Cambio del día
+        public const string gstrTasaNoExistMsg = "La tasa de hoy no ha sido grabada, por favor introdúzcala al Sistema.";
+        public const string gstrTasaEnRegistrosMsg = "Ya existen registros con la tasa cambiaria del día de hoy, por lo tanto no se puede modificar.";
+
         //Catalogo de usuarios
         public const string gstrUpdateAdministratorMsg = "Solo existe un usuario administrador, no puede realizar la acción";
 
@@ -67,7 +72,10 @@ namespace Proforma.Modules
         public const string gstrCotizacionSinDetalleMsg = "Está a punto de guardar una cotización sin detalle. Haga clic en Aceptar, de lo contrario haga clic en Cancelar.";
         public const string gstrAprobacionMsg = "Se aprobará la cotización. Haga clic en Aceptar, de lo contrario haga clic en Cancelar.";
         public const string gstrAnulacionMsg = "Se anulará la cotización. Haga clic en Aceptar, de lo contrario haga clic en Cancelar.";
-        public const string gstrPersonalizarCorreoMsg = "Abrir Menú de Personalización de correo a enviar. Haga clic en Aceptar, de lo contrario haga clic en Cancelar.";
+        public const string gstrPersonalizarCorreoMsg = "Abrir Menú de Personalización de correo a enviar. Haga clic en Sí, de lo contrario haga clic en No.";
+
+        //Reportes
+        public const string gstrPrintPreviewTitle = "Vista previa del documento";
     }
 
     public static class TipoOperacion

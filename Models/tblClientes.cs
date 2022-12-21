@@ -34,9 +34,9 @@ namespace Proforma.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblClientesContacto> tblClientesContacto { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblCotizaciones> tblCotizaciones { get; set; }
         public virtual tblPrecios tblPrecios { get; set; }
         public virtual tblVendedores tblVendedores { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblCotizaciones> tblCotizaciones { get; set; }
     }
 }

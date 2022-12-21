@@ -27,8 +27,6 @@ namespace Proforma.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tblCambioMoneda> tblCambioMoneda { get; set; }
-        public virtual DbSet<tblCotizaciones> tblCotizaciones { get; set; }
         public virtual DbSet<tblFormularios> tblFormularios { get; set; }
         public virtual DbSet<tblPermisos> tblPermisos { get; set; }
         public virtual DbSet<tblRolPermisos> tblRolPermisos { get; set; }
@@ -45,8 +43,10 @@ namespace Proforma.Models
         public virtual DbSet<tblClientesContacto> tblClientesContacto { get; set; }
         public virtual DbSet<tblClientes> tblClientes { get; set; }
         public virtual DbSet<tblEstados> tblEstados { get; set; }
-        public virtual DbSet<tblDetalleCotizaciones> tblDetalleCotizaciones { get; set; }
         public virtual DbSet<tblVendedores> tblVendedores { get; set; }
+        public virtual DbSet<tblCotizaciones> tblCotizaciones { get; set; }
+        public virtual DbSet<tblDetalleCotizaciones> tblDetalleCotizaciones { get; set; }
+        public virtual DbSet<tblCambioMoneda> tblCambioMoneda { get; set; }
         public virtual DbSet<tblConfiguracion> tblConfiguracion { get; set; }
     
         public virtual ObjectResult<Sp_ProductosXProveedor_Result> Sp_ProductosXProveedor(Nullable<decimal> decIdProveedor)

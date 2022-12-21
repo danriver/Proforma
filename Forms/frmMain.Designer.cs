@@ -60,7 +60,6 @@
             this.mnuProformas = new DevExpress.XtraBars.BarButtonItem();
             this.mnuConsultas = new DevExpress.XtraBars.BarSubItem();
             this.mnuConsultasCotizaciones = new DevExpress.XtraBars.BarButtonItem();
-            this.mnuReportes = new DevExpress.XtraBars.BarSubItem();
             this.mnuProductos = new DevExpress.XtraBars.BarButtonItem();
             this.mnuProveedores = new DevExpress.XtraBars.BarButtonItem();
             this.mnuClientes = new DevExpress.XtraBars.BarButtonItem();
@@ -88,6 +87,7 @@
             this.progressBarControlUpdate = new DevExpress.XtraEditors.ProgressBarControl();
             this.alertControlInfo = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.timerInactivo = new System.Windows.Forms.Timer(this.components);
+            this.mnuReportes = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlAdministracion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemColorPickEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManagerMain)).BeginInit();
@@ -110,7 +110,6 @@
             this.ribbonControlAdministracion.SearchEditItem,
             this.mnuProformas,
             this.mnuConsultas,
-            this.mnuReportes,
             this.mnuProductos,
             this.mnuProveedores,
             this.mnuClientes,
@@ -126,9 +125,10 @@
             this.mnuTasaCambio,
             this.mnuConsultasCotizaciones,
             this.barStaticItem1,
-            this.lblUsuario});
+            this.lblUsuario,
+            this.mnuReportes});
             this.ribbonControlAdministracion.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControlAdministracion.MaxItemId = 36;
+            this.ribbonControlAdministracion.MaxItemId = 37;
             this.ribbonControlAdministracion.Name = "ribbonControlAdministracion";
             this.ribbonControlAdministracion.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageAdministracion});
@@ -167,15 +167,6 @@
             this.mnuConsultasCotizaciones.Enabled = false;
             this.mnuConsultasCotizaciones.Id = 33;
             this.mnuConsultasCotizaciones.Name = "mnuConsultasCotizaciones";
-            // 
-            // mnuReportes
-            // 
-            this.mnuReportes.Caption = "Reportes";
-            this.mnuReportes.Enabled = false;
-            this.mnuReportes.Id = 13;
-            this.mnuReportes.ImageOptions.SvgImage = global::Proforma.Properties.Resources.print;
-            this.mnuReportes.Name = "mnuReportes";
-            this.mnuReportes.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
             // mnuProductos
             // 
@@ -482,6 +473,14 @@
             this.timerInactivo.Interval = 300000;
             this.timerInactivo.Tick += new System.EventHandler(this.timerInactivo_Tick);
             // 
+            // mnuReportes
+            // 
+            this.mnuReportes.Caption = "Reportes";
+            this.mnuReportes.Enabled = false;
+            this.mnuReportes.Id = 36;
+            this.mnuReportes.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.mnuReportes.Name = "mnuReportes";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -521,7 +520,6 @@
         private DevExpress.XtraBars.BarButtonItem mnuProformas;
         private DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit repositoryItemColorPickEdit1;
         private DevExpress.XtraBars.BarSubItem mnuConsultas;
-        private DevExpress.XtraBars.BarSubItem mnuReportes;
         private DevExpress.XtraBars.BarButtonItem mnuProductos;
         private DevExpress.XtraBars.BarButtonItem mnuProveedores;
         private DevExpress.XtraBars.BarButtonItem mnuClientes;
@@ -545,5 +543,6 @@
         private DevExpress.XtraBars.BarButtonItem mnuConsultasCotizaciones;
         private DevExpress.XtraBars.BarStaticItem barStaticItem1;
         private DevExpress.XtraBars.BarStaticItem lblUsuario;
+        private DevExpress.XtraBars.BarButtonItem mnuReportes;
     }
 }

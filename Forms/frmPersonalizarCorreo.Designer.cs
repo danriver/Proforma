@@ -29,6 +29,7 @@ namespace Proforma.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPersonalizarCorreo));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnEnviar = new DevExpress.XtraEditors.SimpleButton();
             this.mmoMensaje = new DevExpress.XtraEditors.MemoEdit();
@@ -64,12 +65,15 @@ namespace Proforma.Forms
             // 
             // btnEnviar
             // 
-            this.btnEnviar.Location = new System.Drawing.Point(389, 217);
+            this.btnEnviar.ImageOptions.ImageUri.Uri = "outlook%20inspired/glyph_mail;Size16x16";
+            this.btnEnviar.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnEnviar.Location = new System.Drawing.Point(370, 217);
             this.btnEnviar.Name = "btnEnviar";
-            this.btnEnviar.Size = new System.Drawing.Size(74, 22);
+            this.btnEnviar.Size = new System.Drawing.Size(93, 22);
             this.btnEnviar.StyleController = this.layoutControl1;
             this.btnEnviar.TabIndex = 6;
-            this.btnEnviar.Text = "simpleButton1";
+            this.btnEnviar.Text = "Enviar";
+            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
             // 
             // mmoMensaje
             // 
@@ -121,9 +125,11 @@ namespace Proforma.Forms
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.btnEnviar;
-            this.layoutControlItem3.Location = new System.Drawing.Point(377, 205);
+            this.layoutControlItem3.Location = new System.Drawing.Point(358, 205);
+            this.layoutControlItem3.MinSize = new System.Drawing.Size(97, 26);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(78, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(97, 26);
+            this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -132,7 +138,7 @@ namespace Proforma.Forms
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 205);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(377, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(358, 26);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // frmPersonalizarCorreo
@@ -141,6 +147,7 @@ namespace Proforma.Forms
             this.ClientSize = new System.Drawing.Size(475, 251);
             this.Controls.Add(this.layoutControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmPersonalizarCorreo.IconOptions.Image")));
             this.Name = "frmPersonalizarCorreo";
             this.Text = "Enviar Correo...";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();

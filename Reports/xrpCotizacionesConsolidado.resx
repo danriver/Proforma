@@ -117,34 +117,88 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="xrLabel31.ExpressionBindings" xml:space="preserve">
-    <value>Iif(?Imprimir == false And ?Moneda == 1, [decCantidad]*[decPrecio], 
-Iif(?Imprimir == true And ?Moneda == 1, [decCantidad]*[decPrecio] / ?Tasa, 
-Iif(?Imprimir == false And ?Moneda == 2, [decCantidad]*[decPrecio], 
-Iif(?Imprimir == true And ?Moneda == 2, [decCantidad]*[decPrecio] * ?Tasa, 0))))</value>
+  <data name="lblTotalCot.ExpressionBindings" xml:space="preserve">
+    <value>Iif(?Imprimir == 1 And ?Moneda == 1, [decSubtotal] - [decDescuento] + [decIva], 
+Iif(?Imprimir == 2 And ?Moneda == 1, ([decSubtotal] - [decDescuento] + [decIva]) / ?Tasa, 
+Iif(?Imprimir == 2 And ?Moneda == 2, [decSubtotal] - [decDescuento] + [decIva], 
+Iif(?Imprimir == 1 And ?Moneda == 2, ([decSubtotal] - [decDescuento] + [decIva]) * ?Tasa, 0))))</value>
   </data>
-  <data name="xrLabel25.ExpressionBindings" xml:space="preserve">
-    <value>Iif(?Imprimir == false And ?Moneda == 1, [decPrecio], 
-Iif(?Imprimir == true And ?Moneda == 1, [decPrecio] / ?Tasa, 
-Iif(?Imprimir == false And ?Moneda == 2, [decPrecio], 
-Iif(?Imprimir == true And ?Moneda == 2, [decPrecio] * ?Tasa, 0))))</value>
+  <data name="lblIVACot.ExpressionBindings" xml:space="preserve">
+    <value>Iif(?Imprimir == 1 And ?Moneda == 1, [decIva], 
+Iif(?Imprimir == 2 And ?Moneda == 1, [decIva] / ?Tasa, 
+Iif(?Imprimir == 2 And ?Moneda == 2, [decIva], 
+Iif(?Imprimir == 1 And ?Moneda == 2, [decIva] * ?Tasa, 0))))</value>
   </data>
-  <data name="xrLabel32.ExpressionBindings" xml:space="preserve">
-    <value>Iif(?Imprimir == false And ?Moneda == 1, [decCantidad]*[decPrecio], 
-Iif(?Imprimir == true And ?Moneda == 1, [decCantidad]*[decPrecio] / ?Tasa, 
-Iif(?Imprimir == false And ?Moneda == 2, [decCantidad]*[decPrecio], 
-Iif(?Imprimir == true And ?Moneda == 2, [decCantidad]*[decPrecio] * ?Tasa, 0))))</value>
+  <data name="lblDescuentoCot.ExpressionBindings" xml:space="preserve">
+    <value>Iif(?Imprimir == 1 And ?Moneda == 1, [decDescuento], 
+Iif(?Imprimir == 2 And ?Moneda == 1, [decDescuento] / ?Tasa, 
+Iif(?Imprimir == 2 And ?Moneda == 2, [decDescuento], 
+Iif(?Imprimir == 1 And ?Moneda == 2, [decDescuento] * ?Tasa, 0))))
+</value>
   </data>
-  <data name="xrLabel29.ExpressionBindings" xml:space="preserve">
-    <value>Iif(?Imprimir == false And ?Moneda == 1, [decPrecio], 
-Iif(?Imprimir == true And ?Moneda == 1, [decPrecio] / ?Tasa, 
-Iif(?Imprimir == false And ?Moneda == 2, [decPrecio], 
-Iif(?Imprimir == true And ?Moneda == 2, [decPrecio] * ?Tasa, 0))))</value>
+  <data name="lblSubtotalCot.ExpressionBindings" xml:space="preserve">
+    <value>Iif(?Imprimir == 1 And ?Moneda == 1, [decSubtotal], 
+Iif(?Imprimir == 2 And ?Moneda == 1, [decSubtotal] / ?Tasa, 
+Iif(?Imprimir == 2 And ?Moneda == 2, [decSubtotal], 
+Iif(?Imprimir == 1 And ?Moneda == 2, [decSubtotal] * ?Tasa, 0))))</value>
   </data>
-  <metadata name="bindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
-  </metadata>
-  <metadata name="BSDetalleCotizacion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="lblSubtotalCliente.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?Imprimir == 1 And ?Moneda == 1, [decSubtotal], 
+Iif(?Imprimir == 2 And ?Moneda == 1, [decSubtotal] / ?Tasa, 
+Iif(?Imprimir == 2 And ?Moneda == 2, [decSubtotal], 
+Iif(?Imprimir == 1 And ?Moneda == 2, [decSubtotal] * ?Tasa, 0))))
+)</value>
+  </data>
+  <data name="lblDescuentoCliente.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?Imprimir == 1 And ?Moneda == 1, [decDescuento], 
+Iif(?Imprimir == 2 And ?Moneda == 1, [decDescuento] / ?Tasa, 
+Iif(?Imprimir == 2 And ?Moneda == 2, [decDescuento], 
+Iif(?Imprimir == 1 And ?Moneda == 2, [decDescuento] * ?Tasa, 0))))
+)</value>
+  </data>
+  <data name="lblIVACliente.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?Imprimir == 1 And ?Moneda == 1, [decIva], 
+Iif(?Imprimir == 2 And ?Moneda == 1, [decIva] / ?Tasa, 
+Iif(?Imprimir == 2 And ?Moneda == 2, [decIva], 
+Iif(?Imprimir == 1 And ?Moneda == 2, [decIva] * ?Tasa, 0))))
+)</value>
+  </data>
+  <data name="lblTotalCliente.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?Imprimir == 1 And ?Moneda == 1, [decSubtotal] - [decDescuento] + [decIva], 
+Iif(?Imprimir == 2 And ?Moneda == 1, ([decSubtotal] - [decDescuento] + [decIva]) / ?Tasa, 
+Iif(?Imprimir == 2 And ?Moneda == 2, [decSubtotal] - [decDescuento] + [decIva], 
+Iif(?Imprimir == 1 And ?Moneda == 2, ([decSubtotal] - [decDescuento] + [decIva]) * ?Tasa, 0))))
+)</value>
+  </data>
+  <data name="lblTotalReporte.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?Imprimir == 1 And ?Moneda == 1, [decSubtotal] - [decDescuento] + [decIva], 
+Iif(?Imprimir == 2 And ?Moneda == 1, ([decSubtotal] - [decDescuento] + [decIva]) / ?Tasa, 
+Iif(?Imprimir == 2 And ?Moneda == 2, [decSubtotal] - [decDescuento] + [decIva], 
+Iif(?Imprimir == 1 And ?Moneda == 2, ([decSubtotal] - [decDescuento] + [decIva]) * ?Tasa, 0))))
+)</value>
+  </data>
+  <data name="lblIVAReporte.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?Imprimir == 1 And ?Moneda == 1, [decIva], 
+Iif(?Imprimir == 2 And ?Moneda == 1, [decIva] / ?Tasa, 
+Iif(?Imprimir == 2 And ?Moneda == 2, [decIva], 
+Iif(?Imprimir == 1 And ?Moneda == 2, [decIva] * ?Tasa, 0))))
+)</value>
+  </data>
+  <data name="lblDescuentoReporte.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?Imprimir == 1 And ?Moneda == 1, [decDescuento], 
+Iif(?Imprimir == 2 And ?Moneda == 1, [decDescuento] / ?Tasa, 
+Iif(?Imprimir == 2 And ?Moneda == 2, [decDescuento], 
+Iif(?Imprimir == 1 And ?Moneda == 2, [decDescuento] * ?Tasa, 0))))
+)</value>
+  </data>
+  <data name="lblSubtotalReporte.ExpressionBindings" xml:space="preserve">
+    <value>sumSum(Iif(?Imprimir == 1 And ?Moneda == 1, [decSubtotal], 
+Iif(?Imprimir == 2 And ?Moneda == 1, [decSubtotal] / ?Tasa, 
+Iif(?Imprimir == 2 And ?Moneda == 2, [decSubtotal], 
+Iif(?Imprimir == 1 And ?Moneda == 2, [decSubtotal] * ?Tasa, 0))))
+)</value>
+  </data>
+  <metadata name="BSCotizacion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
 </root>

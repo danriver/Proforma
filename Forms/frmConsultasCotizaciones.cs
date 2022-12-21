@@ -1,4 +1,5 @@
-﻿using Proforma.Models;
+﻿using DevExpress.XtraEditors;
+using Proforma.Models;
 using Proforma.Modules;
 using Proforma.Reports;
 using System;
@@ -22,7 +23,7 @@ namespace Proforma.Forms
         {
             InitializeComponent();
         }
-               
+
         #region Metodos
         private void CargarGrid()
         {
@@ -62,10 +63,38 @@ namespace Proforma.Forms
             }
         }
 
+        private bool CamposValidos()
+        {
+            bool result = true;
+            DateTime? fechaIni = Convert.ToDateTime(this.dtInicio.EditValue.IsNull(null));
+            DateTime? fechaFin = Convert.ToDateTime(this.dtFin.EditValue.IsNull(null));
+
+            if (fechaIni == null)
+            {
+                this.dtInicio.ErrorText = PublicVar.gstrCampoRequeridoMsg;
+                result = false;
+            }
+            if (fechaFin == null)
+            {
+                this.dtFin.ErrorText = PublicVar.gstrCampoRequeridoMsg;
+                result = false;
+            }
+            if (fechaIni != null && fechaFin != null)
+            {
+                if (fechaIni > fechaFin)
+                {
+                    this.dtInicio.ErrorText = PublicVar.gstrFechaIniMayorFechaFinMsg;
+                    result = false;
+                }
+            }
+
+            return result;
+        }
+
         private void ActualizarTotales(decimal numCotizacion)
         {
             decimal idCotizacion = numCotizacion;
-            decimal subtotal, iva, total, equiv;
+            decimal subtotal, descuento, iva, total, equiv;
             DateTime fecha;
             string simbprinc = "", simbsecun = "";
             using (BD_ERPEntities contexto = new BD_ERPEntities())
@@ -73,9 +102,9 @@ namespace Proforma.Forms
                 var detalle = contexto.tblDetalleCotizaciones.Where(x => x.decIdCotizacion == idCotizacion);
                 var monedas = contexto.tblMonedas.ToList();
                 tblConfiguracion con = contexto.tblConfiguracion.FirstOrDefault(x => x.decIdConfiguracion == 1);
+                tblCotizaciones cot = contexto.tblCotizaciones.FirstOrDefault(x => x.decIdCotizacion == idCotizacion);
                 if (idCotizacion > 0)
                 {
-                    tblCotizaciones cot = contexto.tblCotizaciones.FirstOrDefault(x => x.decIdCotizacion == idCotizacion);
                     fecha = cot.datFechaCreacion.Date;
                 }
                 else
@@ -85,31 +114,33 @@ namespace Proforma.Forms
                 tblCambioMoneda mn = contexto.tblCambioMoneda.FirstOrDefault(x => x.datFecha == fecha);
                 if (detalle.Any())
                 {
-                    subtotal = (decimal)detalle.Sum(x => x.decPrecio * x.decCantidad);
-                    iva = subtotal * (Convert.ToDecimal(con.decPorcentajeIVA) / 100);
-                    total = subtotal + iva;
-                    if (Convert.ToInt32(con.intMoneda) == 1)
-                    {
-                        equiv = total / mn.decTipoCambio;
-                        simbprinc = Convert.ToString(monedas.FirstOrDefault(x => x.intIdMoneda == con.intMoneda).strSimbolo);
-                        simbsecun = Convert.ToString(monedas.FirstOrDefault(x => x.intIdMoneda != con.intMoneda).strSimbolo);
-                    }
-                    else
-                    {
-                        equiv = total * mn.decTipoCambio;
-                        simbprinc = Convert.ToString(monedas.FirstOrDefault(x => x.intIdMoneda == con.intMoneda).strSimbolo);
-                        simbsecun = Convert.ToString(monedas.FirstOrDefault(x => x.intIdMoneda != con.intMoneda).strSimbolo);
-                    }
+                    subtotal = Convert.ToDecimal(cot.decSubtotal);
+                    descuento = Convert.ToDecimal(cot.decDescuento);
+                    iva = Convert.ToDecimal(cot.decIva);
+                    total = subtotal - descuento + iva;                    
                 }
                 else
                 {
                     subtotal = 0;
+                    descuento = 0;
                     iva = 0;
                     total = 0;
-                    equiv = 0;
+                }
+                if (Convert.ToInt32(con.intMoneda) == 1)
+                {
+                    equiv = total / mn.decTipoCambio;
+                    simbprinc = Convert.ToString(monedas.FirstOrDefault(x => x.intIdMoneda == con.intMoneda).strSimbolo);
+                    simbsecun = Convert.ToString(monedas.FirstOrDefault(x => x.intIdMoneda != con.intMoneda).strSimbolo);
+                }
+                else
+                {
+                    equiv = total * mn.decTipoCambio;
+                    simbprinc = Convert.ToString(monedas.FirstOrDefault(x => x.intIdMoneda == con.intMoneda).strSimbolo);
+                    simbsecun = Convert.ToString(monedas.FirstOrDefault(x => x.intIdMoneda != con.intMoneda).strSimbolo);
                 }
             }
             this.txtSubtotal.Text = String.Format("{1} {0:n2}", subtotal, simbprinc);
+            this.txtDescuento.Text = String.Format("{1} {0:n2}", descuento, simbprinc);
             this.txtIVA.Text = String.Format("{1} {0:n2}", iva, simbprinc);
             this.txtTotal.Text = String.Format("{1} {0:n2}", total, simbprinc);
             this.txtTotalEquiv.Text = String.Format("{1} {0:n2}", equiv, simbsecun);
@@ -142,7 +173,7 @@ namespace Proforma.Forms
             }
         }
 
-        private void Enviar(decimal idCotizacion)
+        private void Enviar(decimal idCotizacion, bool bEditar)
         {
             try
             {
@@ -157,7 +188,17 @@ namespace Proforma.Forms
                 string ruta = Convert.ToString(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + report.DisplayName + ".pdf");
                 report.ExportToPdf(ruta);
                 CustomMail mail = new CustomMail();
-                mail.EnviarCorreo((decimal)cot.decIdVendedor, (decimal)cot.decIdContacto, rutaArchivo: ruta);
+                frmPersonalizarCorreo correo = new frmPersonalizarCorreo();
+                if (bEditar)
+                {
+                    correo.Show(this, TipoRegistro, NumRegistro, (decimal)cot.decIdVendedor, (decimal)cot.decIdContacto, Convert.ToString(report.DisplayName), "Estimado cliente. Se adjunta cotización correspondiente a solicitud realizada.", ruta);
+                }
+                else
+                {
+                    mail.EnviarCorreo(this, (decimal)cot.decIdVendedor, (decimal)cot.decIdContacto, Convert.ToString(report.DisplayName), "Estimado cliente. Se adjunta cotización correspondiente a solicitud realizada.", ruta);
+                    Operacion = TipoOperacion.CorreoCotizacion;
+                    AgregarBitacora(Operacion, TipoRegistro, NumRegistro);
+                }                
             }
             catch (Exception ex)
             {
@@ -270,7 +311,7 @@ namespace Proforma.Forms
             {
                 Cursor = Cursors.Default;
             }
-        }
+        }              
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
@@ -310,8 +351,68 @@ namespace Proforma.Forms
             try
             {
                 Cursor = Cursors.WaitCursor;
-                decimal idCotizacion = Convert.ToDecimal(vwCotizacionEnc.GetFocusedRowCellValue("decIdCotizacion"));
-                Enviar(idCotizacion);
+                using (BD_ERPEntities contexto = new BD_ERPEntities())
+                {
+                    decimal idCotizacion = Convert.ToDecimal(vwCotizacionEnc.GetFocusedRowCellValue("decIdCotizacion"));
+                    if (idCotizacion <= 0)
+                    {
+
+                    }
+                    else
+                    {
+                        tblCotizaciones cot = contexto.tblCotizaciones.FirstOrDefault(x => x.decIdCotizacion == idCotizacion);
+
+                        if (cot.intEstadoCotizacion == 2)
+                        {
+                            var resp = XtraMessageBox.Show(PublicVar.gstrPersonalizarCorreoMsg, PublicVar.gstrTitleWarning,
+                                                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                            if ( resp == DialogResult.Yes)
+                            {
+                                Enviar(idCotizacion, true);
+                            }
+                            else if (resp == DialogResult.No)
+                            {
+                                Enviar(idCotizacion, false);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show(ex, this);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                DateTime? _fechaIni = null, _fechaFin = null;
+                decimal _idCliente = 0;
+                string _strNumCotizacion = "";
+
+                if (CamposValidos() == false)
+                {
+                    XtraMessageBox.Show(PublicVar.gstrCamposRequeridosMsg, PublicVar.gstrTitleInfo,
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                _fechaIni = Convert.ToDateTime(this.dtInicio.EditValue).StartDate();
+                _fechaFin = Convert.ToDateTime(this.dtFin.EditValue).EndDate();
+                _idCliente = Convert.ToDecimal(this.cmbClientes.EditValue.IsNull(0));
+                _strNumCotizacion = Convert.ToString(this.txtStrCotizacion.Text.Trim());
+
+                var cotizacion = BDContext.tblCotizaciones.Where(x => (x.strNumCotizacion.Contains(_strNumCotizacion) && _strNumCotizacion.Length > 0) || ((x.tblClientes.decIdCliente == _idCliente || (x.tblClientes.decIdCliente > 0 && _idCliente == 0))
+                                                                && x.datFechaCreacion >= _fechaIni && x.datFechaCreacion <= _fechaFin)).ToList();
+                grdCotizacionEnc.DataSource = cotizacion;
+
             }
             catch (Exception ex)
             {

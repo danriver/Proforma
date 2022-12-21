@@ -112,7 +112,11 @@ namespace Proforma.Forms
                     this.txtDireccion.Text = Convert.ToString(con.strDireccionEmpresa);
                     this.txtTelefono.Text = Convert.ToString(con.strTelefono);
                     this.txtRUC.Text = Convert.ToString(con.strRUCEmpresa);
+                    this.txtEncabezado.Text = Convert.ToString(con.strEncabezado);
+                    this.chkMostrarEncabezado.Checked = Convert.ToBoolean(con.bitEncabezado);
+                    this.txtInfAdicional.Text = Convert.ToString(con.strInfAdicional);
                     this.txtPiePagina.Text = Convert.ToString(con.strPieEmpresa);
+                    this.chkMostrarPiePagina.Checked = Convert.ToBoolean(con.bitPieEmpresa);
                     this.txtEslogan.Text = Convert.ToString(con.strEsloganEmpresa);
                     this.txtNombreCheque.Text = Convert.ToString(con.strChequeNombreDe);
                     this.txtLogo.Text = Convert.ToString(con.strDireccionLogo);
@@ -186,7 +190,11 @@ namespace Proforma.Forms
                 string direccion = Convert.ToString(this.txtDireccion.Text.Trim());
                 string telefono = Convert.ToString(this.txtTelefono.Text.Trim());
                 string RUC = Convert.ToString(this.txtRUC.Text.Trim());
+                string encabezado = Convert.ToString(this.txtEncabezado.Text.Trim());
+                bool mostrarEncabezado = Convert.ToBoolean(this.chkMostrarEncabezado.Checked);
+                string infAdicional = Convert.ToString(this.txtInfAdicional.Text.Trim());
                 string piePagina = Convert.ToString(this.txtPiePagina.Text.Trim());
+                bool mostrarPiePagina = Convert.ToBoolean(this.chkMostrarPiePagina.Checked);
                 string eslogan = Convert.ToString(this.txtEslogan.Text.Trim());
                 string nombreCheque = Convert.ToString(this.txtNombreCheque.Text.Trim());
                 string logo = Convert.ToString(this.txtLogo.Text.Trim());
@@ -203,7 +211,11 @@ namespace Proforma.Forms
                     con.strDireccionEmpresa = direccion;
                     con.strTelefono = telefono;
                     con.strRUCEmpresa = RUC;
+                    con.strEncabezado = encabezado;
+                    con.bitEncabezado = mostrarEncabezado;
+                    con.strInfAdicional = infAdicional;
                     con.strPieEmpresa = piePagina;
+                    con.bitPieEmpresa = mostrarPiePagina;
                     con.strEsloganEmpresa = eslogan;
                     con.strChequeNombreDe = nombreCheque;
                     con.strDireccionLogo = logo;
