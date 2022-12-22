@@ -458,6 +458,7 @@
     <None Include="packages.config" />
     <None Include="Proforma_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\Proforma.Models.BD_ERPEntities.datasource" />
     <None Include="Properties\DataSources\Proforma.Models.tblBitacoras.datasource" />
     <None Include="Properties\DataSources\Proforma.Models.tblCambioMoneda.datasource" />
     <None Include="Properties\DataSources\Proforma.Models.tblClientes.datasource" />

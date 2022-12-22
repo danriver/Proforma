@@ -104,7 +104,12 @@ namespace Proforma.Reports
             this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
             this.PageFooter = new DevExpress.XtraReports.UI.PageFooterBand();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.Moneda = new DevExpress.XtraReports.Parameters.Parameter();
+            this.Imprimir = new DevExpress.XtraReports.Parameters.Parameter();
+            this.Tasa = new DevExpress.XtraReports.Parameters.Parameter();
             this.BSDetalleCotizacion = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BSDetalleCotizacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -1086,6 +1091,30 @@ namespace Proforma.Reports
             // 
             this.PageFooter.Name = "PageFooter";
             // 
+            // Moneda
+            // 
+            this.Moneda.Description = "moneda";
+            this.Moneda.Name = "Moneda";
+            this.Moneda.Type = typeof(int);
+            this.Moneda.ValueInfo = "0";
+            this.Moneda.Visible = false;
+            // 
+            // Imprimir
+            // 
+            this.Imprimir.Description = "imprimir";
+            this.Imprimir.Name = "Imprimir";
+            this.Imprimir.Type = typeof(bool);
+            this.Imprimir.ValueInfo = "False";
+            this.Imprimir.Visible = false;
+            // 
+            // Tasa
+            // 
+            this.Tasa.Description = "tasa";
+            this.Tasa.Name = "Tasa";
+            this.Tasa.Type = typeof(decimal);
+            this.Tasa.ValueInfo = "0";
+            this.Tasa.Visible = false;
+            // 
             // BSDetalleCotizacion
             // 
             this.BSDetalleCotizacion.DataSource = typeof(Proforma.Models.tblDetalleCotizaciones);
@@ -1102,13 +1131,20 @@ namespace Proforma.Reports
             this.ReportFooter,
             this.PageFooter});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
-            this.BSDetalleCotizacion});
+            this.BSDetalleCotizacion,
+            this.bindingSource1});
             this.DataSource = this.BSDetalleCotizacion;
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margins = new System.Drawing.Printing.Margins(65, 76, 55, 100);
+            this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
+            this.Moneda,
+            this.Imprimir,
+            this.Tasa});
+            this.RequestParameters = false;
             this.Version = "21.1";
             this.Watermark.Font = new System.Drawing.Font("Arial", 80F);
             this.Watermark.ShowBehind = false;
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BSDetalleCotizacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
@@ -1190,5 +1226,9 @@ namespace Proforma.Reports
         private DevExpress.XtraReports.UI.SubBand SBInfAdicional;
         private DevExpress.XtraReports.UI.XRLabel xrLabel5;
         private DevExpress.XtraReports.UI.XRLabel xrLabel6;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private DevExpress.XtraReports.Parameters.Parameter Moneda;
+        private DevExpress.XtraReports.Parameters.Parameter Imprimir;
+        private DevExpress.XtraReports.Parameters.Parameter Tasa;
     }
 }

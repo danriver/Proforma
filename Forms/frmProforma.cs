@@ -170,7 +170,14 @@ namespace Proforma.Forms
                         this.txtSubtotal.Text = Convert.ToString(cot.decSubtotal);
                         this.txtDescuento.Text = Convert.ToString(cot.decDescuento);
                         this.txtIVA.Text = Convert.ToString(cot.decIva);
-                        this.spDescuento.EditValue = Convert.ToString(Convert.ToDecimal(cot.decDescuento) / Convert.ToDecimal(cot.decSubtotal) * 100);
+                        if (Convert.ToDecimal(cot.decSubtotal)>0)
+                        {
+                            this.spDescuento.EditValue = Convert.ToString(Convert.ToDecimal(cot.decDescuento) / Convert.ToDecimal(cot.decSubtotal) * 100);
+                        }
+                        else
+                        {
+                            this.spDescuento.EditValue = 0;
+                        }
                         bCargar = true;
                         ActualizarTotales();
                     }

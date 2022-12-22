@@ -42,6 +42,7 @@ namespace Proforma.Forms
             this.cboMonedaCotizacion = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.tblMonedasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colstrDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.radioGroupFiltroCotizacion = new DevExpress.XtraEditors.RadioGroup();
             this.cboClienteCotizacion = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.tblClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -60,7 +61,6 @@ namespace Proforma.Forms
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.colstrDescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlReportes)).BeginInit();
             this.layoutControlReportes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
@@ -196,6 +196,7 @@ namespace Proforma.Forms
             // 
             this.cboMonedaCotizacion.Location = new System.Drawing.Point(69, 36);
             this.cboMonedaCotizacion.Name = "cboMonedaCotizacion";
+            this.cboMonedaCotizacion.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.cboMonedaCotizacion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboMonedaCotizacion.Properties.DataSource = this.tblMonedasBindingSource;
@@ -220,6 +221,14 @@ namespace Proforma.Forms
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
+            // colstrDescripcion
+            // 
+            this.colstrDescripcion.Caption = "Moneda";
+            this.colstrDescripcion.FieldName = "strDescripcion";
+            this.colstrDescripcion.Name = "colstrDescripcion";
+            this.colstrDescripcion.Visible = true;
+            this.colstrDescripcion.VisibleIndex = 0;
+            // 
             // radioGroupFiltroCotizacion
             // 
             this.radioGroupFiltroCotizacion.EditValue = 0;
@@ -239,6 +248,7 @@ namespace Proforma.Forms
             // 
             this.cboClienteCotizacion.Location = new System.Drawing.Point(69, 12);
             this.cboClienteCotizacion.Name = "cboClienteCotizacion";
+            this.cboClienteCotizacion.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.cboClienteCotizacion.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboClienteCotizacion.Properties.DataSource = this.tblClientesBindingSource;
@@ -398,14 +408,6 @@ namespace Proforma.Forms
             this.emptySpaceItem3.Name = "emptySpaceItem3";
             this.emptySpaceItem3.Size = new System.Drawing.Size(130, 26);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // colstrDescripcion
-            // 
-            this.colstrDescripcion.Caption = "Moneda";
-            this.colstrDescripcion.FieldName = "strDescripcion";
-            this.colstrDescripcion.Name = "colstrDescripcion";
-            this.colstrDescripcion.Visible = true;
-            this.colstrDescripcion.VisibleIndex = 0;
             // 
             // frmAsistenteReportes
             // 
