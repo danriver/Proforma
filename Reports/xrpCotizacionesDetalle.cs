@@ -24,30 +24,51 @@ namespace Proforma.Reports
             lblRangoFechas.Text = string.Format(" Del {0:" + PublicVar.gstrFormatFecha + "} Al {1:" + PublicVar.gstrFormatFecha + "}", fechaIni, fechaFin);
             lblUsuario.Text = PublicVar.gstrUsername;
 
-            if (idMoneda == 1)
-            {
-                SubBandCotizacionDolaresEnc.Visible = false;
-                SubBandDetalleDolares.Visible = false;
-                SubBandSubTotalContactoDolares.Visible = false;
-                SubBandSubTotalClienteDolares.Visible = false;
-                SubBandTotalDolares.Visible = false;
-            }
-            else
-            {
-                SubBandCotizacionCordobasEnc.Visible = false;
-                SubBandDetalleCordobas.Visible = false;
-                SubBandSubTotalContactoCordobas.Visible = false;
-                SubBandSubTotalClienteCordobas.Visible = false;
-                SubBandTotalCordobas.Visible = false;
-            }
-
             var config = _context.tblConfiguracion.FirstOrDefault();
 
             this.Parameters["MonedaConfiguracion"].Value = config.intMoneda;
             this.Parameters["MonedaImpresion"].Value = idMoneda;
 
-            var cotizaciones = _context.tblDetalleCotizaciones.ToList();
+            //Formato de montos
+            string formatoMonto = "{0:C$ #,0.00}";
+            if (idMoneda == 2)
+            {
+                formatoMonto = "{0:U$ #,0.00}";
+            }
+
+            //SubTotal
+            lblSubTotalEnc.TextFormatString = formatoMonto;
+            lblPrecioDet.TextFormatString = formatoMonto;
+            lblSubTotalDet.TextFormatString = formatoMonto;
+            lblSubTotalContacto.TextFormatString = formatoMonto;
+            lblSubTotalCliente.TextFormatString = formatoMonto;
+            lblSubTotalGeneral.TextFormatString = formatoMonto;
+            
+            //Descuento
+            lblDescuentoEnc.TextFormatString = formatoMonto;
+            lblDescuentoContacto.TextFormatString = formatoMonto;
+            lblDescuentoCliente.TextFormatString = formatoMonto;
+            lblDescuentoGeneral.TextFormatString = formatoMonto;
+
+            //IVA
+            lblIvaEnc.TextFormatString = formatoMonto;
+            lblIvaContacto.TextFormatString = formatoMonto;
+            lblIvaCliente.TextFormatString = formatoMonto;
+            lblIvaGeneral.TextFormatString = formatoMonto;
+
+            //Total
+            lblTotalEnc.TextFormatString = formatoMonto;
+            lblTotalContacto.TextFormatString = formatoMonto;
+            lblTotalCliente.TextFormatString = formatoMonto;
+            lblTotalGeneral.TextFormatString = formatoMonto;
+
+            var cotizaciones = _context.tblDetalleCotizaciones
+                .Where(x => x.tblCotizaciones.datFechaCreacion >= fechaIni && x.tblCotizaciones.datFechaCreacion <= fechaFin
+                        && (x.tblCotizaciones.decIdCliente == idCliente && idCliente > 0 || x.tblCotizaciones.decIdCliente > 0 && idCliente == 0))
+                .ToList();
+
             cotizacionesBindingSource.DataSource = cotizaciones;
+
         }
 
         private void lblNumCotizacion_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
