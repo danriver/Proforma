@@ -23,6 +23,7 @@ namespace Proforma.Reports
         {
             lblRangoFechas.Text = string.Format(" Del {0:" + PublicVar.gstrFormatFecha + "} Al {1:" + PublicVar.gstrFormatFecha + "}", fechaIni, fechaFin);
             lblUsuario.Text = PublicVar.gstrUsername;
+            lblFechaHoraImpresion.Text = string.Format("{0:dd/MM/yyyy hh:mm tt}", DateTime.Now.GetDateDB());
 
             var config = _context.tblConfiguracion.FirstOrDefault();
 
@@ -30,11 +31,14 @@ namespace Proforma.Reports
             this.Parameters["MonedaImpresion"].Value = idMoneda;
 
             //Formato de montos
-            string formatoMonto = "{0:C$ #,0.00}";
-            if (idMoneda == 2)
+            string monedaSimbolo = "";
+            string formatoMonto = "";
+            var moneda = _context.tblMonedas.Where(x => x.intIdMoneda == idMoneda).FirstOrDefault();
+            if (moneda != null)
             {
-                formatoMonto = "{0:U$ #,0.00}";
+                monedaSimbolo = moneda.strSimbolo;
             }
+            formatoMonto = "{0:" + monedaSimbolo + " #,0.00}";
 
             //SubTotal
             lblSubTotalEnc.TextFormatString = formatoMonto;
@@ -43,7 +47,7 @@ namespace Proforma.Reports
             lblSubTotalContacto.TextFormatString = formatoMonto;
             lblSubTotalCliente.TextFormatString = formatoMonto;
             lblSubTotalGeneral.TextFormatString = formatoMonto;
-            
+
             //Descuento
             lblDescuentoEnc.TextFormatString = formatoMonto;
             lblDescuentoContacto.TextFormatString = formatoMonto;
@@ -64,25 +68,32 @@ namespace Proforma.Reports
 
             var cotizaciones = _context.tblDetalleCotizaciones
                 .Where(x => x.tblCotizaciones.datFechaCreacion >= fechaIni && x.tblCotizaciones.datFechaCreacion <= fechaFin
-                        && (x.tblCotizaciones.decIdCliente == idCliente && idCliente > 0 || x.tblCotizaciones.decIdCliente > 0 && idCliente == 0))
+                        && (x.tblCotizaciones.decIdCliente == idCliente || (x.tblCotizaciones.decIdCliente > 0 && idCliente == 0)))
+                .Select(x => new
+                {
+                    x.bitExonerado,
+                    x.decCantidad,
+                    x.decCosto,
+                    x.decDescuento,
+                    x.decIdCotizacion,
+                    x.decIdDetalle,
+                    x.decIdProducto,
+                    x.decIdProveedor,
+                    x.decIdUsuario,
+                    x.decMargen,
+                    x.decPrecio,
+                    x.FechaMovimiento,
+                    x.tblCotizaciones,
+                    x.tblProductos,
+                    x.tblProveedores,
+                    x.tblUsuarios,
+                    TipoCambio = _context.tblCambioMoneda.FirstOrDefault(y => y.datFecha.Year == x.tblCotizaciones.datFechaCreacion.Year
+                                                                                 && y.datFecha.Month == x.tblCotizaciones.datFechaCreacion.Month
+                                                                                 && y.datFecha.Day == x.tblCotizaciones.datFechaCreacion.Day).decTipoCambio
+                })
                 .ToList();
 
             cotizacionesBindingSource.DataSource = cotizaciones;
-
-        }
-
-        private void lblNumCotizacion_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
-        {
-            this.Parameters["Cambio"].Value = 0;
-            var cotizacion = _context.tblCotizaciones.Where(x => x.strNumCotizacion == lblNumCotizacion.Text).FirstOrDefault();
-            if (cotizacion != null)
-            {
-                var cambioMoneda = _context.tblCambioMoneda.Where(x => x.datFecha == cotizacion.datFechaCreacion.Date).FirstOrDefault();
-                if (cambioMoneda != null)
-                {
-                    this.Parameters["Cambio"].Value = Convert.ToString(cambioMoneda.decTipoCambio.IsNull(0));
-                }
-            }
         }
     }
 }
