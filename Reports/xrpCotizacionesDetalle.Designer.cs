@@ -55,9 +55,9 @@ namespace Proforma.Reports
             this.lblRangoFechas = new DevExpress.XtraReports.UI.XRLabel();
             this.lblTitulo = new DevExpress.XtraReports.UI.XRLabel();
             this.PageFooter = new DevExpress.XtraReports.UI.PageFooterBand();
+            this.lblFechaHoraImpresion = new DevExpress.XtraReports.UI.XRLabel();
             this.lblUsuario = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrPageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.xrLabel29 = new DevExpress.XtraReports.UI.XRLabel();
@@ -95,8 +95,6 @@ namespace Proforma.Reports
             this.xrLabel43 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel31 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel62 = new DevExpress.XtraReports.UI.XRLabel();
-            this.calculatedField1 = new DevExpress.XtraReports.UI.CalculatedField();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
             this.lblTotalGeneral = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel55 = new DevExpress.XtraReports.UI.XRLabel();
@@ -109,7 +107,6 @@ namespace Proforma.Reports
             this.xrLabel87 = new DevExpress.XtraReports.UI.XRLabel();
             this.MonedaConfiguracion = new DevExpress.XtraReports.Parameters.Parameter();
             this.MonedaImpresion = new DevExpress.XtraReports.Parameters.Parameter();
-            this.Cambio = new DevExpress.XtraReports.Parameters.Parameter();
             this.GroupFooter3 = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.xrLabel14 = new DevExpress.XtraReports.UI.XRLabel();
             this.lblTotalCliente = new DevExpress.XtraReports.UI.XRLabel();
@@ -123,9 +120,10 @@ namespace Proforma.Reports
             this.xrLabel45 = new DevExpress.XtraReports.UI.XRLabel();
             this.cotizacionesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.cotizacionesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // TopMargin
@@ -256,12 +254,22 @@ namespace Proforma.Reports
             // PageFooter
             // 
             this.PageFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.lblFechaHoraImpresion,
             this.lblUsuario,
             this.xrLabel5,
-            this.xrPageInfo2,
             this.xrPageInfo1});
             this.PageFooter.HeightF = 20F;
             this.PageFooter.Name = "PageFooter";
+            // 
+            // lblFechaHoraImpresion
+            // 
+            this.lblFechaHoraImpresion.Font = new System.Drawing.Font("Arial", 8F);
+            this.lblFechaHoraImpresion.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.lblFechaHoraImpresion.Multiline = true;
+            this.lblFechaHoraImpresion.Name = "lblFechaHoraImpresion";
+            this.lblFechaHoraImpresion.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblFechaHoraImpresion.SizeF = new System.Drawing.SizeF(138.5417F, 20F);
+            this.lblFechaHoraImpresion.StylePriority.UseFont = false;
             // 
             // lblUsuario
             // 
@@ -283,19 +291,6 @@ namespace Proforma.Reports
             this.xrLabel5.SizeF = new System.Drawing.SizeF(56.25F, 20F);
             this.xrLabel5.StylePriority.UseFont = false;
             this.xrLabel5.Text = "Imprimió:";
-            // 
-            // xrPageInfo2
-            // 
-            this.xrPageInfo2.Font = new System.Drawing.Font("Arial", 8F);
-            this.xrPageInfo2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
-            this.xrPageInfo2.Name = "xrPageInfo2";
-            this.xrPageInfo2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrPageInfo2.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
-            this.xrPageInfo2.SizeF = new System.Drawing.SizeF(138.5417F, 20F);
-            this.xrPageInfo2.StylePriority.UseFont = false;
-            this.xrPageInfo2.StylePriority.UseTextAlignment = false;
-            this.xrPageInfo2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            this.xrPageInfo2.TextFormatString = "{0:dd/M/yyyy hh:mm tt}";
             // 
             // xrPageInfo1
             // 
@@ -536,7 +531,6 @@ namespace Proforma.Reports
             this.lblNumCotizacion.SizeF = new System.Drawing.SizeF(124.5833F, 20F);
             this.lblNumCotizacion.StylePriority.UseFont = false;
             this.lblNumCotizacion.Text = "xrLabel1";
-            this.lblNumCotizacion.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblNumCotizacion_BeforePrint);
             // 
             // xrLabel6
             // 
@@ -820,16 +814,6 @@ namespace Proforma.Reports
             this.xrLabel62.Text = "SubTotal por Contacto";
             this.xrLabel62.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
-            // calculatedField1
-            // 
-            this.calculatedField1.DataSource = this.bindingSource1;
-            this.calculatedField1.Expression = "[intMoneda]";
-            this.calculatedField1.Name = "calculatedField1";
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = typeof(Proforma.Models.tblConfiguracion);
-            // 
             // ReportFooter
             // 
             this.ReportFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
@@ -989,14 +973,6 @@ namespace Proforma.Reports
             this.MonedaImpresion.Type = typeof(int);
             this.MonedaImpresion.ValueInfo = "0";
             this.MonedaImpresion.Visible = false;
-            // 
-            // Cambio
-            // 
-            this.Cambio.Description = "Cambio de Moneda";
-            this.Cambio.Name = "Cambio";
-            this.Cambio.Type = typeof(decimal);
-            this.Cambio.ValueInfo = "0";
-            this.Cambio.Visible = false;
             // 
             // GroupFooter3
             // 
@@ -1169,6 +1145,10 @@ namespace Proforma.Reports
             this.objectDataSource1.DataSource = typeof(Proforma.Models.BD_ERPEntities);
             this.objectDataSource1.Name = "objectDataSource1";
             // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(Proforma.Models.tblConfiguracion);
+            // 
             // xrpCotizacionesDetalle
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1184,8 +1164,6 @@ namespace Proforma.Reports
             this.GroupFooter2,
             this.ReportFooter,
             this.GroupFooter3});
-            this.CalculatedFields.AddRange(new DevExpress.XtraReports.UI.CalculatedField[] {
-            this.calculatedField1});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.cotizacionesBindingSource,
             this.objectDataSource1,
@@ -1194,13 +1172,12 @@ namespace Proforma.Reports
             this.Font = new System.Drawing.Font("Arial", 9.75F);
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
             this.MonedaConfiguracion,
-            this.MonedaImpresion,
-            this.Cambio});
+            this.MonedaImpresion});
             this.RequestParameters = false;
             this.Version = "21.1";
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cotizacionesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -1231,7 +1208,6 @@ namespace Proforma.Reports
         private DevExpress.XtraReports.UI.XRLabel lblIvaEnc;
         private DevExpress.XtraReports.UI.XRLabel xrLabel10;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private DevExpress.XtraReports.UI.CalculatedField calculatedField1;
         private DevExpress.DataAccess.ObjectBinding.ObjectDataSource objectDataSource1;
         private DevExpress.XtraReports.UI.XRLabel xrLabel11;
         private DevExpress.XtraReports.UI.XRLabel lblDescuentoEnc;
@@ -1252,12 +1228,10 @@ namespace Proforma.Reports
         private DevExpress.XtraReports.UI.SubBand SubBandDetalle;
         private DevExpress.XtraReports.Parameters.Parameter MonedaConfiguracion;
         private DevExpress.XtraReports.Parameters.Parameter MonedaImpresion;
-        private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo2;
         private DevExpress.XtraReports.UI.XRLabel xrLabel5;
         private DevExpress.XtraReports.UI.XRLabel lblUsuario;
         private DevExpress.XtraReports.UI.XRLabel xrLabel62;
         private DevExpress.XtraReports.UI.XRLabel xrLabel87;
-        private DevExpress.XtraReports.Parameters.Parameter Cambio;
         private DevExpress.XtraReports.UI.XRLabel xrLabel31;
         private DevExpress.XtraReports.UI.XRLabel lblIvaContacto;
         private DevExpress.XtraReports.UI.XRLabel lblDescuentoContacto;
@@ -1287,5 +1261,6 @@ namespace Proforma.Reports
         private DevExpress.XtraReports.UI.XRLabel xrLabel9;
         private DevExpress.XtraReports.UI.XRLabel xrLabel12;
         private DevExpress.XtraReports.UI.XRLabel xrLabel14;
+        private DevExpress.XtraReports.UI.XRLabel lblFechaHoraImpresion;
     }
 }

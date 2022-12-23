@@ -120,143 +120,143 @@
   <data name="lblPrecioDet.ExpressionBindings" xml:space="preserve">
     <value>Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [decPrecio]
 , Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [decPrecio] * 
-?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [decPrecio]
+[TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [decPrecio]
 , Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [decPrecio] / 
-?Cambio, 0))))
+[TipoCambio], 0))))
 </value>
   </data>
   <data name="lblSubTotalDet.ExpressionBindings" xml:space="preserve">
     <value>IsNull([decCantidad], 0) *
 Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [decPrecio]
 , Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [decPrecio] * 
-?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [decPrecio]
+[TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [decPrecio]
 , Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [decPrecio] / 
-?Cambio, 0))))</value>
+[TipoCambio], 0))))</value>
   </data>
   <data name="lblTotalEnc.ExpressionBindings" xml:space="preserve">
     <value>Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * ?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
-, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / ?Cambio, 0)))) -
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / [TipoCambio], 0)))) -
 Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * ?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
-, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / ?Cambio, 0)))) +
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / [TipoCambio], 0)))) +
 Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva]
 , Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva] * 
-?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva]
+[TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva]
 , Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva] / 
-?Cambio, 0))))</value>
+[TipoCambio], 0))))</value>
   </data>
   <data name="lblSubTotalEnc.ExpressionBindings" xml:space="preserve">
     <value>Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * ?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
-, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / ?Cambio, 0))))</value>
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / [TipoCambio], 0))))</value>
   </data>
   <data name="lblDescuentoEnc.ExpressionBindings" xml:space="preserve">
     <value>Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * ?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
-, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / ?Cambio, 0))))</value>
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / [TipoCambio], 0))))</value>
   </data>
   <data name="lblIvaEnc.ExpressionBindings" xml:space="preserve">
     <value>Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva]
 , Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva] * 
-?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva]
+[TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva]
 , Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva] / 
-?Cambio, 0))))</value>
+[TipoCambio], 0))))</value>
   </data>
   <data name="lblTotalContacto.ExpressionBindings" xml:space="preserve">
     <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * ?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
-, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / ?Cambio, 0)))) -
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / [TipoCambio], 0)))) -
 Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * ?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
-, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / ?Cambio, 0)))) +
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / [TipoCambio], 0)))) +
 Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva]
 , Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva] * 
-?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva]
+[TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva]
 , Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva] / 
-?Cambio, 0)))))</value>
+[TipoCambio], 0)))))</value>
   </data>
   <data name="lblIvaContacto.ExpressionBindings" xml:space="preserve">
     <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva] * IsNull(?Cambio, 0), Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva]
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva]
 , Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva] / 
-?Cambio, 0)))))</value>
+[TipoCambio], 0)))))</value>
   </data>
   <data name="lblDescuentoContacto.ExpressionBindings" xml:space="preserve">
     <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * ?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
-, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / ?Cambio, 0)))))</value>
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / [TipoCambio], 0)))))</value>
   </data>
   <data name="lblSubTotalContacto.ExpressionBindings" xml:space="preserve">
     <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * ?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
-, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / ?Cambio, 0)))))</value>
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / [TipoCambio], 0)))))</value>
   </data>
-  <metadata name="bindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
-  </metadata>
   <data name="lblTotalGeneral.ExpressionBindings" xml:space="preserve">
     <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * ?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
-, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / ?Cambio, 0)))) -
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / [TipoCambio], 0)))) -
 Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * ?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
-, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / ?Cambio, 0)))) +
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / [TipoCambio], 0)))) +
 Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva]
 , Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva] * 
-?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva]
+[TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva]
 , Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva] / 
-?Cambio, 0)))))</value>
+[TipoCambio], 0)))))</value>
   </data>
   <data name="lblSubTotalGeneral.ExpressionBindings" xml:space="preserve">
-    <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * ?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
-, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / ?Cambio, 0)))))</value>
+    <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones.decSubtotal], ?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones.decSubtotal] * 
+[TipoCambio], ?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones.decSubtotal], ?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones.decSubtotal] / 
+[TipoCambio], 0))</value>
   </data>
   <data name="lblDescuentoGeneral.ExpressionBindings" xml:space="preserve">
     <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * ?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
-, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / ?Cambio, 0)))))</value>
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / [TipoCambio], 0)))))</value>
   </data>
   <data name="lblIvaGeneral.ExpressionBindings" xml:space="preserve">
     <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva] * IsNull(?Cambio, 0), Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva]
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva]
 , Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva] / 
-?Cambio, 0)))))</value>
+[TipoCambio], 0)))))</value>
   </data>
   <data name="lblTotalCliente.ExpressionBindings" xml:space="preserve">
     <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * ?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
-, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / ?Cambio, 0)))) -
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / [TipoCambio], 0)))) -
 Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * ?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
-, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / ?Cambio, 0)))) +
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / [TipoCambio], 0)))) +
 Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva]
 , Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva] * 
-?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva]
+[TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva]
 , Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva] / 
-?Cambio, 0)))))</value>
+[TipoCambio], 0)))))</value>
   </data>
   <data name="lblSubTotalCliente.ExpressionBindings" xml:space="preserve">
     <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * ?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
-, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / ?Cambio, 0)))))</value>
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decSubtotal]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decSubtotal] / [TipoCambio], 0)))))</value>
   </data>
   <data name="lblDescuentoCliente.ExpressionBindings" xml:space="preserve">
     <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * ?Cambio, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
-, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / ?Cambio, 0)))))</value>
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decDescuento]
+, Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decDescuento] / [TipoCambio], 0)))))</value>
   </data>
   <data name="lblIvaCliente.ExpressionBindings" xml:space="preserve">
     <value>sumSum(Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva]
-, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva] * IsNull(?Cambio, 0), Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva]
+, Iif(?MonedaImpresion = 1 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva] * [TipoCambio], Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 2, [tblCotizaciones].[decIva]
 , Iif(?MonedaImpresion = 2 And ?MonedaConfiguracion = 1, [tblCotizaciones].[decIva] / 
-?Cambio, 0)))))</value>
+[TipoCambio], 0)))))</value>
   </data>
   <metadata name="cotizacionesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="objectDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 95</value>
+  </metadata>
+  <metadata name="bindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
   </metadata>
 </root>
